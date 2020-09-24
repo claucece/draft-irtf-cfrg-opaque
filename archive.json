@@ -1,0 +1,3389 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2020-09-24T00:47:57.494901+00:00",
+  "repo": "cfrg/draft-irtf-cfrg-opaque",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [
+    {
+      "number": 2,
+      "id": "MDU6SXNzdWU2MjAyNDU1MjQ=",
+      "title": "Drop TLS integration details",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/2",
+      "state": "CLOSED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "We should reference and rely on [1] when it's updated.\r\n\r\n[1] https://tools.ietf.org/html/draft-sullivan-tls-opaque-00",
+      "createdAt": "2020-05-18T14:15:17Z",
+      "updatedAt": "2020-06-19T15:14:46Z",
+      "closedAt": "2020-06-19T15:14:46Z",
+      "comments": []
+    },
+    {
+      "number": 3,
+      "id": "MDU6SXNzdWU2MjAyNDg5NTU=",
+      "title": "Move security property discussion to considerations section",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/3",
+      "state": "OPEN",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This will shorten the introduction and help readers get straight to the protocol details. HPKE does a good job with this sort of structure, so we might look there as a guide.",
+      "createdAt": "2020-05-18T14:19:28Z",
+      "updatedAt": "2020-05-18T14:19:28Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 4,
+      "id": "MDU6SXNzdWU2MjAyNDkzNDk=",
+      "title": "Clarify server trust",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/4",
+      "state": "OPEN",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Should we clarify how much trust we place in the server? For example, since OPAQUE stores encrypted keys in the server, and that same server has the OPRF secret key, it could in theory do a dictionary attack and recover the private key for each user. This is pretty nonsensical, but I think it does highlight that OPAQUE assumes the server is honest-but-curious, rather than entirely malicious.\r\n\r\nThis is sort of fundamental, but some folks might miss it.",
+      "createdAt": "2020-05-18T14:19:58Z",
+      "updatedAt": "2020-05-18T14:19:58Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 5,
+      "id": "MDU6SXNzdWU2MjAyNTQwMzM=",
+      "title": "Reconsider \"cost\" details section",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/5",
+      "state": "OPEN",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The \"cost\" details are written assuming a traditional DH-based KE protocol. Should we try to generalize this, e.g., to cover KEM-based protocols? Moreover, the cost details might not age well as TLS 1.3 develops and possibly moves away from signatures, via, e.g., semi-static DH. Or we might just remove this section entirely. ",
+      "createdAt": "2020-05-18T14:25:57Z",
+      "updatedAt": "2020-05-18T14:25:57Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 6,
+      "id": "MDU6SXNzdWU2MjAyNTQ0MDA=",
+      "title": "Add wire format details for registration and login flow messages",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/6",
+      "state": "CLOSED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "TLS notation would be easiest, given its ubiquity. ",
+      "createdAt": "2020-05-18T14:26:28Z",
+      "updatedAt": "2020-06-04T23:18:09Z",
+      "closedAt": "2020-06-04T23:18:09Z",
+      "comments": []
+    },
+    {
+      "number": 7,
+      "id": "MDU6SXNzdWU2MjAyNTQ5NTM=",
+      "title": "Highlight the importance of IdU and IdS in the envelope and post-OPRF AKE",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/7",
+      "state": "OPEN",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Endpoints MUST agree on these identities (and use the right values!) for security. ",
+      "createdAt": "2020-05-18T14:27:09Z",
+      "updatedAt": "2020-05-18T14:27:09Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 8,
+      "id": "MDU6SXNzdWU2MjA1ODA5MTM=",
+      "title": "Typo in 3DH key derivation",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/8",
+      "state": "CLOSED",
+      "author": "hugokraw",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The key K3dh needs to computed by the server as\r\n K3dh = ePubU^ePrivS | ePubU^PrivS | PubU^ePrivS\r\nThe current draft inverts the order between the last two elements making it inconsistent with the way the client computes the key.\r\n(Reported by Kevin Lewi)",
+      "createdAt": "2020-05-19T00:09:37Z",
+      "updatedAt": "2020-05-19T22:17:38Z",
+      "closedAt": "2020-05-19T16:43:28Z",
+      "comments": [
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "As you see my github skills improved significantly, but the truth I did\nthese postings guided by someone else :-)\n\nCan I  address pull requests directly? DO you need to define me as\ncontributor? Or is it better that I let you push changes?\n\n\n-- Hugo\n\nHelp build a *worldwide repository* of COVID-19 data\n<https://iReport.algorand.org>, open to all, everywhere.\n\n\nOn Tue, May 19, 2020 at 12:43 PM Christopher Wood <notifications@github.com>\nwrote:\n\n> Closed #8 <https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/8> via\n> #10 <https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/10>.\n>\n> \u2014\n> You are receiving this because you authored the thread.\n> Reply to this email directly, view it on GitHub\n> <https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/8#event-3352769127>,\n> or unsubscribe\n> <https://github.com/notifications/unsubscribe-auth/AICFFXXKFQIYX44QTCJJHK3RSKZL7ANCNFSM4NEQVXEQ>\n> .\n>\n",
+          "createdAt": "2020-05-19T19:50:30Z",
+          "updatedAt": "2020-05-19T19:50:30Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Ah, I forgot to add you as a contributor! Oops. Let me do that now.",
+          "createdAt": "2020-05-19T19:58:52Z",
+          "updatedAt": "2020-05-19T19:58:52Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thanks. Also, add yourself as an author.\n\n-- Hugo\n\nHelp build a *worldwide repository* of COVID-19 data\n<https://iReport.algorand.org>, open to all, everywhere.\n\n\nOn Tue, May 19, 2020 at 3:59 PM Christopher Wood <notifications@github.com>\nwrote:\n\n> Ah, I forgot to add you as a contributor! Oops. Let me do that now.\n>\n> \u2014\n> You are receiving this because you authored the thread.\n> Reply to this email directly, view it on GitHub\n> <https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/8#issuecomment-631049168>,\n> or unsubscribe\n> <https://github.com/notifications/unsubscribe-auth/AICFFXTP7PCTIP7DRVPILW3RSLQIVANCNFSM4NEQVXEQ>\n> .\n>\n",
+          "createdAt": "2020-05-19T22:17:37Z",
+          "updatedAt": "2020-05-19T22:17:37Z"
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "id": "MDU6SXNzdWU2MjA1OTMzNjk=",
+      "title": "typos/comments from Eric Crockett",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/9",
+      "state": "CLOSED",
+      "author": "hugokraw",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Page 4, second paragraph: \u201cOKI-free\u201d -> \u201cPKI-free\u201d\r\n\r\nIn that same paragraph \"it works for RSA\" should be replaced with a better explanation. The point is that  SRP requires a ring: it mixes additions and multiplications. It does not work over plain elliptic curves.\r\n\r\nPage 8, section 2.1. DH-OPEF -> DH-OPRF",
+      "createdAt": "2020-05-19T00:47:29Z",
+      "updatedAt": "2020-05-21T21:27:52Z",
+      "closedAt": "2020-05-21T21:27:52Z",
+      "comments": []
+    },
+    {
+      "number": 15,
+      "id": "MDU6SXNzdWU2MjI2ODU4NDg=",
+      "title": "Add OPRF domain separation",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/15",
+      "state": "OPEN",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The DST might include the \"RFCXXXX\" identifier, similar to what we did for HPKE.",
+      "createdAt": "2020-05-21T18:16:49Z",
+      "updatedAt": "2020-05-21T18:16:49Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 16,
+      "id": "MDU6SXNzdWU2MjI4NDM5NjI=",
+      "title": "Specify profiles or configurations for servers",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/16",
+      "state": "CLOSED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This might include, for example, what sort of OPRF ciphersuite(s) are used. Or we might just say that this is decided out of band.",
+      "createdAt": "2020-05-21T23:10:15Z",
+      "updatedAt": "2020-05-28T16:17:15Z",
+      "closedAt": "2020-05-28T16:17:15Z",
+      "comments": []
+    },
+    {
+      "number": 18,
+      "id": "MDU6SXNzdWU2MjQ1Njk4MjM=",
+      "title": "HMQV key derivation",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/18",
+      "state": "CLOSED",
+      "author": "hugokraw",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The following changes the HMQV key derivation to include the session identifier (essentially what the value info is) under the key calculation (the changes are in the last 4 lines below)\r\n\r\nValues IKM and info are defined for each protocol:\r\n\r\nFor HMQV:\r\n\r\n - info = \"HMQV keys\" \\| nonceU \\| nonceS \\| IdU \\| IdS\r\n\r\n - IKM = Khmqv\r\n\r\n   where Khmqv is computed:\r\n\r\n   - by the client:  Khmqv = (ePubS \\* PubS^s)^{ePrivU + u\\*PrivU}\r\n\r\n   - by the server:  Khmqv = (ePubU \\* PubU^u)^{ePrivS + s\\*PrivS}\r\n\r\n   and u = H(ePubU | \"user\" | info) and s = H(ePubS | \"srvr\" | info).\r\n\r\n<!--     (u and s are often denoted d and e, respectively, in HMQV)   -->\r\n\r\nAlso, in subsection \"Instantiation of OPAQUE with HMQV and 3DH\", before the KEY DERIVATION heading, add the following note:\r\n\r\n   [[TODO: Specify that in the login phase, ephemeral DH values need to be\r\n   verified to belong to the correct group (via membership tests or cofactor\r\n   exponentiation). Same for public keys during the registration phase.\r\n   Details of verification depend on the particular group/curve. (What's done in\r\n   TLS 1.3?)]]\r\n\r\n",
+      "createdAt": "2020-05-26T03:02:31Z",
+      "updatedAt": "2020-05-29T15:08:35Z",
+      "closedAt": "2020-05-29T15:08:35Z",
+      "comments": []
+    },
+    {
+      "number": 19,
+      "id": "MDU6SXNzdWU2MjY0NjQyNDM=",
+      "title": "Add common configurations for OPAQUE ",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/19",
+      "state": "CLOSED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This basically specifies different configurations, where each configuration identifies the OPRF, RKR-AEAD, and MHF algorithm. For example, one configuration might be DH-OPRF with OPRF-curve448-HKDF-SHA512-ELL2-RO, CTR+HMAC with AES-256 and HMAC-SHA256, and scrypt (with reasonable parameters).",
+      "createdAt": "2020-05-28T12:19:47Z",
+      "updatedAt": "2020-08-30T16:20:39Z",
+      "closedAt": "2020-08-30T16:20:39Z",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "These configurations should also specify values for the nonce, authentication key, and exporter key lengths.",
+          "createdAt": "2020-06-17T17:14:12Z",
+          "updatedAt": "2020-06-17T17:14:12Z"
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "id": "MDU6SXNzdWU2MjY0NjUxNzI=",
+      "title": "Should all Credential fields be encrypted?",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/20",
+      "state": "CLOSED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Some fields, like the user public key, might only require authentication.",
+      "createdAt": "2020-05-28T12:21:21Z",
+      "updatedAt": "2020-06-18T23:36:20Z",
+      "closedAt": "2020-06-18T23:36:20Z",
+      "comments": [
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Authenticating-only the server's public key can be beneficial in a setting where the server uses the same public key with multiple clients. Encrypting the key means a larger envelope stored as *each*  user's record while authenticating-only makes both the envelope and per-user shorter shorter. There is some savings in not having to decrypt the server's public key but this seems negligible (especially if the authentication operation that cannot be avoided is more expensive than decryption).",
+          "createdAt": "2020-06-02T16:31:07Z",
+          "updatedAt": "2020-06-02T16:31:07Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This was resolved in #36.",
+          "createdAt": "2020-06-18T23:36:20Z",
+          "updatedAt": "2020-06-18T23:36:20Z"
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "id": "MDU6SXNzdWU2MjY0NjcwODU=",
+      "title": "Move KdKey derivation to the Seal/Open calling code",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/21",
+      "state": "CLOSED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This key is used for applications that choose to process user information beyond the OPAQUE functionality (e.g., additional secrets or credentials).",
+      "createdAt": "2020-05-28T12:24:30Z",
+      "updatedAt": "2020-06-17T17:13:39Z",
+      "closedAt": "2020-06-17T17:13:39Z",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This is now done.",
+          "createdAt": "2020-06-17T17:13:39Z",
+          "updatedAt": "2020-06-17T17:13:39Z"
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "id": "MDU6SXNzdWU2MjY0NzAwNjk=",
+      "title": "Lift user enumeration text to the OPAQUE AKE stage",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/22",
+      "state": "OPEN",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "We might consider standardizing the mechanism by which servers prevent user enumeration attacks. ",
+      "createdAt": "2020-05-28T12:29:17Z",
+      "updatedAt": "2020-08-24T17:32:34Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 23,
+      "id": "MDU6SXNzdWU2MjY3MjY4Nzc=",
+      "title": "Derive fresh nonces at envelope creation",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/23",
+      "state": "CLOSED",
+      "author": "hugokraw",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The nonce used in envelope encryption should not be derived from RwdU but rather chosen freshly at random at the time of encryption (envelope creation) and be stored (and sent) as part of the envelope. This avoids reusing the same encryption stream for encrypting two different plaintexts.",
+      "createdAt": "2020-05-28T18:38:50Z",
+      "updatedAt": "2020-05-29T12:45:59Z",
+      "closedAt": "2020-05-29T12:45:58Z",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Fixed in #24.",
+          "createdAt": "2020-05-29T12:45:58Z",
+          "updatedAt": "2020-05-29T12:45:58Z"
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "id": "MDU6SXNzdWU2MjY3Nzk1OTk=",
+      "title": "Investigate OPRF generality",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/25",
+      "state": "CLOSED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "We currently rely on a GenerateScalar function from the OPRF, which might not be a thing for OPRFs that are not based on Diffie-Hellman. We should consider how we might generalize this here, or perhaps in the OPRF document itself.",
+      "createdAt": "2020-05-28T20:05:40Z",
+      "updatedAt": "2020-09-19T12:04:44Z",
+      "closedAt": "2020-09-19T12:04:44Z",
+      "comments": []
+    },
+    {
+      "number": 26,
+      "id": "MDU6SXNzdWU2MjcyNDk1NDI=",
+      "title": "Private key encodings",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/26",
+      "state": "CLOSED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "We might use PKCS#8 as an encoding for credential private keys, or we might use language that suggests this is specific to each instantiation. ",
+      "createdAt": "2020-05-29T12:56:46Z",
+      "updatedAt": "2020-06-17T17:13:28Z",
+      "closedAt": "2020-06-17T17:13:27Z",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing as an application/instantiation-specific concern.",
+          "createdAt": "2020-06-17T17:13:27Z",
+          "updatedAt": "2020-06-17T17:13:27Z"
+        }
+      ]
+    },
+    {
+      "number": 27,
+      "id": "MDU6SXNzdWU2MjcyNTE5Mzk=",
+      "title": "Validate ephemeral key shares",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/27",
+      "state": "CLOSED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Specify that in the login phase, ephemeral DH values need to be verified to belong to the correct group (via membership tests or cofactor exponentiation). Same holds for public keys during the registration phase. Details of verification depend on the particular group/curve.",
+      "createdAt": "2020-05-29T13:00:47Z",
+      "updatedAt": "2020-08-30T16:26:04Z",
+      "closedAt": "2020-08-30T16:26:04Z",
+      "comments": []
+    },
+    {
+      "number": 29,
+      "id": "MDU6SXNzdWU2MjkzNTcyMzI=",
+      "title": "Using HKDF-Expand in deriving KEYS",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/29",
+      "state": "CLOSED",
+      "author": "hugokraw",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Instead of  KEYS = HKDF(salt=0, IKM=k, info=\"EnvU\", Length=L1+L2+L3) one could do \r\nKEYS = HKDF-Expand(key=k, info=\"EnvU\", Length=L1+L2+L3)\r\nwhich makes more sense since k is already a pseudo random key, we would only need to specify that k is the length of an HMAC key.",
+      "createdAt": "2020-06-02T16:50:34Z",
+      "updatedAt": "2020-06-18T23:36:09Z",
+      "closedAt": "2020-06-18T23:36:09Z",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This is done in #36.",
+          "createdAt": "2020-06-17T17:13:07Z",
+          "updatedAt": "2020-06-17T17:13:07Z"
+        }
+      ]
+    },
+    {
+      "number": 30,
+      "id": "MDU6SXNzdWU2MjkzNjM5MTU=",
+      "title": "KdKey rationale ",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/30",
+      "state": "CLOSED",
+      "author": "hugokraw",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "We need to add the rationale for KdKey somewhere. Can use the following as a basis:\r\n\r\nThe main use case I have in mind is retrieving a non-OPAQUE encrypted credential. Namely, expanding the use of OPAQUE with a credential-retrieval functionality. You could always put additional stuff in the envelope but I would prefer to restrict the envelope with its OPAQUE-specific functionality. In addition, having a separate encrypted credential can achieve several properties: allowing the server to send it only after the user authenticated; send it under the session key with forward secrecy; allowing the addition of a credential to the user's record after registration; allowing the use of non-RKR encryption for credential encryption; and just giving better extensibility, flexibility and separation from the core OPAQUE protocol.",
+      "createdAt": "2020-06-02T17:01:06Z",
+      "updatedAt": "2020-08-31T14:25:21Z",
+      "closedAt": "2020-08-31T14:25:21Z",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This is sort of like the TLS exporter secret. I'll see if I can write it as such!",
+          "createdAt": "2020-06-04T20:58:08Z",
+          "updatedAt": "2020-06-04T20:58:08Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@hugokraw do you think the current rationale is sufficient? If not, would you mind proposing text to improve (expand) it?",
+          "createdAt": "2020-07-21T16:44:26Z",
+          "updatedAt": "2020-07-21T16:44:26Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I assume you mean the text under {export-usage}.\r\nI think it is ok.\r\nIt may be a good idea to add the following (which I have in my draft):\r\nThere is no restriction for the type of encryption scheme\r\n   used in this case.  However, ExportKey MUST NOT be used in any way\r\n   before the HMAC value in EnvU is validated. ",
+          "createdAt": "2020-07-21T19:53:00Z",
+          "updatedAt": "2020-07-21T19:53:00Z"
+        }
+      ]
+    },
+    {
+      "number": 31,
+      "id": "MDU6SXNzdWU2Mjk0MjQ1OTg=",
+      "title": "On including pkU in the envelope",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/31",
+      "state": "CLOSED",
+      "author": "hugokraw",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Add a note: pkU is often not needed by the client to run the key exchange stage in which case it can be omitted from the envelope and not sent from server to client in the online stage. In particular, this is the case for the three instantiations here: 3DH, HMQV and SIGMA.",
+      "createdAt": "2020-06-02T18:34:04Z",
+      "updatedAt": "2020-06-18T23:36:02Z",
+      "closedAt": "2020-06-18T23:36:02Z",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This was fixed in #36.",
+          "createdAt": "2020-06-18T23:36:02Z",
+          "updatedAt": "2020-06-18T23:36:02Z"
+        }
+      ]
+    },
+    {
+      "number": 37,
+      "id": "MDU6SXNzdWU2NDA4Njc5NzA=",
+      "title": "Clarify KDF(Expand) and MAC requirements",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/37",
+      "state": "CLOSED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Future implementers may wish to replace HKDF-Expand and HMAC with their own (read:faster?) variants, so we should make clear the rationale for using these. Per the analysis, we require random-key robustness from HMAC, which is not something all MACs provide. (GMAC and poly1305 don't, for example.) HKDF-Expand could possibly be replaced by a different variable-length output PRF.",
+      "createdAt": "2020-06-18T02:56:35Z",
+      "updatedAt": "2020-08-30T16:20:23Z",
+      "closedAt": "2020-08-30T16:20:23Z",
+      "comments": []
+    },
+    {
+      "number": 42,
+      "id": "MDU6SXNzdWU2NjAyMjQyMjU=",
+      "title": "Typo: nonce appears twice",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/42",
+      "state": "CLOSED",
+      "author": "hugokraw",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "In line\r\nexport_key = HKDF-Expand(RwdU, concat(nonce, \"ExportKey\", nonce), Nk)\r\nnonce appears twice",
+      "createdAt": "2020-07-18T15:53:08Z",
+      "updatedAt": "2020-07-21T16:43:49Z",
+      "closedAt": "2020-07-21T16:43:49Z",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Nice catch! I fixed this directly on master.",
+          "createdAt": "2020-07-21T16:43:38Z",
+          "updatedAt": "2020-07-21T16:43:38Z"
+        }
+      ]
+    },
+    {
+      "number": 43,
+      "id": "MDU6SXNzdWU2NjAyMzUxMTg=",
+      "title": "lengths of elements",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/43",
+      "state": "CLOSED",
+      "author": "hugokraw",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Who, when and how determines  the length of elements to be generated or received. For example, how does the client know what the value of Nk should be. More significant how does the client know Nk or len(pt) when receiving the envelope?\r\n\r\nOn a related note, for a derivation like\r\nSK, Km2, Km3, Ke2, Ke3 = HKDF(salt=0, IKM, info, L)\r\nwe need to assume that the client knows how to parse the key stream correctly and uniquely hence it needs to know the lengths of each key.  This is also needed even if we compute a separate HKDF-Expand for each value (since Expand requires to define a length value). How does the client know these values, are these determined by the specific algorithms or ciphersuite ? Should this information be part of the information authenticated by the envelope or some other mechanism?\r\nHow does TLS 1.3 deals with this, namely, how it communicates and authenticates the ciphersuite/algorithms/version?",
+      "createdAt": "2020-07-18T16:13:01Z",
+      "updatedAt": "2020-08-30T16:22:47Z",
+      "closedAt": "2020-08-30T16:22:47Z",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Who, when and how determines the length of elements to be generated or received. For example, how does the client know what the value of Nk should be. \r\n\r\nThis is part of the configuration. We should define this!\r\n\r\n> More significant how does the client know Nk or len(pt) when receiving the envelope?\r\n\r\nThe length of the envelope's ciphertext is equal to len(pt), so the client uses that to determine the length of the pad.\r\n\r\nOn the length of keys, they're all `Nk` bytes long, which is part of the configuration. I'll throw up a PR that defines this. Unlike TLS, I don't think we want to negotiate the ciphersuite in-band (in the core protocol spec -- we might do something differently for the instantiations).",
+          "createdAt": "2020-07-21T16:48:55Z",
+          "updatedAt": "2020-07-21T17:10:39Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The ciphersuite needs to be set and fixed at registration time and it needs to be learned by the client during login.  If this information is wired into the client implementation/configuration then no need to worry about it. But otherwise, we need care (e.g., if the client is a browser contacting a server for which the client does not have configuration information).\r\nThe OPRF needs to be known or guessed before getting the envelope (similar to key_share algorithms in TLS 1.3). Do we need to have a mechanism for the server to say, please use this other OPRF if the guess was incorrect? Should we worry about downgrade attacks?\r\nFor the envelope the client needs to know what hash to use (how does it learn that?). If the OPRF and hash used by the client are correct, then we can trust the MAC computed on the envelope to detect any manipulation of the envelope. \r\nAnd then there is the AKE ciphersuite that needs to include the AKE protocol type itself (SIGMA, 3DH, etc)  and the specific algorithms/curves used by the AKE implementation. But the latter can be encoded into the envelope itself and verified by the MAC.",
+          "createdAt": "2020-07-21T21:20:10Z",
+          "updatedAt": "2020-07-21T21:20:10Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "How does the client parse/differentiate ciphertext and auth_data? I assume this is defined by the Envelope struct, but I don't know how these things are implemented. DO they have special separators, length values, etc.? I am worried about possible attacks that play with the boundaries of these elements.",
+          "createdAt": "2020-07-22T16:14:13Z",
+          "updatedAt": "2020-07-22T16:14:13Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> How does the client parse/differentiate ciphertext and auth_data? I assume this is defined by the Envelope struct, but I don't know how these things are implemented. DO they have special separators, length values, etc.? I am worried about possible attacks that play with the boundaries of these elements.\r\n\r\nIndeed! Clients know to parse the ciphertext and auth_data in sequence (by the struct's definition), and know how to parse the type and length of each element in these lists. Everything should be unambiguous.",
+          "createdAt": "2020-08-30T16:22:45Z",
+          "updatedAt": "2020-08-30T16:22:45Z"
+        }
+      ]
+    },
+    {
+      "number": 51,
+      "id": "MDU6SXNzdWU2OTA0ODk5NzQ=",
+      "title": "parsing of envelope when ct/pt are variable length",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/51",
+      "state": "OPEN",
+      "author": "stef",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "At the end of the `#protocol-messages` section is a description of the envelope structure as seen here:\r\n\r\n```\r\nOPAQUE uses an `Envelope` structure to encapsulate an encrypted `Credentials` structure.\r\nIt is encoded as follows.\r\n\r\n~~~\r\nstruct {\r\n  opaque nonce[32];\r\n  opaque ct<1..2^16-1>;\r\n  opaque auth_data<0..2^16-1>;\r\n  opaque auth_tag<1..2^16-1>;\r\n} Envelope;\r\n~~~\r\n\r\nnonce\r\n: A unique 32-byte nonce used to protect this Envelope.\r\n\r\nct\r\n: Encoding of encrypted and authenticated credential extensions list.\r\n\r\nauth_data\r\n: Encoding of an authenticated credential extensions list.\r\n\r\nauth_tag\r\n: Authentication tag protecting the contents of the envelope.\r\n```\r\n\r\nas an implementer of opaque (see here https://github.com/stef/libsphinx/blob/master/src/opaque.c) i wonder how to parse this structure when both fields might be of variable length. In such a case it is useful to have the lengths included in the auth_data section at known offsets of the envelope. hence i propose to move the auth_data section infront of the ct section, either at the very beginning before the nonce, or between the nonce and the ct, in both cases an instantiation of the protocol can decide to include the lengths at known offsets and will be able to parse the envelope, even if this means that these lengths are used before they are authenticated.",
+      "createdAt": "2020-09-01T22:25:34Z",
+      "updatedAt": "2020-09-04T20:02:15Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "stef",
+          "authorAssociation": "NONE",
+          "body": "on another note the line `opaque auth_tag<1..2^16-1>; is confusing the rest of the document suggest that the `<>` enclosed parameter is length, however hmacs provide quite specific length tags.",
+          "createdAt": "2020-09-02T00:21:05Z",
+          "updatedAt": "2020-09-02T00:21:05Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> as an implementer of opaque (see here https://github.com/stef/libsphinx/blob/master/src/opaque.c) i wonder how to parse this structure when both fields might be of variable length. \r\n\r\nParsing these fields should be pretty straightforward. For example, consider `ct`, which is `opaque ct<1..2^16-1>`. To parse this, first parse a 2-byte length field, and then parse the remaining bytes (of that length) as the `ct` data. (This MUST be of length at least 1, which is what the `<1..2^16-1>` denotes.)\r\n\r\n> on another note the line opaque auth_tag<1..2^16-1>; is confusing the rest of the document suggest that the <>` enclosed parameter is length, however hmacs provide quite specific length tags.\r\n\r\nIt's true that the output of HMAC is fixed depending on the underlying hash function, but we chose to make this variable length in case clients wanted to truncate the tag to save space. (We can mark this as an open issue, because, as you hint, applications making such decisions isn't great.)",
+          "createdAt": "2020-09-03T00:57:07Z",
+          "updatedAt": "2020-09-03T00:57:07Z"
+        },
+        {
+          "author": "stef",
+          "authorAssociation": "NONE",
+          "body": "> > as an implementer of opaque (see here https://github.com/stef/libsphinx/blob/master/src/opaque.c) i wonder how to parse this structure when both fields might be of variable length.\r\n> \r\n> Parsing these fields should be pretty straightforward. \r\n\r\nindeed it should ;)\r\n\r\n> For example, consider `ct`, which is `opaque ct<1..2^16-1>`. To parse this, first parse a 2-byte length field,\r\n\r\nmaybe i missed this, but where is this 2-byte length field defined for ct? if it is plaintext, shouldn't it be explicitly protected by they authentication of the envelope and thus belongs in the auth_data section? does that imply there are more cleartext parts in the envelope besides the explicitly listed auth_data section? is there also a length field somewhere defined for the auth_data section?\r\n\r\n> and then parse the remaining bytes (of that length) as the `ct` data. (This MUST be of length at least 1, which is what the `<1..2^16-1>` denotes.)\r\n> \r\n> > on another note the line opaque auth_tag<1..2^16-1>; is confusing the rest of the document suggest that the <>` enclosed parameter is length, however hmacs provide quite specific length tags.\r\n> \r\n> It's true that the output of HMAC is fixed depending on the underlying hash function, but we chose to make this variable length in case clients wanted to truncate the tag to save space. (We can mark this as an open issue, because, as you hint, applications making such decisions isn't great.)\r\n\r\ni think it makes sense to just write `<Nh>` and refer to #cryptographic-protocol-and-algorithm-dependencies",
+          "createdAt": "2020-09-03T18:15:26Z",
+          "updatedAt": "2020-09-03T18:15:26Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> maybe i missed this, but where is this 2-byte length field defined for ct? if it is plaintext, shouldn't it be explicitly protected by they authentication of the envelope and thus belongs in the auth_data section? does that imply there are more cleartext parts in the envelope besides the explicitly listed auth_data section? is there also a length field somewhere defined for the auth_data section?\r\n\r\nI think perhaps you're confused by the terminology. These variable-length fields are using standard TLS notation (https://tools.ietf.org/html/rfc8446#section-3.4). Quoting that document:\r\n\r\n> Variable-length vectors are defined by specifying a subrange of legal\r\n> lengths, inclusively, using the notation <floor..ceiling>.  When\r\n> these are encoded, the actual length precedes the vector's contents\r\n> in the byte stream.",
+          "createdAt": "2020-09-03T20:01:29Z",
+          "updatedAt": "2020-09-03T20:01:29Z"
+        },
+        {
+          "author": "stef",
+          "authorAssociation": "NONE",
+          "body": "oh. maybe it makes sense to state this explicitly, it helps understanding this much easier for people that do not speak tls natively.",
+          "createdAt": "2020-09-03T20:08:54Z",
+          "updatedAt": "2020-09-03T20:08:54Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "It's stated here:\r\n\r\nhttps://github.com/cfrg/draft-irtf-cfrg-opaque/blob/master/draft-irtf-cfrg-opaque.md#protocol-messages-protocol-messages\r\n\r\nWould an example section be more helpful? (I agree it's not obvious without that prior context!)",
+          "createdAt": "2020-09-03T20:32:58Z",
+          "updatedAt": "2020-09-03T20:32:58Z"
+        },
+        {
+          "author": "stef",
+          "authorAssociation": "NONE",
+          "body": "yeah i noticed that, but i have not anticipated the implicit consequences of that. the notation that is below as examples looks kinda self-explaining - except for the parts that are not explicitly spelled out...\r\nmaybe  an example section would be more helpful, or alternatively an explicit spelled out part that explains what is not obvious from the defintions below.",
+          "createdAt": "2020-09-03T20:35:40Z",
+          "updatedAt": "2020-09-03T20:35:40Z"
+        },
+        {
+          "author": "stef",
+          "authorAssociation": "NONE",
+          "body": "sorry , clicked on the wrong button.",
+          "createdAt": "2020-09-03T20:35:55Z",
+          "updatedAt": "2020-09-03T20:35:55Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "To help craft that section, could you please list the notation that you do find confusing? I can then try to clarify. ",
+          "createdAt": "2020-09-03T20:37:34Z",
+          "updatedAt": "2020-09-03T20:37:34Z"
+        },
+        {
+          "author": "stef",
+          "authorAssociation": "NONE",
+          "body": "after reading section 3 of RFC8446, i'd say the length of the field being implicit in that notation should be definitely \r\nnoted, and what i also learned, that in the struct `opaque` is the \"type\" of the value and in no way related to the protocol being specified, that is also kinda confusing in retrospect. otherwise i think enums and structs do not have hidden semantics, and as far as i see variants are not used. so i guess that's then these two things lengths of arrays and the type `opaque` as a special mention that this is a type and a name collision only.",
+          "createdAt": "2020-09-03T21:51:38Z",
+          "updatedAt": "2020-09-03T21:51:38Z"
+        },
+        {
+          "author": "stef",
+          "authorAssociation": "NONE",
+          "body": "uh, i see that variants are used in the ProtocolMessage struct.",
+          "createdAt": "2020-09-04T13:11:31Z",
+          "updatedAt": "2020-09-04T13:11:31Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> after reading section 3 of RFC8446, i'd say the length of the field being implicit in that notation should be definitely\r\nnoted, and what i also learned, that in the struct opaque is the \"type\" of the value and in no way related to the protocol being specified, that is also kinda confusing in retrospect. otherwise i think enums and structs do not have hidden semantics, and as far as i see variants are not used. so i guess that's then these two things lengths of arrays and the type opaque as a special mention that this is a type and a name collision only.\r\n\r\nOkay, thanks! I'll try to clarify these things.\r\n\r\n> uh, i see that variants are used in the ProtocolMessage struct.\r\n\r\nIs there a question hidden in here?\r\n",
+          "createdAt": "2020-09-04T18:22:51Z",
+          "updatedAt": "2020-09-04T18:22:51Z"
+        },
+        {
+          "author": "stef",
+          "authorAssociation": "NONE",
+          "body": "> > uh, i see that variants are used in the ProtocolMessage struct.\r\n> \r\n> Is there a question hidden in here?\r\n\r\nwell yes, i first thought that variants are not used in the OPAQUE draft, only later i saw it, so the semantics of variants are quite understandable, but might also deserve mention in the clarifying section.\r\n",
+          "createdAt": "2020-09-04T20:02:15Z",
+          "updatedAt": "2020-09-04T20:02:15Z"
+        }
+      ]
+    },
+    {
+      "number": 53,
+      "id": "MDU6SXNzdWU2OTMxMzg0NDk=",
+      "title": "rename Evaluate() to Contribute()",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/53",
+      "state": "CLOSED",
+      "author": "stef",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "since github does not support reviewing markdown documents i'm submitting this as an issue:\r\n\r\nThe OPRF primitive defines a \r\n```\r\nEvaluate(k, M): Evaluate input M using private key k.\r\n```\r\nfunction, semantically i think it makes more sense to call this function Contribute as this conveys better what is happening, Evaluate() is less specific to the purpose of what is happening here.",
+      "createdAt": "2020-09-04T12:54:48Z",
+      "updatedAt": "2020-09-19T12:03:52Z",
+      "closedAt": "2020-09-19T12:03:51Z",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Can you elaborate on why `Contribute` is more clear? As written, I don't agree.",
+          "createdAt": "2020-09-06T13:52:52Z",
+          "updatedAt": "2020-09-06T13:52:52Z"
+        },
+        {
+          "author": "stef",
+          "authorAssociation": "NONE",
+          "body": "because in an OPRF two parties collaborate to calculate a value `c^s`. The client (c) blinds his value `c` using the blinding factor `r`, then sends over this blinded value to the server, who contributes his value `s` to the computation and returns it to the client. the client then unblinds the value from the server getting as a result `c^s`. ",
+          "createdAt": "2020-09-06T14:07:00Z",
+          "updatedAt": "2020-09-06T14:07:00Z"
+        },
+        {
+          "author": "stef",
+          "authorAssociation": "NONE",
+          "body": "on another note i would also rephrase \"using private key k\" to \"using secret key k\" as the usage of \"private\" suggest that there is also a public key associated with this, while there isn't. and as far as i can judge for this kind of usage it is more common to refer as secret and not private keys.",
+          "createdAt": "2020-09-06T15:02:06Z",
+          "updatedAt": "2020-09-06T15:02:06Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Use of \u201cprivate key\u201d matches terminology in the OPRF dependent document. Use of Evaluate is also a result of that document. I suggest filing an issue against that repository to consider Contribute.",
+          "createdAt": "2020-09-06T20:20:10Z",
+          "updatedAt": "2020-09-06T20:20:10Z"
+        },
+        {
+          "author": "stef",
+          "authorAssociation": "NONE",
+          "body": "thanks will. do.",
+          "createdAt": "2020-09-06T20:38:18Z",
+          "updatedAt": "2020-09-06T20:38:18Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing based on the outcome of https://github.com/cfrg/draft-irtf-cfrg-voprf/issues/140.",
+          "createdAt": "2020-09-19T12:03:51Z",
+          "updatedAt": "2020-09-19T12:03:51Z"
+        }
+      ]
+    },
+    {
+      "number": 54,
+      "id": "MDU6SXNzdWU2OTMxNDA0MjU=",
+      "title": "What is an OPRF keypair?",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/54",
+      "state": "CLOSED",
+      "author": "stef",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "in the Cryptographic primitives section there is this sentence:\r\n```\r\nWe also assume the existence of a function KeyGen, which generates an OPRF private and public key.\r\n```\r\ni'm sorry, but what does that mean? The notion of a keypair in the OPRF context makes no sense to me.",
+      "createdAt": "2020-09-04T12:56:53Z",
+      "updatedAt": "2020-09-16T13:34:41Z",
+      "closedAt": "2020-09-16T13:34:41Z",
+      "comments": [
+        {
+          "author": "stef",
+          "authorAssociation": "NONE",
+          "body": "i just realized this might be a typo and should say OPAQUE instead of OPRF?",
+          "createdAt": "2020-09-04T13:06:00Z",
+          "updatedAt": "2020-09-04T13:06:00Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "It's not a typo. The OPRF dependency in this document has a private and public key component to it. (Is your point that it should only be a secret key?) ",
+          "createdAt": "2020-09-06T13:54:17Z",
+          "updatedAt": "2020-09-06T13:54:17Z"
+        },
+        {
+          "author": "stef",
+          "authorAssociation": "NONE",
+          "body": "OPRF as such does not use any public/private keypair. An OPRF blinds the value of the initiator, the responder contributes its own value, and the initiator then unblinds the responders value. there is no use for a (sk=x, pk=g^x) keypair in this computation.",
+          "createdAt": "2020-09-06T14:10:42Z",
+          "updatedAt": "2020-09-06T14:10:42Z"
+        },
+        {
+          "author": "stef",
+          "authorAssociation": "NONE",
+          "body": "however OPAQUE itself makes use of public private keypairs (and thus of keygen) for the values pkU, skU, pkS, skS, and their ephemeral counterparts. thus my assumption this being a typo.",
+          "createdAt": "2020-09-06T14:12:30Z",
+          "updatedAt": "2020-09-06T14:12:30Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Please review the dependent OPRF document. This OPRF has a public and private key pair. The public key is only used for verification, which is why OPAQUE discards it. ",
+          "createdAt": "2020-09-06T20:18:17Z",
+          "updatedAt": "2020-09-06T20:18:17Z"
+        },
+        {
+          "author": "stef",
+          "authorAssociation": "NONE",
+          "body": "sorry, i only read the paper by Jarecki et al., i wasn't aware that there is also an IETF (V)OPRF rfc draft. looking at that it makes kind of sense to call this keygen(), as for nist curves it must be guaranteed that the scalar is member of the field. and for voprfs actually to verify it. thanks for pointing that out, maybe this could be explained where the keygen() is mentioned in the opaque draft",
+          "createdAt": "2020-09-06T20:37:20Z",
+          "updatedAt": "2020-09-06T20:48:12Z"
+        },
+        {
+          "author": "stef",
+          "authorAssociation": "NONE",
+          "body": "i just reread the paper, and i apologize for the noise. ",
+          "createdAt": "2020-09-16T13:34:41Z",
+          "updatedAt": "2020-09-16T13:34:41Z"
+        }
+      ]
+    },
+    {
+      "number": 55,
+      "id": "MDU6SXNzdWU2OTQzODU1MDg=",
+      "title": "uint24 in ProtocolMessage",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/55",
+      "state": "CLOSED",
+      "author": "stef",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "`ProtocolMessage` defines the `length` field to be of type `uint24`, i understand this is to handle messages that are composed of a few max 2^16 long parts, and possibly to conserve bandwidth? is it possible to make this 32bit which is a native and widely used size instead of 24bits.",
+      "createdAt": "2020-09-06T13:40:50Z",
+      "updatedAt": "2020-09-06T14:15:08Z",
+      "closedAt": "2020-09-06T14:15:08Z",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The full ProtocolMessage struct is as follows:\r\n\r\n~~~\r\nstruct {\r\n    ProtocolMessageType msg_type;    /* protocol message type */\r\n    uint24 length;                   /* remaining bytes in message */\r\n    select (ProtocolMessage.msg_type) {\r\n        case registration_request: RegistrationRequest;\r\n        case registration_response: RegistrationResponse;\r\n        case registration_upload: RegistrationUpload;\r\n        case credential_request: CredentialRequest;\r\n        case credential_response: CredentialResponse;\r\n    };\r\n} ProtocolMessage;\r\n~~~\r\n\r\nNote that `msg_type` is one byte, so one can skip over the type/length by 4 bytes if desired. `uint32` is fairly large for one of these messages, and `uint16` may be too small, so we went with `uint24` for alignment purposes.",
+          "createdAt": "2020-09-06T13:52:17Z",
+          "updatedAt": "2020-09-06T13:52:17Z"
+        },
+        {
+          "author": "stef",
+          "authorAssociation": "NONE",
+          "body": "uint16 is definitely too small (since some parts of these messages can be more than 2*2^16-2 in size). using msg_type and length in one 32bit word makes sense though.",
+          "createdAt": "2020-09-06T14:14:32Z",
+          "updatedAt": "2020-09-06T14:14:32Z"
+        }
+      ]
+    },
+    {
+      "number": 58,
+      "id": "MDU6SXNzdWU3MDQ4NzA5ODM=",
+      "title": "Should the nonce length be a parameter?",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/58",
+      "state": "OPEN",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "It's currently set 32 bytes, which may be too much (?) in some circumstances. However, adding yet another parameter that applications must choose is not great. ",
+      "createdAt": "2020-09-19T12:10:05Z",
+      "updatedAt": "2020-09-19T12:10:05Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
+  "pulls": [
+    {
+      "number": 1,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDE5NTMwNTY4",
+      "title": "Cleanup the document.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/1",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2020-05-18T14:14:15Z",
+      "updatedAt": "2020-05-18T14:14:22Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "141e15efee0a73c14ce1d9766c591e7fd974dba9",
+      "headRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "headRefName": "caw/cleanup",
+      "headRefOid": "1f060a625d001ec1e9ba4cfcc1ba25c23a8b7742",
+      "closedAt": "2020-05-18T14:14:21Z",
+      "mergedAt": "2020-05-18T14:14:21Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "3b004d0e822b3bdb0d3e2c42eefcadf4c1c5c0c6"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 10,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDIwMjMzOTc1",
+      "title": "Fixed typo in K3dh definition",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/10",
+      "state": "MERGED",
+      "author": "hugokraw",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fix #8",
+      "createdAt": "2020-05-19T16:34:15Z",
+      "updatedAt": "2020-05-19T16:43:28Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "3b004d0e822b3bdb0d3e2c42eefcadf4c1c5c0c6",
+      "headRepository": "hugokraw/draft-irtf-cfrg-opaque",
+      "headRefName": "patch-1",
+      "headRefOid": "5a5d843c37034a6bddab4de46951382be9761480",
+      "closedAt": "2020-05-19T16:43:28Z",
+      "mergedAt": "2020-05-19T16:43:27Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "e73d7287709206ea755e23e6369e989b16bea940"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDE0NjMzMzE3",
+          "commit": {
+            "abbreviatedOid": "5a5d843"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-05-19T16:43:22Z",
+          "updatedAt": "2020-05-19T16:43:22Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDIwMjQxNTk0",
+      "title": "Minor fix",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/11",
+      "state": "MERGED",
+      "author": "hugokraw",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2020-05-19T16:48:47Z",
+      "updatedAt": "2020-05-19T17:02:19Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "e73d7287709206ea755e23e6369e989b16bea940",
+      "headRepository": "hugokraw/draft-irtf-cfrg-opaque",
+      "headRefName": "patch-1",
+      "headRefOid": "0d9b5d801cf2d87dd7d6e575a75780acf174457f",
+      "closedAt": "2020-05-19T17:02:19Z",
+      "mergedAt": "2020-05-19T17:02:19Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "64e188b1197d555f14a4358bde2d9541b056b956"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDE0NjQ4MzUz",
+          "commit": {
+            "abbreviatedOid": "0d9b5d8"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-05-19T17:02:13Z",
+          "updatedAt": "2020-05-19T17:02:13Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDIxMTIyMjUw",
+      "title": "Apply Hugo's changes.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/12",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "cc @hugokraw ",
+      "createdAt": "2020-05-21T03:04:11Z",
+      "updatedAt": "2020-05-21T13:24:21Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "64e188b1197d555f14a4358bde2d9541b056b956",
+      "headRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "headRefName": "caw/hugo-branch",
+      "headRefOid": "5514ae0638c28572bc0ea06dfbbaf0a8ca71591e",
+      "closedAt": "2020-05-21T13:24:21Z",
+      "mergedAt": "2020-05-21T13:24:20Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "9cef30edba1afce5701546450fa5be004e87fdd5"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 13,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDIxNDUwODQ5",
+      "title": "Add self as an author.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/13",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2020-05-21T16:25:28Z",
+      "updatedAt": "2020-05-21T21:32:59Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "9cef30edba1afce5701546450fa5be004e87fdd5",
+      "headRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "headRefName": "caw/author",
+      "headRefOid": "5a7be151b0db2b30242c4973bcfa13b24fe170ce",
+      "closedAt": "2020-05-21T21:32:59Z",
+      "mergedAt": "2020-05-21T21:32:58Z",
+      "mergedBy": "hugokraw",
+      "mergeCommit": {
+        "oid": "1a45065d3f8ef7617093b9e36d874a20f5d5a2ca"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDE2NTA4MjU2",
+          "commit": {
+            "abbreviatedOid": "5a7be15"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Welcome Chris :-)",
+          "createdAt": "2020-05-21T21:31:57Z",
+          "updatedAt": "2020-05-21T21:31:57Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDIxNDUyNDc3",
+      "title": "Address Eric's comments.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/14",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Closes #9.",
+      "createdAt": "2020-05-21T16:28:33Z",
+      "updatedAt": "2020-05-21T21:27:52Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "9cef30edba1afce5701546450fa5be004e87fdd5",
+      "headRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "headRefName": "caw/eric-comments",
+      "headRefOid": "39be24df302cfce0bcc0ef9d66d4281ab1fd5ef8",
+      "closedAt": "2020-05-21T21:27:52Z",
+      "mergedAt": "2020-05-21T21:27:52Z",
+      "mergedBy": "hugokraw",
+      "mergeCommit": {
+        "oid": "5bbe4a7e6e1b3938dd78ebe25470246301cf0418"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDE2NTA1MTE4",
+          "commit": {
+            "abbreviatedOid": "39be24d"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "I'm good with #14 resolution (Eric comments)",
+          "createdAt": "2020-05-21T21:27:22Z",
+          "updatedAt": "2020-05-21T21:27:22Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDIyMjg1MzU1",
+      "title": "Initial draft of wire format messages",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/17",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This change shuffles around content and replaces the text-based protocol descriptions with protocol flows and messages. It also includes a first cut at wire format details for these messages. (We can always iterate later on!) \r\n\r\ncc @hugokraw \r\n",
+      "createdAt": "2020-05-23T14:58:59Z",
+      "updatedAt": "2020-05-28T12:32:08Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "1a45065d3f8ef7617093b9e36d874a20f5d5a2ca",
+      "headRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "headRefName": "caw/wire-formats",
+      "headRefOid": "f9e7f430da7a35fcf3ec751927d31edcd9f0185a",
+      "closedAt": "2020-05-28T12:32:08Z",
+      "mergedAt": "2020-05-28T12:32:08Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "21de69f0b70488207df108cd25023ed421be24df"
+      },
+      "comments": [
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Hi Chris, I went over the specification text. Looks good (and a lot of\nwork).\nThanks!\n\nI have several comments. I was not sure how to better communicate this in\nthe\ngithub so pardon the use of 20th century technology here...\n\nComments are mostly in the order of appearance in the document, not by\norder of\nimportance.\n\n-- You say:\n> Client (U): Entity which has knowledge of a password and wishes to\nauthenticate.\nHere and in other places, including the naming of the online phase as the\n\"authentication\" phase, make this seem as just authentication when it is\nalso\nkey exchange. I have this note in the draft saying that authentication\nwithout\nkey exchange is \"analogous to carefully checking a visitor's credential at\nthe door and then leaving the door open for others to enter freely.\"\n\n-- The expression \"group key pair\" was unclear/confusing to me.\n\n-- Somewhere you say: \"Where noted, random choices can be replaced with\nfresh\noutputs from a cryptographically strong pseudorandom generator or\npseudorandom\nfunction.\"\n\nThe default is that we can replace randomness with pseudorandomness; we\nshould\nnote the cases where this is not the case and not the cases where\nreplacement is\nfine (essentially all cases).\n\n-- VOPRF: We never use the verifiability property; it would violate the\nPKI-freeness. We can use g^kU for fixed-base blinding but g^kU in this case\nis\nnot certified, just sent from server to client (possibly cached by the\nlatter)\n\n-- Fixed-base blinding: You are defining the OPRF with var-base blinding,\nnot\nleaving the option of fixed-base blinding (which would need to transfer\ng^kU).\n\n-- Generic OPRF vs DH-OPRF: This issue of blinding mechanisms points to the\nfact\nthat while all components of the protocol are generic in your\nspecification, the\nOPRF is fixed to DH-OPRF. I do not suggest complicating presentation too\nmuch\njust for the sake of being generic but I would definitely want to allow an\noptimization such as fixed-base blinding, and this may call for a more\ngeneral\nAPI (e.g., an OPRF structure with Request/Response).\n\n-- From the expression Open(k, n, aad, ct) I understand that you do not see\naad\nas part of ct. Is this right?\n\n-- In the OPRF ciphersuites there is no 256-bit curve. Why is that?\nIn the case of integration with TLS wouldn't we be using the curves TLS\nuses?\n\n-- In the hardening functions, shouldn't one allow for PBKDF for backward\ncompatibility reasons? I know of some company that wanted that exactly for\nthat\nreason.\n\n-- The Credentials structure: Setting it to the 4 elements as you define is\nfine\nand should cover common cases. However, pkU is usually not needed by the\nclient\n(that's the case for all the AKE examples I considered) so it may be\nremoved.\nThe public key pkS need not be encrypted but I assume we don't gain much by\nnot\nencrypting it. Do you mean to always encrypt all elements? And if so, why is\nthere a AAD field?\n\nI know we do not want to leave too many options but I would not want to\nprohibit\nthe encryption-less case where you only send the authenticated pkS (skS is\nderived from RwdU). The only place where I saw some benefit in AuCPace is\nthat\nthey had less bits in the wire. OPAQUE with the encryption-less option beats\nthem in that sense too. This mode also removes the annoying equivocable\nencryption property that we need in the UC analysis.\n\n--  When specifying the envelope encryption, I defined an optional key KdKey\nderived from RwdU for extended functionalities, e.g., as a way to retrieve\nnon-OPAQUE credentials (or to support the encryption-less option). We will\nsee\nhow we go about specifying the envelope encryption and then see what\nhappens to\nsuch KdKey.\n\n-- RwdU = Harden(y): This function should accept hardness parameters (or you\nassume they are part of the function definition)\n\n-- The name OPAQUE collides with \"opaque\" as an object type. Maybe say at\nthe\nbeginning that the name OPAQUE is always capitalized while the object type\nis\nnot (or don't say anything and trust the intelligence of the reader :-)\n\n-- You ask: should we blind both the identity and password?\n   Is the question whether IdU should be part of the input to the OPRF\n(together\n   with PwdU)? It is not necessary, I think, because kU is supposed to be\nunique\n   per user. Also, servers may use more than on IdU value to identify a\nuser or\n   use a value of IdU different than the one the user has (but we need some\n   agreement on the value of IdU for the sake of key derivation so maybe\nthis\n   would not be a problem if we wanted to use IdU as input to the OPRF).\n\n-- At registration the use chooses fresh keys (skU, pkU) =\nGenerateKeyPair().\n   Would it be possible that the user has a specific pair it wants to\nregister?\n   Maybe because it has a hardware token with these keys? But still uses the\n   envelope in case he left them at home...? WebAuth related?\n\n-- You say (regarding IdS): \"we should probably improve this a bit and\nprovide\n   guidance for where and how IdS is provisioned to clients\"\n   Probably such guidance is needed although there may be many use cases.\nOne\n   place where this id can be communicated is in the Response message from\nthe\n   server or in the envelope.\n\n-- Regarding the second stage you say: \"This stage is composed of a\nsequential\nOPRF and key exchange flow.\"\nDo not use the word sequential as we run them in parallel. In integration\nwith\nTLS we even start the KE part before the OPRF (exchanging DH values).\n\n-- \"client and server agree on the knowledge of the password and have\nmutually\nauthenticated one another\"\nThis is more like: Client proves user's knowledge of the password and agree\non a\nmutually authenticated shared secret key.\n\n-- In the online stage, should IdS be (at least an optional) input to the\nclient? It needs it to contact the server. Otoh, the name IdS used later in\nthe\nprotocol may be different than the one the client initially has for\ncontacting\nthe server, especially if IdS is communicated in the envelope.\n\n-- the context value is always derived as fresh randomness. However, it\nwould\nmake sense to set this value to the KE nonces (particularly in the case of\nTLS).\n\n-- Specification of the key-exchange protocol is out of scope for this\ndocument.\nThere is one point where the two components, OPRF and AKE, need to be bound\ntogether. This can be done by adding OPRF1 (what I call the value alpha) to\nthe\ndata authenticated by the KE. In the current specific, as I wrote it, all\nof the\nOPRF transcript (and even the envelope) is authenticated, not because this\nis\nneeded but because it is simpler to just add everything to the stream of\nauthenticated data. Anyway, the point is that this binding needs to be\naccommodated in gluing the OPRF and KE.\n\n-- Generic committed encryption. I am not convinced that the use of RKR here\njustifies a separate document. The main reason for having such document is\nbecause the trivial solution, namely, encrypt-then-CRmac (CRmac is any MAC\nthat\nis collision resistant), is slow for large pieces of data which is not the\ncase\nhere. I am afraid that such separate document will have much more complexity\nthat what's needed here, and we will end recommending using\nencrypt-then-hmac\nfor OPAQUE (it is the most robust mode for RKR encryption). I would have\nhoped\nto have a spec for it already but even defining it specifically for OPAQUE\nis\nnot a big deal. One issue is that given the popularity of GCM, people will\nwant\nto use it as the encryption part.  This is not a problem security-wise but\nwastes computation and bandwidth (not sure how serious this is). That's why\nI\ndefined standalone counter mode encryption (another self-contained spec I\ncould\nnot find).\n\n\n\nOn Sat, May 23, 2020 at 10:59 AM Christopher Wood <notifications@github.com>\nwrote:\n\n> This change shuffles around content and replaces the text-based protocol\n> descriptions with protocol flows and messages. It also includes a first cut\n> at wire format details for these messages. (We can always iterate later on!)\n>\n> cc @hugokraw <https://github.com/hugokraw>\n> ------------------------------\n> You can view, comment on, or merge this pull request online at:\n>\n>   https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/17\n> Commit Summary\n>\n>    - Work in progress on the wire format details.\n>    - Merge branch 'master' of github.com:cfrg/draft-irtf-cfrg-opaque into\n>    caw/wire-formats\n>    - Finish online authentication phase.\n>\n> File Changes\n>\n>    - *M* draft-irtf-cfrg-opaque.md\n>    <https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/17/files#diff-49c06d6581f7de28ecde5fcfac409830>\n>    (929)\n>\n> Patch Links:\n>\n>    - https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/17.patch\n>    - https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/17.diff\n>\n> \u2014\n> You are receiving this because you were mentioned.\n> Reply to this email directly, view it on GitHub\n> <https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/17>, or unsubscribe\n> <https://github.com/notifications/unsubscribe-auth/AICFFXSS5EXWDTICPK34XZDRS7QD7ANCNFSM4NIPH3UQ>\n> .\n>\n",
+          "createdAt": "2020-05-24T16:07:56Z",
+          "updatedAt": "2020-05-24T16:07:56Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 24,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDI0NjczODg3",
+      "title": "Generate nonces randomly.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/24",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This addresses #23.",
+      "createdAt": "2020-05-28T19:01:02Z",
+      "updatedAt": "2020-05-29T00:44:49Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "21de69f0b70488207df108cd25023ed421be24df",
+      "headRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "headRefName": "caw/random-nonces",
+      "headRefOid": "7d7a9bdc07b6bb8cb68336c2e92903fd3391034c",
+      "closedAt": "2020-05-29T00:44:49Z",
+      "mergedAt": "2020-05-29T00:44:49Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "f39bcc8e8a4aceefeff19d778ceb4e6dcb0de1ec"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 28,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDI1MDkyMjQ4",
+      "title": "Add HMQV key derivation changes.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/28",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Closes #18.",
+      "createdAt": "2020-05-29T13:06:33Z",
+      "updatedAt": "2020-05-29T15:08:36Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "f39bcc8e8a4aceefeff19d778ceb4e6dcb0de1ec",
+      "headRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "headRefName": "caw/hmqv-changes",
+      "headRefOid": "2576ebb427c8bd9d189a2b6687c44f2dae839bfe",
+      "closedAt": "2020-05-29T15:08:36Z",
+      "mergedAt": "2020-05-29T15:08:35Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "3a62bfb1ac0a1cc6e0d8f2492da0256724805be1"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDIxMDQyMzUy",
+          "commit": {
+            "abbreviatedOid": "2576ebb"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-05-29T15:08:08Z",
+          "updatedAt": "2020-05-29T15:08:08Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 32,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDI4MDc4Mjgz",
+      "title": "Replace Encode/Decode with Serialize/Deserialize.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/32",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This is to match the VOPRF document, which uses Serialize/Deserialize. (Encode was also used as a type of Hash in hash-to-curve, so this is probably better.)",
+      "createdAt": "2020-06-04T20:44:51Z",
+      "updatedAt": "2020-06-05T16:00:44Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "41068ef6e0a02eed821764cc80ab8fe7fa084e32",
+      "headRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "headRefName": "caw/encode-to-serialize",
+      "headRefOid": "49033dd3d7167467e3ad9f7738160f4801e450be",
+      "closedAt": "2020-06-05T16:00:44Z",
+      "mergedAt": "2020-06-05T16:00:44Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "7b2ac5fad20d031fedd697e5fe5ff2a75b245902"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDI1Mzk2Mjgz",
+          "commit": {
+            "abbreviatedOid": "49033dd"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-06-05T15:20:40Z",
+          "updatedAt": "2020-06-05T15:20:40Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 33,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDI4MTM3NTIw",
+      "title": "Fix and relocate KdKey derivation.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/33",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This moves derivation of the KdKey to the main protocol flow (outside of the RKR-AEAD algorithm), uses HKDF-Extract for secret derivation, and renames KdKey to exporter_key. ",
+      "createdAt": "2020-06-04T23:17:51Z",
+      "updatedAt": "2020-06-05T18:04:34Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "41068ef6e0a02eed821764cc80ab8fe7fa084e32",
+      "headRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "headRefName": "caw/kdkey",
+      "headRefOid": "f2dcf38c76c026d6b78b1195b9c48fd730691800",
+      "closedAt": "2020-06-05T18:04:34Z",
+      "mergedAt": "2020-06-05T18:04:34Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "d4e6be35083e0280e749c87f6140ef1a13072f13"
+      },
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> I want to beef up the explanation of how the exporter_key may be used but no need to keep this open now.\r\n\r\nYeah, more text would certainly be useful. I figured we could do that in another PR. :-)",
+          "createdAt": "2020-06-05T18:04:25Z",
+          "updatedAt": "2020-06-05T18:04:25Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDI1NTEwNjQ2",
+          "commit": {
+            "abbreviatedOid": "f2dcf38"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "It looks fine. I want to beef up the explanation of how the exporter_key may be used but no need to keep this open now. ",
+          "createdAt": "2020-06-05T18:00:51Z",
+          "updatedAt": "2020-06-05T18:00:51Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 34,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDM0MzgwMTYz",
+      "title": "Addressing minor grammar and typo fixes",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/34",
+      "state": "MERGED",
+      "author": "kevinlewi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Mostly addressing some minor grammar fixes and typos that I found during my pass.\r\n\r\nI also renamed \"xcript2\", \"xcript3\" to \"transcript2\" and \"transcript3\", feel free to push back on that.\r\n\r\nI noticed also that in some places it is referred to as \"xcript2\" and others it is \"xscript2\", at the very least those should be made consistent.",
+      "createdAt": "2020-06-15T08:39:51Z",
+      "updatedAt": "2020-06-15T14:23:28Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "b5894704b46ed915abf4d1c98734651caf59bb58",
+      "headRepository": "kevinlewi/draft-irtf-cfrg-opaque",
+      "headRefName": "typo_fixes",
+      "headRefOid": "245688a2d5779e7dd6b22d274e9ab439de59a299",
+      "closedAt": "2020-06-15T14:23:27Z",
+      "mergedAt": "2020-06-15T14:23:27Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "df8af66cf5dd6cf86c7c07fa7c853a6e7a42df44"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMwNjgyODcw",
+          "commit": {
+            "abbreviatedOid": "245688a"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Thanks!",
+          "createdAt": "2020-06-15T14:12:19Z",
+          "updatedAt": "2020-06-15T14:12:19Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 35,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDM1NTc1MDM3",
+      "title": "Add 256-bit curve suites.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/35",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "We address static DH oracle attacks in the security considerations. Nothing to be worried about! :-)",
+      "createdAt": "2020-06-17T03:12:09Z",
+      "updatedAt": "2020-06-17T13:10:39Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "df8af66cf5dd6cf86c7c07fa7c853a6e7a42df44",
+      "headRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "headRefName": "caw/oprf-suites",
+      "headRefOid": "b2b814034fcd2863c1307d2bccf70850b9194ec9",
+      "closedAt": "2020-06-17T13:10:39Z",
+      "mergedAt": "2020-06-17T13:10:39Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "5b15b1938e36d068e600eed46442ec3cb3317e9a"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMyMDY4ODQ3",
+          "commit": {
+            "abbreviatedOid": "b2b8140"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Looks good.",
+          "createdAt": "2020-06-17T05:30:00Z",
+          "updatedAt": "2020-06-17T05:30:00Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 36,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDM1OTY0MTE5",
+      "title": "Remove RKR-AEAD dependency.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/36",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This removes the RKR-AEAD dependency in favor of a simpler OTP-like construction for credential secrecy. It also replaces redundant Extract calls on RwdU with Expand calls (RwdU is already assumed to be the output of a RO). Finally, it removes the `context` parameter from all protocol messages, punting that functionality to applications.",
+      "createdAt": "2020-06-17T16:29:13Z",
+      "updatedAt": "2020-06-18T23:04:26Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "5b15b1938e36d068e600eed46442ec3cb3317e9a",
+      "headRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "headRefName": "caw/otp",
+      "headRefOid": "7fa14ae888c0edc05973148faee435b0a2fd3396",
+      "closedAt": "2020-06-18T23:04:26Z",
+      "mergedAt": "2020-06-18T23:04:26Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "ed6bbd3cbffa33a78dd3c03369423d3280a11023"
+      },
+      "comments": [
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Hi Chris, I have several comments/corrections for PR #36.\nLet me know if there is a better way to communicate such things in github\nrather than as an email.\n\nHere is a list (items marked by *)\n\nLet me know if you have questions or need more clarity on these issues.\n\n\n* Question (pure curiosity): What was the functionality of the \"context\"\nvalue\nwhat was context\n\n* Line 642: Envelope is defined as an encryption of a Credentials\nstructure, but\n  encryption is only required for skU. Maybe \"an authenticated encoding\"\ninstead\n  of encryption, since everything in it requires authentication.\n\n(same appears in line 821)\n\n* params, the MHF parameters established out of band\n\nShouldn't we allow for params to be communicated by the server to client\n(this\nwould be another potential element of Envelope)\n\n* Calculation of keys using HKDF-Expand (lines 720..., also 891...)\n\nHere is how the calculation should look:\n\npseudorandom_pad = HKDF-Expand(Key=RwdU, info = nonce | \"Pad\", len(pt))\nauth_key         = HKDF-Expand(Key=RwdU, info = nonce | \"AuthKey\", Na)\nexporter_key     = HKDF-Expand(Key=RwdU, info = nonce | \"ExporterKey\", Ne)\n\nThe keywords Key= and info= are not needed. RFC 5869 defines HKDF-Expand\nwith\nthree parameters corresponding to key, info and length, so just writing\npseudorandom_pad = HKDF-Expand(RwdU, nonce | \"Pad\", len(pt))\nshould be enough\n(I write the name of the fields to clarify the semantics but this is not\nneeded\nfor specification).\n\nBtw, I prefer \"nonce\" or \"Nonce\" better than n.\n\nAlso: Is Ne (the length of exporter_key) defined?\nWe can use the same length for auth_key and exporter_key - they should be\nHashLen where this denotes the output length from the hash underlying HKDF\n(or\nHMAC)\n\n* Encryption and aad\n\nYou define (line 718)\n  pt = SerializeCredentials(C)\nand then (line 723)\n  ct = xor(pt, pseudorandom_pad)\nwhich means you are mandating the encryption of all fields in Credentials.\nI don't think we want to do that.\nSome people (like Kevin and I got this feedback from AWS too) want to keep\npkS\nunencrypted so we should accommodate that.\nI also find the text in line 733-736 confusing.\nShouldn't the SerializeCredentials get as input an indication of what\nCredentials fields are included and which are part of pt and which of aad?\n\nIn particular I don't like to leave this to the application:\n  \"Instantiations of OPAQUE MUST specify how aad is constructed and\nserialized.\"\nShouldn't the OPAQUE client be standardized independently of the\napplications?\n\n> Is it ok to leave it up to the application? Don't you want to build\ngeneric\nclients? Can't the SerializeCredentials function have as input the\nencrypted and\nauthenticated elements?\n\nBtw, you use the notation pk(skU) but this is denoted by the simple pkU\n\n* Important correction\n\nWhere it says (line 724):\n\nt = HMAC(auth_key, concat(ct, aad)),  where aad is application-specific\n\nit should be\n\nt = HMAC(auth_key, concat(n, ct, aad)),  where aad is application-specific\n\nthe nonce needs to be authenticated (it's my fault, I overlooked it in the\ntext\nI sent you).\n\n* line 896 Abort(): should one define an error message for it?\n\n\n\nOn Wed, Jun 17, 2020 at 12:34 PM Christopher Wood <notifications@github.com>\nwrote:\n\n> @chris-wood <https://github.com/chris-wood> requested your review on: #36\n> <https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/36> Remove RKR-AEAD\n> dependency..\n>\n> \u2014\n> You are receiving this because your review was requested.\n> Reply to this email directly, view it on GitHub\n> <https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/36#event-3454432475>,\n> or unsubscribe\n> <https://github.com/notifications/unsubscribe-auth/AICFFXX5T5AHOTNA2WBILLDRXDWAVANCNFSM4OAYKGZQ>\n> .\n>\n",
+          "createdAt": "2020-06-18T02:17:40Z",
+          "updatedAt": "2020-06-18T02:17:40Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> * Question (pure curiosity): What was the functionality of the \"context\" value what was context \r\n\r\nIt was meant to link requests/responses together. But that's something that can be handled by the instantiation (OPAQUE-EA in this case).\r\n\r\n> * Line 642: Envelope is defined as an encryption of a Credentials structure, but encryption is only required for skU. Maybe \"an authenticated encoding\" instead of encryption, since everything in it requires authentication. (same appears in line 821) \r\n\r\nThat works for me -- I'll use that text.\r\n\r\n> * params, the MHF parameters established out of band Shouldn't we allow for params to be communicated by the server to client (this would be another potential element of Envelope) \r\n\r\nI don't think so. Clients can choose to harden the password using whatever parameters they wish, right? Why does the server need to have any input here?\r\n\r\n> * Calculation of keys using HKDF-Expand (lines 720..., also 891...) Here is how the calculation should look: pseudorandom_pad = HKDF-Expand(Key=RwdU, info = nonce | \"Pad\", len(pt)) auth_key = HKDF-Expand(Key=RwdU, info = nonce | \"AuthKey\", Na) exporter_key = HKDF-Expand(Key=RwdU, info = nonce | \"ExporterKey\", Ne) The keywords Key= and info= are not needed. RFC 5869 defines HKDF-Expand with three parameters corresponding to key, info and length, so just writing pseudorandom_pad = HKDF-Expand(RwdU, nonce | \"Pad\", len(pt)) should be enough (I write the name of the fields to clarify the semantics but this is not needed for specification). \r\n\r\nTo be clear, you're just suggesting removing the argument labels (\"key=\"), right? I don't see any difference between concat(nonce, \"Pad\") and concat(\"Pad\", nonce). \r\n\r\n> Btw, I prefer \"nonce\" or \"Nonce\" better than n. Also: Is Ne (the length of exporter_key) defined? We can use the same length for auth_key and exporter_key - they should be HashLen where this denotes the output length from the hash underlying HKDF (or HMAC) \r\n\r\nYep, Ne is the length of the exporter key. It's a parameter to the functions where it's used. I folded Na and Ne together. I'll specify a value for this in a separate PR.\r\n\r\n> * Encryption and aad You define (line 718) pt = SerializeCredentials(C) and then (line 723) ct = xor(pt, pseudorandom_pad) which means you are mandating the encryption of all fields in Credentials. I don't think we want to do that. Some people (like Kevin and I got this feedback from AWS too) want to keep pkS unencrypted so we should accommodate that. I also find the text in line 733-736 confusing. Shouldn't the SerializeCredentials get as input an indication of what Credentials fields are included and which are part of pt and which of aad? In particular I don't like to leave this to the application: \"Instantiations of OPAQUE MUST specify how aad is constructed and serialized.\" Shouldn't the OPAQUE client be standardized independently of the applications?\r\n\r\nI don't know of a good way to specify this in the pseudocode without a mess of branches. I think the default case should be to encrypt pkS, and we can specify variants (moving pkS out of Credentials and into aad, for example) in the text. But we can also flip that around and make the default case be to only authenticate pkS, with text suggesting it may optionally be encrypted. Would that work?\r\n\r\n> Is it ok to leave it up to the application? Don't you want to build generic clients? Can't the SerializeCredentials function have as input the encrypted and authenticated elements? \r\n\r\nI'm not sure what you mean here. By leaving it up to applications, we are allowing generic clients to use this as needed.\r\n\r\n> Btw, you use the notation pk(skU) but this is denoted by the simple pkU \r\n\r\nThat works. :-)\r\n\r\n> * Important correction Where it says (line 724): t = HMAC(auth_key, concat(ct, aad)), where aad is application-specific it should be t = HMAC(auth_key, concat(n, ct, aad)), where aad is application-specific the nonce needs to be authenticated (it's my fault, I overlooked it in the text I sent you). \r\n\r\nWhoops -- yes, will fix!\r\n\r\n>* line 896 Abort(): should one define an error message for it?\r\n\r\nI replaced this with \"raise DecryptionError\", to make it a bit more clear.",
+          "createdAt": "2020-06-18T02:43:03Z",
+          "updatedAt": "2020-06-18T02:43:03Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@hugokraw -- I updated this based on your feedback above. Everything should be accounted for, but please let me know if not!",
+          "createdAt": "2020-06-18T02:45:31Z",
+          "updatedAt": "2020-06-18T02:45:31Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@hugokraw, I pushed one more update that separates application AAD and the authentication-only data in credentials. Hopefully this is more clear!",
+          "createdAt": "2020-06-18T03:08:02Z",
+          "updatedAt": "2020-06-18T03:08:02Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "On Wed, Jun 17, 2020 at 10:43 PM Christopher Wood <notifications@github.com>\nwrote:\n\n>\n>    - Question (pure curiosity): What was the functionality of the\n>    \"context\" value what was context\n>\n> It was meant to link requests/responses together. But that's something\n> that can be handled by the instantiation (OPAQUE-EA in this case).\n>\n>\n>    - Line 642: Envelope is defined as an encryption of a Credentials\n>    structure, but encryption is only required for skU. Maybe \"an authenticated\n>    encoding\" instead of encryption, since everything in it requires\n>    authentication. (same appears in line 821)\n>\n> That works for me -- I'll use that text.\n>\n>\n>    - params, the MHF parameters established out of band Shouldn't we\n>    allow for params to be communicated by the server to client (this would be\n>    another potential element of Envelope)\n>\n> I don't think so. Clients can choose to harden the password using whatever\n> parameters they wish, right? Why does the server need to have any input\n> here?\n>\nThe question is how the client knows at login time what parameters it has\nto use. The client machine may be running OPAQUE instances with different\nservers and users that have different parameters. In such a case, the\nserver needs to store these parameters (that were set a password\nregistration phase)  and send them to the client.\n\n\n>    - Calculation of keys using HKDF-Expand (lines 720..., also 891...)\n>    Here is how the calculation should look: pseudorandom_pad =\n>    HKDF-Expand(Key=RwdU, info = nonce | \"Pad\", len(pt)) auth_key =\n>    HKDF-Expand(Key=RwdU, info = nonce | \"AuthKey\", Na) exporter_key =\n>    HKDF-Expand(Key=RwdU, info = nonce | \"ExporterKey\", Ne) The keywords Key=\n>    and info= are not needed. RFC 5869 defines HKDF-Expand with three\n>    parameters corresponding to key, info and length, so just writing\n>    pseudorandom_pad = HKDF-Expand(RwdU, nonce | \"Pad\", len(pt)) should be\n>    enough (I write the name of the fields to clarify the semantics but this is\n>    not needed for specification).\n>\n> To be clear, you're just suggesting removing the argument labels (\"key=\"),\n> right? I don't see any difference between concat(nonce, \"Pad\") and\n> concat(\"Pad\", nonce).\n>\nYes, that is what I was suggesting but note that the change from what you\nhad before is much more significant than that. You had\nHKDF-Expand(salt=n, IKM=RwdU, \"Pad\", len(pt))\nwhich uses the nonce as salt, but only HKDF-Extract uses salt, not Expand.\n\nBtw, I prefer \"nonce\" or \"Nonce\" better than n. Also: Is Ne (the length of\n> exporter_key) defined? We can use the same length for auth_key and\n> exporter_key - they should be HashLen where this denotes the output length\n> from the hash underlying HKDF (or HMAC)\n>\n> Yep, Ne is the length of the exporter key. It's a parameter to the\n> functions where it's used. I folded Na and Ne together. I'll specify a\n> value for this in a separate PR.\n>\n>\n>    - Encryption and aad You define (line 718) pt =\n>    SerializeCredentials(C) and then (line 723) ct = xor(pt, pseudorandom_pad)\n>    which means you are mandating the encryption of all fields in Credentials.\n>    I don't think we want to do that. Some people (like Kevin and I got this\n>    feedback from AWS too) want to keep pkS unencrypted so we should\n>    accommodate that. I also find the text in line 733-736 confusing. Shouldn't\n>    the SerializeCredentials get as input an indication of what Credentials\n>    fields are included and which are part of pt and which of aad? In\n>    particular I don't like to leave this to the application: \"Instantiations\n>    of OPAQUE MUST specify how aad is constructed and serialized.\" Shouldn't\n>    the OPAQUE client be standardized independently of the applications?\n>\n> I don't know of a good way to specify this in the pseudocode without a\n> mess of branches. I think the default case should be to encrypt pkS, and we\n> can specify variants (moving pkS out of Credentials and into aad, for\n> example) in the text. But we can also flip that around and make the default\n> case be to only authenticate pkS, with text suggesting it may optionally be\n> encrypted. Would that work?\n>\nWhy can't you have two components in Credentials: pt and aad, and the\napplication chooses which fields to map to each one? I understand that what\nyou propose is simpler but it also requires customizing the client to\ndifferent applications. In the case where the client is \"written\" for a\nspecific application, that's fine, but if you have a situation where the\nsame client interacts with different applications/servers then things\nbecome problematic.\n\nIs it ok to leave it up to the application? Don't you want to build generic\n> clients? Can't the SerializeCredentials function have as input the\n> encrypted and authenticated elements?\n>\n> I'm not sure what you mean here. By leaving it up to applications, we are\n> allowing generic clients to use this as needed.\n>\nI am thinking of a web browser running OPAQUE (as a client) with different\nservers that may have different policies regarding what is\nincluded/encrypted/authenticated. So you want a standardized way for the\nserver to  communicate the structure of the envelope to the browser.\n\n\n> Btw, you use the notation pk(skU) but this is denoted by the simple pkU\n>\n> That works. :-)\n>\n>\n>    - Important correction Where it says (line 724): t = HMAC(auth_key,\n>    concat(ct, aad)), where aad is application-specific it should be t =\n>    HMAC(auth_key, concat(n, ct, aad)), where aad is application-specific the\n>    nonce needs to be authenticated (it's my fault, I overlooked it in the text\n>    I sent you).\n>\n> Whoops -- yes, will fix!\n>\n>\n>    - line 896 Abort(): should one define an error message for it?\n>\n> I replaced this with \"raise DecryptionError\", to make it a bit more clear.\n>\n> \u2014\n> You are receiving this because your review was requested.\n> Reply to this email directly, view it on GitHub\n> <https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/36#issuecomment-645735586>,\n> or unsubscribe\n> <https://github.com/notifications/unsubscribe-auth/AICFFXXW5OCWTJT6XD646JTRXF5MHANCNFSM4OAYKGZQ>\n> .\n>\n",
+          "createdAt": "2020-06-18T04:29:52Z",
+          "updatedAt": "2020-06-18T04:29:52Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> The question is how the client knows at login time what parameters it has to use. The client machine may be running OPAQUE instances with different servers and users that have different parameters. In such a case, the server needs to store these parameters (that were set a password registration phase)  and send them to the client.\r\n\r\nAh, okay, good point. I was assuming the application was \"fixed,\" e.g., a mobile app in which the parameters are baked into the code. But that might not always be the case. I'll just revert this for now.\r\n\r\n> Why can't you have two components in Credentials: pt and aad, and the application chooses which fields to map to each one? I understand that what you propose is simpler but it also requires customizing the client to different applications. In the case where the client is \"written\" for a specific application, that's fine, but if you have a situation where the same client interacts with different applications/servers then things become problematic.\r\n\r\nSent an email to discuss offline!",
+          "createdAt": "2020-06-18T05:05:15Z",
+          "updatedAt": "2020-06-18T05:05:15Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I think the difference in our approaches/expectations is that you think of\nOPAQUE for use inside a standalone application that has full control of the\nclient and I think more about a \"universal\" mechanism, e.g., a standardized\nbrowser-based client.\n\nOn Thu, Jun 18, 2020 at 1:05 AM Christopher Wood <notifications@github.com>\nwrote:\n\n> The question is how the client knows at login time what parameters it has\n> to use. The client machine may be running OPAQUE instances with different\n> servers and users that have different parameters. In such a case, the\n> server needs to store these parameters (that were set a password\n> registration phase) and send them to the client.\n>\n> Ah, okay, good point. I was assuming the application was \"fixed,\" e.g., a\n> mobile app in which the parameters are baked into the code. But that might\n> not always be the case. I'll just revert this for now.\n>\n> Why can't you have two components in Credentials: pt and aad, and the\n> application chooses which fields to map to each one? I understand that what\n> you propose is simpler but it also requires customizing the client to\n> different applications. In the case where the client is \"written\" for a\n> specific application, that's fine, but if you have a situation where the\n> same client interacts with different applications/servers then things\n> become problematic.\n>\n> Sent an email to discuss offline!\n>\n> \u2014\n> You are receiving this because you were mentioned.\n> Reply to this email directly, view it on GitHub\n> <https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/36#issuecomment-645774735>,\n> or unsubscribe\n> <https://github.com/notifications/unsubscribe-auth/AICFFXVWM7BCPBSA5PNEDKTRXGOBPANCNFSM4OAYKGZQ>\n> .\n>\n",
+          "createdAt": "2020-06-18T20:26:37Z",
+          "updatedAt": "2020-06-18T20:26:37Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMzNjg4MzY5",
+          "commit": {
+            "abbreviatedOid": "47601cc"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-06-18T22:26:41Z",
+          "updatedAt": "2020-06-18T22:26:42Z",
+          "comments": [
+            {
+              "originalPosition": 213,
+              "body": "I prefer OPAQUE credentials than application credentials",
+              "createdAt": "2020-06-18T22:26:41Z",
+              "updatedAt": "2020-06-18T23:03:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMzNjg5Mjgw",
+          "commit": {
+            "abbreviatedOid": "47601cc"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-06-18T22:28:57Z",
+          "updatedAt": "2020-06-18T22:28:58Z",
+          "comments": [
+            {
+              "originalPosition": 166,
+              "body": "I would not call all of them essential, just skU and pkS are.\r\n\r\nDo we want to restrict to just these five or leave further extensibility in case it is needed (e.g., we were discussing the hardening parameters as a possible addition to the envelope).\r\n",
+              "createdAt": "2020-06-18T22:28:58Z",
+              "updatedAt": "2020-06-18T23:03:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMzNjg5ODYy",
+          "commit": {
+            "abbreviatedOid": "47601cc"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-06-18T22:30:21Z",
+          "updatedAt": "2020-06-18T22:30:21Z",
+          "comments": [
+            {
+              "originalPosition": 218,
+              "body": "Applications credentials that require authentication but not secrecy",
+              "createdAt": "2020-06-18T22:30:21Z",
+              "updatedAt": "2020-06-18T23:03:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMzNjkwNDQ0",
+          "commit": {
+            "abbreviatedOid": "47601cc"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-06-18T22:31:50Z",
+          "updatedAt": "2020-06-18T22:31:51Z",
+          "comments": [
+            {
+              "originalPosition": 240,
+              "body": "maybe auth_tag instead of just tag? (not too important)",
+              "createdAt": "2020-06-18T22:31:50Z",
+              "updatedAt": "2020-06-18T23:03:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMzNjkyMDIz",
+          "commit": {
+            "abbreviatedOid": "c72f34b"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-06-18T22:36:05Z",
+          "updatedAt": "2020-06-18T22:36:05Z",
+          "comments": [
+            {
+              "originalPosition": 166,
+              "body": "I noted that skU and pkS are mandatory. We might want to leave room for other things. The hardening parameters might be one of them, if they aren't transmitted at the application layer.",
+              "createdAt": "2020-06-18T22:36:05Z",
+              "updatedAt": "2020-06-18T23:03:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMzNjkzNzky",
+          "commit": {
+            "abbreviatedOid": "47601cc"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-06-18T22:40:39Z",
+          "updatedAt": "2020-06-18T22:40:39Z",
+          "comments": [
+            {
+              "originalPosition": 399,
+              "body": "How is server policy (what is encrypted and what is not in the envelope) communicated to the client? DO we need a special message (echoing the credentials structure) for that?",
+              "createdAt": "2020-06-18T22:40:39Z",
+              "updatedAt": "2020-06-18T23:03:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMzNjk0NDc0",
+          "commit": {
+            "abbreviatedOid": "47601cc"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-06-18T22:42:21Z",
+          "updatedAt": "2020-06-18T22:42:21Z",
+          "comments": [
+            {
+              "originalPosition": 382,
+              "body": "what is the use of aad (additional to auth_data)?",
+              "createdAt": "2020-06-18T22:42:21Z",
+              "updatedAt": "2020-06-18T23:03:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMzNjk0NzQ4",
+          "commit": {
+            "abbreviatedOid": "c72f34b"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-06-18T22:43:07Z",
+          "updatedAt": "2020-06-18T22:43:07Z",
+          "comments": [
+            {
+              "originalPosition": 382,
+              "body": "Any AAD specific to the application, really. It's an opaque slot.",
+              "createdAt": "2020-06-18T22:43:07Z",
+              "updatedAt": "2020-06-18T23:03:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMzNjk1MDE0",
+          "commit": {
+            "abbreviatedOid": "47601cc"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-06-18T22:43:50Z",
+          "updatedAt": "2020-06-18T22:43:51Z",
+          "comments": [
+            {
+              "originalPosition": 407,
+              "body": "Do we need aad? If so, where is it transmitted? It is not part of the envelope.",
+              "createdAt": "2020-06-18T22:43:50Z",
+              "updatedAt": "2020-06-18T23:03:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMzNjk1NTYx",
+          "commit": {
+            "abbreviatedOid": "c72f34b"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-06-18T22:45:12Z",
+          "updatedAt": "2020-06-18T22:45:12Z",
+          "comments": [
+            {
+              "originalPosition": 399,
+              "body": "I figured it'd be best to omit that from this, since it's an application-specific detail. But we could probably have the server be crystal clear about this inline. ",
+              "createdAt": "2020-06-18T22:45:12Z",
+              "updatedAt": "2020-06-18T23:03:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMzNjk1NjE0",
+          "commit": {
+            "abbreviatedOid": "c72f34b"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-06-18T22:45:20Z",
+          "updatedAt": "2020-06-18T22:45:20Z",
+          "comments": [
+            {
+              "originalPosition": 407,
+              "body": "Yes, I think so.",
+              "createdAt": "2020-06-18T22:45:20Z",
+              "updatedAt": "2020-06-18T23:03:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMzNjk2MDQ5",
+          "commit": {
+            "abbreviatedOid": "47601cc"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-06-18T22:46:27Z",
+          "updatedAt": "2020-06-18T22:46:27Z",
+          "comments": [
+            {
+              "originalPosition": 423,
+              "body": "We need to specify that *all* values in EnvU require authentication, only secrecy is optional (except for skU for which it is mandatory)",
+              "createdAt": "2020-06-18T22:46:27Z",
+              "updatedAt": "2020-06-18T23:03:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMzNjk2MTcy",
+          "commit": {
+            "abbreviatedOid": "c72f34b"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-06-18T22:46:47Z",
+          "updatedAt": "2020-06-18T22:46:48Z",
+          "comments": [
+            {
+              "originalPosition": 423,
+              "body": "I think that's already clear from context, no?",
+              "createdAt": "2020-06-18T22:46:48Z",
+              "updatedAt": "2020-06-18T23:03:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMzNjk3MDI3",
+          "commit": {
+            "abbreviatedOid": "47601cc"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-06-18T22:49:10Z",
+          "updatedAt": "2020-06-18T22:49:10Z",
+          "comments": [
+            {
+              "originalPosition": 535,
+              "body": "pkS is a mandatory part of EnvU",
+              "createdAt": "2020-06-18T22:49:10Z",
+              "updatedAt": "2020-06-18T23:03:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMzNjk4ODI0",
+          "commit": {
+            "abbreviatedOid": "47601cc"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-06-18T22:54:01Z",
+          "updatedAt": "2020-06-18T22:54:01Z",
+          "comments": [
+            {
+              "originalPosition": 564,
+              "body": "why tag?",
+              "createdAt": "2020-06-18T22:54:01Z",
+              "updatedAt": "2020-06-18T23:03:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMzNjk5NTcz",
+          "commit": {
+            "abbreviatedOid": "47601cc"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-06-18T22:56:06Z",
+          "updatedAt": "2020-06-18T22:56:06Z",
+          "comments": [
+            {
+              "originalPosition": 402,
+              "body": "Make reference to RFC 5869 about the roles of the three inputs to HKDF-Expand, namely, key, info, and output length.",
+              "createdAt": "2020-06-18T22:56:06Z",
+              "updatedAt": "2020-06-18T23:03:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMzNzAwNzMx",
+          "commit": {
+            "abbreviatedOid": "c72f34b"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-06-18T22:59:13Z",
+          "updatedAt": "2020-06-18T22:59:14Z",
+          "comments": [
+            {
+              "originalPosition": 166,
+              "body": "(This list is meant to be extended, basically.)",
+              "createdAt": "2020-06-18T22:59:14Z",
+              "updatedAt": "2020-06-18T23:03:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMzNzAwODYz",
+          "commit": {
+            "abbreviatedOid": "c72f34b"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-06-18T22:59:34Z",
+          "updatedAt": "2020-06-18T22:59:35Z",
+          "comments": [
+            {
+              "originalPosition": 535,
+              "body": "I removed this left-over text.",
+              "createdAt": "2020-06-18T22:59:34Z",
+              "updatedAt": "2020-06-18T23:03:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMzNzAwODk3",
+          "commit": {
+            "abbreviatedOid": "c72f34b"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-06-18T22:59:41Z",
+          "updatedAt": "2020-06-18T22:59:41Z",
+          "comments": [
+            {
+              "originalPosition": 564,
+              "body": "Bug -- fixed!",
+              "createdAt": "2020-06-18T22:59:41Z",
+              "updatedAt": "2020-06-18T23:03:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMzNzAwOTIx",
+          "commit": {
+            "abbreviatedOid": "47601cc"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-06-18T22:59:45Z",
+          "updatedAt": "2020-06-18T22:59:46Z",
+          "comments": [
+            {
+              "originalPosition": 618,
+              "body": "I guess that aad should be replaced here with cleartext_credentials? ",
+              "createdAt": "2020-06-18T22:59:46Z",
+              "updatedAt": "2020-06-18T23:03:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMzNzAxMDAz",
+          "commit": {
+            "abbreviatedOid": "c72f34b"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-06-18T22:59:57Z",
+          "updatedAt": "2020-06-18T22:59:58Z",
+          "comments": [
+            {
+              "originalPosition": 402,
+              "body": "I added a reference at the end of this algorithm.",
+              "createdAt": "2020-06-18T22:59:57Z",
+              "updatedAt": "2020-06-18T23:03:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMzNzAxMzA4",
+          "commit": {
+            "abbreviatedOid": "c72f34b"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-06-18T23:00:44Z",
+          "updatedAt": "2020-06-18T23:00:44Z",
+          "comments": [
+            {
+              "originalPosition": 618,
+              "body": "Yep, good catch!",
+              "createdAt": "2020-06-18T23:00:44Z",
+              "updatedAt": "2020-06-18T23:03:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMzNzAxMzkw",
+          "commit": {
+            "abbreviatedOid": "47601cc"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "I approve this but see the comments I have interleaved in the code",
+          "createdAt": "2020-06-18T23:00:57Z",
+          "updatedAt": "2020-06-18T23:00:57Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 38,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDM2ODEyMzE4",
+      "title": "Remove TLS 1.3 integration details.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/38",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Closes #2.\r\n\r\nThis removes TLS 1.3 integration details, but keeps the SIGMA-I content. (TLS 1.3 details will go in the TLS document.)",
+      "createdAt": "2020-06-18T23:35:42Z",
+      "updatedAt": "2020-06-19T15:14:46Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "683cb6842f4a9e862cc5982247afdc4ce2526282",
+      "headRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "headRefName": "caw/remove-tls",
+      "headRefOid": "2196764fc36b09dbb5719a18760c6d1b8d1ab604",
+      "closedAt": "2020-06-19T15:14:46Z",
+      "mergedAt": "2020-06-19T15:14:46Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "13cb903eee61256b31c08b1dadbbabe47d3fcee6"
+      },
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I love that line :-D",
+          "createdAt": "2020-06-19T15:11:58Z",
+          "updatedAt": "2020-06-19T15:11:58Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMzNzk5OTUx",
+          "commit": {
+            "abbreviatedOid": "cfb1c92"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Looks good. I would still have some text pointing to the need to integrate with TLS to achieve user account privacy and to implement the record layer where information is protected by keys generated/authenticated by OPAQUE. \r\n\r\nSomewhat related, I would like to keep this remark (possible re-phrased and shortened): \r\n   Note on user authentication vs. authenticated key exchange. OPAQUE\r\n   provides PAKE (password-based authenticated key exchange)\r\n   functionality in the client-server setting. While in the case of user\r\n   identification, focus is often on the authentication part, we stress\r\n   that the key exchange element is not less crucial. Indeed, in most\r\n   cases user authentication is performed to enforce some policy, and\r\n   the key exchange part is essential for binding this enforcement to\r\n   the authentication step. Skipping the key exchange part is analogous\r\n   to carefully checking a visitor's credential at the door and then \r\n   leaving the door open for others to enter freely.",
+          "createdAt": "2020-06-19T04:49:35Z",
+          "updatedAt": "2020-06-19T04:49:35Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 39,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDM2ODI0NDgy",
+      "title": "Move configuration information to separate section.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/39",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This shuffles content around, mostly.",
+      "createdAt": "2020-06-19T00:24:24Z",
+      "updatedAt": "2020-06-19T15:06:44Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "12c2440575fd2bb47a3aaaeffc7152806b44d94a",
+      "headRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "headRefName": "caw/configurations",
+      "headRefOid": "56231a77e51785ee2ba6ec9d55bcf2aa8549facf",
+      "closedAt": "2020-06-19T15:06:44Z",
+      "mergedAt": "2020-06-19T15:06:44Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "683cb6842f4a9e862cc5982247afdc4ce2526282"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMzNzk3NzA0",
+          "commit": {
+            "abbreviatedOid": "56231a7"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-06-19T04:41:06Z",
+          "updatedAt": "2020-06-19T04:41:06Z",
+          "comments": [
+            {
+              "originalPosition": 46,
+              "body": "It is TBD how the server does that",
+              "createdAt": "2020-06-19T04:41:06Z",
+              "updatedAt": "2020-06-19T04:41:06Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDMzNzk3Nzc2",
+          "commit": {
+            "abbreviatedOid": "56231a7"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-06-19T04:41:24Z",
+          "updatedAt": "2020-06-19T04:41:24Z",
+          "comments": []
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDM0MTUwNTIx",
+          "commit": {
+            "abbreviatedOid": "56231a7"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-06-19T15:06:38Z",
+          "updatedAt": "2020-06-19T15:06:39Z",
+          "comments": [
+            {
+              "originalPosition": 46,
+              "body": "Yeah, we'll need to work out a way to do this before revving the draft.",
+              "createdAt": "2020-06-19T15:06:38Z",
+              "updatedAt": "2020-06-19T15:06:39Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 40,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDQ3MTM3MDYw",
+      "title": "Exporter -> export, adding HKDF-Extract around Harden call",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/40",
+      "state": "MERGED",
+      "author": "kevinlewi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "We should wrap the Harden() call with an HKDF-Extract call, since there is no guarantee that Harden will output pseudorandom bits\r\n\r\nAlso changed \"exporter key\" to read simply as \"export key\"",
+      "createdAt": "2020-07-09T23:08:17Z",
+      "updatedAt": "2020-07-11T00:30:40Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "120464d640d093ff99da8d8350766aafb5f28974",
+      "headRepository": "kevinlewi/draft-irtf-cfrg-opaque",
+      "headRefName": "add_hkdf_extract",
+      "headRefOid": "f136373e87fad07782041b9129ff36e73e3b98fb",
+      "closedAt": "2020-07-11T00:30:40Z",
+      "mergedAt": "2020-07-11T00:30:40Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "aae69344bcc40290a825b9503540f607e48bcac7"
+      },
+      "comments": [
+        {
+          "author": "kevinlewi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@chris-wood ",
+          "createdAt": "2020-07-10T22:35:47Z",
+          "updatedAt": "2020-07-10T22:35:47Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDQ2NzU5ODg1",
+          "commit": {
+            "abbreviatedOid": "f136373"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Thanks!",
+          "createdAt": "2020-07-11T00:30:34Z",
+          "updatedAt": "2020-07-11T00:30:34Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 41,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDQ5NjkyNjU1",
+      "title": "Recommend a particular encoding policy for skU, pkS, and IdS.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/41",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "cc @kevinlewi ",
+      "createdAt": "2020-07-15T19:41:04Z",
+      "updatedAt": "2020-07-21T16:42:39Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "aae69344bcc40290a825b9503540f607e48bcac7",
+      "headRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "headRefName": "caw/recommend-encoding",
+      "headRefOid": "d31dd83f56078d8f3c00f19d953668e96cb6cfbf",
+      "closedAt": "2020-07-21T16:42:39Z",
+      "mergedAt": "2020-07-21T16:42:39Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "21f45acd09457f120470a946de1f9a9851b74de5"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDUxMDYyMDY3",
+          "commit": {
+            "abbreviatedOid": "2de0620"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Regarding: \"to not store redundant encryptions of these (shared) values for each user.\" Reusing pkS with different users is not a must, and in principle even idS could be different for different users. So I would say something like \"to not store redundant encryptions of these values for each user in case the server uses the same values for multiple/all users.\" (Or something like that)\r\n\r\nThe word  '(shared)' with the meaning of \"common to multiple/all users\" may be unclear. Use something else (I couldconfusing as it could be shared with t",
+          "createdAt": "2020-07-18T14:55:31Z",
+          "updatedAt": "2020-07-18T14:55:31Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 44,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDY3MDc1NTMw",
+      "title": "Fixing length requirement typos for RegistrationResponse",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/44",
+      "state": "MERGED",
+      "author": "kevinlewi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "- secret_types must contain at least skU\r\n- cleartext_types may be empty\r\n\r\nTherefore, lowering the length requirements of these vectors in RegistrationResponse to be 1 and 0, respectively.\r\n\r\nAlso updating my email and adding a close bracket",
+      "createdAt": "2020-08-13T00:27:36Z",
+      "updatedAt": "2020-08-20T19:52:47Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "e03a8a3e945193567e99424db5bda83f33219fe9",
+      "headRepository": "kevinlewi/draft-irtf-cfrg-opaque",
+      "headRefName": "typos_1",
+      "headRefOid": "9f6b074d83ba64607fcd735f23f1b76832014057",
+      "closedAt": "2020-08-20T19:52:46Z",
+      "mergedAt": "2020-08-20T19:52:46Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "f32a22595db939752bd94c51bb2a4cc1c53e24e6"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDcxOTM4Nzg1",
+          "commit": {
+            "abbreviatedOid": "9f6b074"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-08-20T19:52:42Z",
+          "updatedAt": "2020-08-20T19:52:42Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 45,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDcxNjI4NDQx",
+      "title": "Align KE instantiations with the core protocol messages.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/45",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This aligns the KE instantiations with the core protocol messages, using them where appropriate instead of OPRF1/OPRF2/EnvU etc directly. ",
+      "createdAt": "2020-08-21T13:18:40Z",
+      "updatedAt": "2020-08-24T17:31:51Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "f32a22595db939752bd94c51bb2a4cc1c53e24e6",
+      "headRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "headRefName": "caw/align-kes",
+      "headRefOid": "c3052cc22e44bd9cea52b02f4b947bbcbd7f7d38",
+      "closedAt": "2020-08-24T17:31:51Z",
+      "mergedAt": "2020-08-24T17:31:51Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "d6fcfaa0ce739c702683cc555b7aa4d1d9cb251a"
+      },
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I updated the change based on your comments. Thanks for the feedback! In response to your overall comment:\r\n\r\n> I left multiple comments, most minor. Two important issues to finalize is the derivation of keys for the KE protocols, specifically should we use a single call to HKDF or should we have separate calls for each key (in any case one needs to define the lengths of the individual keys). The other is to finalize some details in the computation of the HMQV key. I owe that to you.\r\n\r\nLet's update the key schedule in a separate PR. I'll await your input for the HMQV key derivation.",
+          "createdAt": "2020-08-23T14:28:23Z",
+          "updatedAt": "2020-08-23T14:28:45Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Ok. Just add to the last sentence:\n\nand KE3 provides explicit client authentication and full forward security\n(without it forward secrecy is only achieved against eavesdroppers)\n\nOn Sun, Aug 23, 2020 at 4:59 PM Christopher Wood <notifications@github.com>\nwrote:\n\n> *@chris-wood* commented on this pull request.\n> ------------------------------\n>\n> In draft-irtf-cfrg-opaque.md\n> <https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/45#discussion_r475266680>\n> :\n>\n> > @@ -1015,28 +1022,27 @@ login.\n>\n>  # OPAQUE Instantiations {#instantiations}\n>\n> -We present several instantiations of OPAQUE using DH-OPRF\n> -and different KE protocols. For the sake of concreteness we focus on\n> -KE protocols consisting of three messages, denoted KE1, KE2, KE3, and\n> -such that KE1 and KE2 include DH values sent by user and server,\n> -respectively, and KE3 provides explicit user authentication.\n> +This section describes several instantiations of OPAQUE using different KE protocols.\n> +For the sake of concreteness it only includes KE protocols consisting of three messages,\n> +denoted KE1, KE2, KE3, where KE1 and KE2 include DH values sent by client and\n> +server, respectively, and KE3 provides explicit client authentication.\n>\n> I chose to keep this text (since it's not new, only copied). We can fix it\n> in a separate issue if needed.\n>\n> \u2014\n> You are receiving this because your review was requested.\n> Reply to this email directly, view it on GitHub\n> <https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/45#discussion_r475266680>,\n> or unsubscribe\n> <https://github.com/notifications/unsubscribe-auth/AICFFXSE3V6WRN7YOFAKQUTSCF7K7ANCNFSM4QHI6AMA>\n> .\n>\n",
+          "createdAt": "2020-08-23T21:31:12Z",
+          "updatedAt": "2020-08-23T21:31:12Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDcyOTc2MjE3",
+          "commit": {
+            "abbreviatedOid": "3ae28e8"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-08-23T03:28:07Z",
+          "updatedAt": "2020-08-23T03:28:08Z",
+          "comments": [
+            {
+              "originalPosition": 38,
+              "body": "I do not like the \"at the end, the client proves the user's knowledge of the password\" as it sounds as if that is a step in the protocol. It is true that for the KE protocol to be successfully authenticated, the client must have possession of the user's password. Maybe you want to rephrase somehow.\r\n",
+              "createdAt": "2020-08-23T03:28:07Z",
+              "updatedAt": "2020-08-23T22:17:35Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDcyOTc2ODIw",
+          "commit": {
+            "abbreviatedOid": "3ae28e8"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-08-23T03:46:23Z",
+          "updatedAt": "2020-08-23T03:46:24Z",
+          "comments": [
+            {
+              "originalPosition": 38,
+              "body": "This is existing text, but I\u2019ll see if we can rework it.",
+              "createdAt": "2020-08-23T03:46:23Z",
+              "updatedAt": "2020-08-23T22:17:35Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDcyOTc2Mzg0",
+          "commit": {
+            "abbreviatedOid": "3ae28e8"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "I left multiple comments, most minor. Two important issues to finalize is the derivation of keys for the KE protocols, specifically should we use a single call to HKDF or should we have separate calls for each key (in any case one needs to define the lengths of the individual keys). The other is to finalize some details in the computation of the HMQV key. I owe that to you.",
+          "createdAt": "2020-08-23T03:33:12Z",
+          "updatedAt": "2020-08-23T05:46:38Z",
+          "comments": [
+            {
+              "originalPosition": 52,
+              "body": "Just to make sure, this error should lead to aborting the session",
+              "createdAt": "2020-08-23T03:33:12Z",
+              "updatedAt": "2020-08-23T22:17:35Z"
+            },
+            {
+              "originalPosition": 85,
+              "body": "All the protocols we describe provide explicit mutual authentication, so not sure I would single out the explicit authentication of the user, except if you feel the need to say what KE3 is for. Btw, in these protocols, the third message has the essential role of providing \"full forward security\" to the protocol. Without it, the protocol would only have weak forward secrecy which is not enough in general for OPAQUE security.",
+              "createdAt": "2020-08-23T03:39:52Z",
+              "updatedAt": "2020-08-23T22:17:35Z"
+            },
+            {
+              "originalPosition": 107,
+              "body": "Can we say \"authenticate credential_request and credential_response, resepctively, ...\"?\r\nIt is longer but clearer (to me at least)",
+              "createdAt": "2020-08-23T03:44:41Z",
+              "updatedAt": "2020-08-23T22:17:35Z"
+            },
+            {
+              "originalPosition": 114,
+              "body": "DH keys are for the HMQV and 3DH cases, not for SIGMA",
+              "createdAt": "2020-08-23T03:57:44Z",
+              "updatedAt": "2020-08-23T22:17:35Z"
+            },
+            {
+              "originalPosition": 193,
+              "body": "Remove this last remark, it is not entirely correct.",
+              "createdAt": "2020-08-23T04:08:01Z",
+              "updatedAt": "2020-08-23T22:17:35Z"
+            },
+            {
+              "originalPosition": 164,
+              "body": "Add here (or elsewhere) that  these ephemeral DH values need to be  verified to belong to the correct group (via membership tests or cofactor exponentiation, depending on curve details). The same holds for public keys during the registration phase.",
+              "createdAt": "2020-08-23T04:23:28Z",
+              "updatedAt": "2020-08-23T22:17:35Z"
+            },
+            {
+              "originalPosition": 114,
+              "body": "Important: These public keys, exchanged during the registration phase  should be  verified to belong to the correct group (via membership tests or cofactor exponentiation, depending on curve details). ",
+              "createdAt": "2020-08-23T04:24:50Z",
+              "updatedAt": "2020-08-23T22:17:35Z"
+            },
+            {
+              "originalPosition": 209,
+              "body": "Should we use the derivation style from TLS 1.3 and the rest of this document where each key has its own Expand call (and its own info/label value)? Either way, one needs to define the length of each of these keys (which depend on the MAC and encryption functions in use and whatever length one wants SK to be)",
+              "createdAt": "2020-08-23T04:32:28Z",
+              "updatedAt": "2020-08-23T22:17:35Z"
+            },
+            {
+              "originalPosition": 224,
+              "body": "The definition of HMQV needs some care: the values u and s should be mapped to elements mod q where q is the order of the group and one should not use the hash function directly but some RO-like construction, maybe HKDF itself. I need to think about this. Also, the computation of Khmqv by the server (and similarly for the client) should first define the intermediate value  v = (eskS + u\\*skS) mod q and then compute Khmqv = (epkU \\* pkU^u)^v. I need to think about this some more. In particular, I need to check how you deal with some of similar issues, particularly RO hashing, in your definition of OPRF.",
+              "createdAt": "2020-08-23T05:28:32Z",
+              "updatedAt": "2020-08-23T22:17:35Z"
+            },
+            {
+              "originalPosition": 246,
+              "body": "move nonceU before info1* for uniformity with the other specifications",
+              "createdAt": "2020-08-23T05:34:35Z",
+              "updatedAt": "2020-08-23T22:17:35Z"
+            },
+            {
+              "originalPosition": 258,
+              "body": "IdU and IdS are defined in the explanation of these fields (appearing first for HMQV/3DH). In particular it is said there that IdU is the  identity used to create credential_request. I don't think it needs to be said here again (and if there is a reason for it, why only define IdU here and not also IdS?)",
+              "createdAt": "2020-08-23T05:41:32Z",
+              "updatedAt": "2020-08-23T22:17:35Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDczMDEzNTEw",
+          "commit": {
+            "abbreviatedOid": "3ae28e8"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-08-23T13:55:28Z",
+          "updatedAt": "2020-08-23T13:55:28Z",
+          "comments": [
+            {
+              "originalPosition": 209,
+              "body": "I'd be fine with that change. Specifying a key schedule similar to TLS 1.3 seems reasonable. Let me try and put that together.",
+              "createdAt": "2020-08-23T13:55:28Z",
+              "updatedAt": "2020-08-23T22:17:35Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDczMDEzNTgy",
+          "commit": {
+            "abbreviatedOid": "3ae28e8"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-08-23T13:56:06Z",
+          "updatedAt": "2020-08-23T13:56:06Z",
+          "comments": [
+            {
+              "originalPosition": 246,
+              "body": "I forgot to revert this -- thanks for flagging it.",
+              "createdAt": "2020-08-23T13:56:06Z",
+              "updatedAt": "2020-08-23T22:17:35Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDczMDEzNzY0",
+          "commit": {
+            "abbreviatedOid": "3ae28e8"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-08-23T13:58:28Z",
+          "updatedAt": "2020-08-23T13:58:28Z",
+          "comments": [
+            {
+              "originalPosition": 258,
+              "body": "I felt it was worth highlighting since otherwise it appears out fo context. I'll just remove it. ",
+              "createdAt": "2020-08-23T13:58:28Z",
+              "updatedAt": "2020-08-23T22:17:35Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDczMDEzOTA5",
+          "commit": {
+            "abbreviatedOid": "3ae28e8"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-08-23T14:00:08Z",
+          "updatedAt": "2020-08-23T14:00:09Z",
+          "comments": [
+            {
+              "originalPosition": 107,
+              "body": "Yep!",
+              "createdAt": "2020-08-23T14:00:09Z",
+              "updatedAt": "2020-08-23T22:17:35Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDczMDE1Njk2",
+          "commit": {
+            "abbreviatedOid": "3ae28e8"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-08-23T14:23:16Z",
+          "updatedAt": "2020-08-23T14:23:16Z",
+          "comments": [
+            {
+              "originalPosition": 209,
+              "body": "(I'll do that in a followup change, to keep this diff smaller)",
+              "createdAt": "2020-08-23T14:23:16Z",
+              "updatedAt": "2020-08-23T22:17:35Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDczMDE1OTcz",
+          "commit": {
+            "abbreviatedOid": "3ae28e8"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-08-23T14:26:25Z",
+          "updatedAt": "2020-08-23T14:26:26Z",
+          "comments": [
+            {
+              "originalPosition": 224,
+              "body": "The OPRF document uses hash_to_curve where appropriate: https://tools.ietf.org/html/draft-irtf-cfrg-voprf-04#section-2.1",
+              "createdAt": "2020-08-23T14:26:25Z",
+              "updatedAt": "2020-08-23T22:17:35Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDczMDE2MTMz",
+          "commit": {
+            "abbreviatedOid": "9ddc0a0"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-08-23T14:27:51Z",
+          "updatedAt": "2020-08-23T14:27:51Z",
+          "comments": [
+            {
+              "originalPosition": 52,
+              "body": "Yep, it does. If this isn't clear, I can add a note as such.",
+              "createdAt": "2020-08-23T14:27:51Z",
+              "updatedAt": "2020-08-23T22:17:35Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDczMDQ1MzE0",
+          "commit": {
+            "abbreviatedOid": "9ddc0a0"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-08-23T20:59:15Z",
+          "updatedAt": "2020-08-23T20:59:15Z",
+          "comments": [
+            {
+              "originalPosition": 85,
+              "body": "I chose to keep this text (since it's not new, only copied). We can fix it in a separate issue if needed.",
+              "createdAt": "2020-08-23T20:59:15Z",
+              "updatedAt": "2020-08-23T22:17:35Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 46,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDcyNjczOTgx",
+      "title": "Update the HMQV key derivation details. Clean up some presentation bugs.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/46",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2020-08-24T17:53:03Z",
+      "updatedAt": "2020-08-25T03:55:49Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "d6fcfaa0ce739c702683cc555b7aa4d1d9cb251a",
+      "headRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "headRefName": "caw/hmqv-update",
+      "headRefOid": "b3781464f814953b38080ac849589203e09e8ef5",
+      "closedAt": "2020-08-24T22:41:28Z",
+      "mergedAt": "2020-08-24T22:41:28Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "63a8acabd6e6420146cb38a0cd8f238688839107"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDczODIxMzAy",
+          "commit": {
+            "abbreviatedOid": "de43db3"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "I approve pending the attached review comments.",
+          "createdAt": "2020-08-24T20:11:17Z",
+          "updatedAt": "2020-08-24T21:27:24Z",
+          "comments": [
+            {
+              "originalPosition": 25,
+              "body": "#derive-3dh should be #derive-hmqv  here",
+              "createdAt": "2020-08-24T20:11:17Z",
+              "updatedAt": "2020-08-24T22:41:11Z"
+            },
+            {
+              "originalPosition": 51,
+              "body": "let's change mod p to mod (len(p)-1)",
+              "createdAt": "2020-08-24T20:14:08Z",
+              "updatedAt": "2020-08-24T22:41:11Z"
+            },
+            {
+              "originalPosition": 44,
+              "body": "Both client and server need to compute u and s, so it does not work to put the definition of u under the client computation and s under the server computation. They should go together at the beginning, at the end, or both as part of the user computation, and then saying that the server computes them same as the client.",
+              "createdAt": "2020-08-24T20:17:18Z",
+              "updatedAt": "2020-08-24T22:41:11Z"
+            },
+            {
+              "originalPosition": 74,
+              "body": "change to:\r\nlen(\"server\") || \"server\"",
+              "createdAt": "2020-08-24T21:17:02Z",
+              "updatedAt": "2020-08-24T22:41:11Z"
+            },
+            {
+              "originalPosition": 75,
+              "body": "change mod p to mod (len(p)-1)",
+              "createdAt": "2020-08-24T21:17:57Z",
+              "updatedAt": "2020-08-24T22:41:11Z"
+            },
+            {
+              "originalPosition": 81,
+              "body": "remove last line",
+              "createdAt": "2020-08-24T21:19:38Z",
+              "updatedAt": "2020-08-24T22:41:11Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDczODcwMDM4",
+          "commit": {
+            "abbreviatedOid": "de43db3"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-08-24T21:29:13Z",
+          "updatedAt": "2020-08-24T21:29:13Z",
+          "comments": [
+            {
+              "originalPosition": 25,
+              "body": "Oops, wrong headers!",
+              "createdAt": "2020-08-24T21:29:13Z",
+              "updatedAt": "2020-08-24T22:41:11Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDczODcwODMz",
+          "commit": {
+            "abbreviatedOid": "de43db3"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-08-24T21:30:40Z",
+          "updatedAt": "2020-08-24T21:30:40Z",
+          "comments": [
+            {
+              "originalPosition": 74,
+              "body": "hah, I thought I copied the right text!",
+              "createdAt": "2020-08-24T21:30:40Z",
+              "updatedAt": "2020-08-24T22:41:11Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDczODcxMzA4",
+          "commit": {
+            "abbreviatedOid": "de43db3"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-08-24T21:31:33Z",
+          "updatedAt": "2020-08-24T21:31:34Z",
+          "comments": [
+            {
+              "originalPosition": 81,
+              "body": "Which line?",
+              "createdAt": "2020-08-24T21:31:33Z",
+              "updatedAt": "2020-08-24T22:41:11Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDczOTQyMzQz",
+          "commit": {
+            "abbreviatedOid": "de43db3"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-08-24T22:40:57Z",
+          "updatedAt": "2020-08-24T22:40:58Z",
+          "comments": [
+            {
+              "originalPosition": 81,
+              "body": "(I wasn't sure what line you were referring to, so I'll merge now and can clean this up later!)",
+              "createdAt": "2020-08-24T22:40:58Z",
+              "updatedAt": "2020-08-24T22:41:11Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDc0MTE3MTAx",
+          "commit": {
+            "abbreviatedOid": "b378146"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-08-25T03:55:48Z",
+          "updatedAt": "2020-08-25T03:55:49Z",
+          "comments": [
+            {
+              "originalPosition": 81,
+              "body": "My bad. I read HMQV instead of HKDF (too many H's :-)",
+              "createdAt": "2020-08-25T03:55:49Z",
+              "updatedAt": "2020-08-25T03:55:49Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 47,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDcyODI5NjIy",
+      "title": "Adopt the TLS 1.3 key schedule for better separation.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/47",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2020-08-24T23:00:22Z",
+      "updatedAt": "2020-08-26T12:26:35Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "63a8acabd6e6420146cb38a0cd8f238688839107",
+      "headRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "headRefName": "caw/key-schedule",
+      "headRefOid": "335f4e66c75d6523d85fb16811f0753dd42f4ec5",
+      "closedAt": "2020-08-26T12:26:35Z",
+      "mergedAt": "2020-08-26T12:26:35Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "196753132f819990fa1c582995985fbe87ae6de7"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDc0MTIxMjMy",
+          "commit": {
+            "abbreviatedOid": "c9f73de"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "See the comments on the key derivation. We need to decide on these (annoying) details",
+          "createdAt": "2020-08-25T04:10:03Z",
+          "updatedAt": "2020-08-25T04:37:17Z",
+          "comments": [
+            {
+              "originalPosition": 20,
+              "body": "\"OPAQUE\" instead of \"tls13\" I guess (use upper case OPAQUE to distinguish from the opaque type.",
+              "createdAt": "2020-08-25T04:10:03Z",
+              "updatedAt": "2020-08-26T12:25:59Z"
+            },
+            {
+              "originalPosition": 25,
+              "body": "What I call Ke2, Ke3  is the equivalent of the handshake write keys in TLS 1.3, and Km2, Km3 are the equivalent of Finished keys. What I call SK is a key from which traffic write keys are derived. \r\nSo the equivalent to TLS would be to use  Derive_Secret to output handshake_traffic_secret and application_traffic_secret and then define the write_key derivations as in Section 7.3 of TLS 1.3 and the Finished key derivation as in Section 4.4 and 4.4.4.\r\nIf you want to simplify and keep it the way you defined it now, note that Ke2 and Ke3 cannot use hash.length but would have a length that depends on the ciphersuite's AEAD.\r\n\r\n",
+              "createdAt": "2020-08-25T04:34:43Z",
+              "updatedAt": "2020-08-26T12:25:59Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDc0NDUyMDc4",
+          "commit": {
+            "abbreviatedOid": "c9f73de"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-08-25T12:56:03Z",
+          "updatedAt": "2020-08-25T12:56:04Z",
+          "comments": [
+            {
+              "originalPosition": 20,
+              "body": "Copy-paste bug :) Will fix!",
+              "createdAt": "2020-08-25T12:56:03Z",
+              "updatedAt": "2020-08-26T12:25:59Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDc0NDc0NzYy",
+          "commit": {
+            "abbreviatedOid": "46c5d09"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-08-25T13:22:27Z",
+          "updatedAt": "2020-08-25T13:22:28Z",
+          "comments": [
+            {
+              "originalPosition": 25,
+              "body": "Ah! Thanks for clarifying. I split the schedule into two parts: one for handshake secrets (Ke2, Ke3, Km2, Km3) and output AKE secrets (SK). All handshake keys, including the encryption and Finished/MAC keys, are derived from the client/server handshake secrets. What do you think?",
+              "createdAt": "2020-08-25T13:22:28Z",
+              "updatedAt": "2020-08-26T12:25:59Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDc0OTc3Nzg0",
+          "commit": {
+            "abbreviatedOid": "46c5d09"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-08-25T22:24:09Z",
+          "updatedAt": "2020-08-25T22:24:09Z",
+          "comments": [
+            {
+              "originalPosition": 25,
+              "body": "Here is a simplification\r\n\r\n  HKDF-Extract(salt=0, IKM) = main_secret\r\n      |\r\n      +--> Derive-Secret(., \"c hs secret\", info) = client_handshake_secret\r\n      |\r\n      +--> Derive-Secret(., \"s hs secret\", info) = server_handshake_secret\r\n      |\r\n      +--> Derive-Secret(., \"c sk secret\", info) = client_session_key\r\n      |\r\n      +--> Derive-Secret(., \"s sk secret\", info) = server_session_key\r\n      |\r\n      v\r\n\r\nAnd it can even be simplified further by deriving a single handshake_secret and single session_key and do the separation client/server in further derivation.\r\n\r\nIt really depends how close to TLS 1.3 you want to be.  For example, do we want to stop at the session_key derivation or also derive the \"write keys\" for the AEAD to protect subsequent traffic as TLS 1.3 does?  \r\n",
+              "createdAt": "2020-08-25T22:24:09Z",
+              "updatedAt": "2020-08-26T12:25:59Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDc0OTg5NDI0",
+          "commit": {
+            "abbreviatedOid": "46c5d09"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-08-25T22:29:45Z",
+          "updatedAt": "2020-08-25T22:29:45Z",
+          "comments": [
+            {
+              "originalPosition": 25,
+              "body": "Btw, getting too close to TLS 1.3 in names (e.g. client_handshake_secret), we may need to add \"OPAQUE\" as a label. Or maybe this is only done when actually integrating with TLS. \r\n",
+              "createdAt": "2020-08-25T22:29:45Z",
+              "updatedAt": "2020-08-26T12:25:59Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDc1MDA5NzE5",
+          "commit": {
+            "abbreviatedOid": "4525e69"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-08-25T22:39:49Z",
+          "updatedAt": "2020-08-25T22:39:49Z",
+          "comments": [
+            {
+              "originalPosition": 25,
+              "body": "Yeah, I think it's fine to reuse the names here. I applied the simplification you suggested (compressed to a single handshake and session secret), and then derived all handshake secrets (MAC and enc keys) from the handshake_secret.",
+              "createdAt": "2020-08-25T22:39:49Z",
+              "updatedAt": "2020-08-26T12:25:59Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDc1MTEyODk0",
+          "commit": {
+            "abbreviatedOid": "5c0b90e"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Look good! One nit: Change labels \"client auth\" to \"client mac\" (same for server)",
+          "createdAt": "2020-08-26T02:46:09Z",
+          "updatedAt": "2020-08-26T02:46:09Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 48,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDc0OTk3NjI0",
+      "title": "Fix the nonce length (Nn) to 32 bytes.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/48",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Making this a parameter seems like too much flexibility, so I suggest we be opinionated and remove it. ",
+      "createdAt": "2020-08-27T23:11:34Z",
+      "updatedAt": "2020-08-28T17:07:59Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "196753132f819990fa1c582995985fbe87ae6de7",
+      "headRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "headRefName": "caw/fix-nonce",
+      "headRefOid": "9fd53b3663bfb8bc871e3556ccd135df6a303242",
+      "closedAt": "2020-08-28T17:07:59Z",
+      "mergedAt": "2020-08-28T17:07:59Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "a7d1e6cc3f87c7e4a1c4ed02aa633650191ea074"
+      },
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> that in the future someone will want to steal a few bytes here and there from the nonce and then... :- )\r\n\r\nHah! :-)\r\n\r\n> Anyway, I would keep the Nn but I am ok if you feel strongly about getting rid of it.\r\n\r\nMy take is that an OPAQUE configuration can simply specify an OPRF, hash function (for HMAC and HKDF), and MHF, without any additional parameters. \r\n\r\nHow about I merge this with a note saying we could make this a parameter if flexibility is desired, and then as the larger group for feedback?",
+          "createdAt": "2020-08-28T00:00:30Z",
+          "updatedAt": "2020-08-28T00:00:30Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I'm fine with the 32 bytes. There is enough room to steal from it if needed. I can see it as more probable that someone will want to save in EnvU size than that 32 bytes will not be enough.\r\nBtw, you also need an AKE to specify OPAQUE in addition to the components you mention. ",
+          "createdAt": "2020-08-28T00:52:55Z",
+          "updatedAt": "2020-08-28T00:52:55Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Btw, you also need an AKE to specify OPAQUE in addition to the components you mention.\r\n\r\nYep!",
+          "createdAt": "2020-08-28T17:07:55Z",
+          "updatedAt": "2020-08-28T17:07:55Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDc3MTU3Mjgy",
+          "commit": {
+            "abbreviatedOid": "e0622f3"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "I don't feel strongly about this but I don't see why with all parameters that are there, we need to remove just this one. One can imagine, in a very hypothetical way, that in the future someone will want to steal a few bytes here and there from the nonce and then... :- )\r\nIt also works in the other direction, for example for the envelope nonces 32 bytes is quite overkill as all one needs is that it does not repeat for a number of uses that is upper bound by the number of times the user changes his password over the history of his account. A 64-bit nonce would probably ok a 128-bit for sure. \r\nAnyway, I would keep the Nn but I am ok if you feel strongly about getting rid of it.\r\nYour call, I approve it anyway.",
+          "createdAt": "2020-08-27T23:54:35Z",
+          "updatedAt": "2020-08-27T23:54:35Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 49,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDc1NTM5MzQy",
+      "title": "Add a hash function dependency",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/49",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "And use it to control the auth_key and exporter_key size(s). ",
+      "createdAt": "2020-08-28T17:21:45Z",
+      "updatedAt": "2020-08-30T16:20:07Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "a7d1e6cc3f87c7e4a1c4ed02aa633650191ea074",
+      "headRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "headRefName": "caw/hash",
+      "headRefOid": "23077ece157fe3da3a8a59b93b5f55814d52a337",
+      "closedAt": "2020-08-30T16:20:07Z",
+      "mergedAt": "2020-08-30T16:20:07Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "7065e8d74c16275d98131340d3d197ee17cdf4b5"
+      },
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Yeah, I agree that it's overkill. I'll mark this as an OPEN ISSUE to consider fixing in the OPRF draft. (There was no reason to use SHA-512, other than being conservative, I think.)",
+          "createdAt": "2020-08-30T16:18:48Z",
+          "updatedAt": "2020-08-30T16:18:48Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDc4MDk4MDA5",
+          "commit": {
+            "abbreviatedOid": "c238558"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "I am ok with the changes. SHA-512 is overkill for most keys derived in the protocol (256 bits are more than enough) but I guess we inherit the 512 from the OPRF ciphersuites.  Was there a special reason to use SHA-512 with 256-bit curves (P256 and 25519)? \r\n",
+          "createdAt": "2020-08-29T04:44:43Z",
+          "updatedAt": "2020-08-29T04:44:43Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 50,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDc1OTMyNTc3",
+      "title": "Require that the envelope export_key HMAC is checked before using the key",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/50",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Closes #30.",
+      "createdAt": "2020-08-30T16:25:31Z",
+      "updatedAt": "2020-08-31T14:25:21Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "7065e8d74c16275d98131340d3d197ee17cdf4b5",
+      "headRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "headRefName": "caw/export-key-check",
+      "headRefOid": "3914250e1bead6a4deef2f124b1ee8e0268d42c0",
+      "closedAt": "2020-08-31T14:25:21Z",
+      "mergedAt": "2020-08-31T14:25:20Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "48ad199022ca5fdaa6e99a45a08c4adc4a3b7cb8"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDc4MzAzNTU1",
+          "commit": {
+            "abbreviatedOid": "3914250"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-08-31T04:46:39Z",
+          "updatedAt": "2020-08-31T04:46:39Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 52,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDc4Mjg0Njc4",
+      "title": "Restructure the document",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/52",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This shuffles text around and fixes some lingering issues. I'll do a full pass over the text after we merge this (or some variant of it)!",
+      "createdAt": "2020-09-03T01:35:51Z",
+      "updatedAt": "2020-09-05T00:15:22Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "48ad199022ca5fdaa6e99a45a08c4adc4a3b7cb8",
+      "headRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "headRefName": "caw/restructure",
+      "headRefOid": "ef79a5b6b1cfe7d0e2d5d0bd3239d7d1f19cb25c",
+      "closedAt": "2020-09-05T00:15:22Z",
+      "mergedAt": "2020-09-05T00:15:21Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "e1ff2f58342b48bb881538e3f80fa77e9af85096"
+      },
+      "comments": [
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Chris, how do I edit the text in the pull request? This includes edits to\nparts you changed and also to text that existed before.\n\nOn Wed, Sep 2, 2020 at 9:36 PM Christopher Wood <notifications@github.com>\nwrote:\n\n> @chris-wood <https://github.com/chris-wood> requested your review on: #52\n> <https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/52> Restructure the\n> document.\n>\n> \u2014\n> You are receiving this because your review was requested.\n> Reply to this email directly, view it on GitHub\n> <https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/52#event-3722484022>,\n> or unsubscribe\n> <https://github.com/notifications/unsubscribe-auth/AICFFXXZ7SDU72CEZFQ2NDDSD3XIJANCNFSM4QUC3XTQ>\n> .\n>\n",
+          "createdAt": "2020-09-04T19:54:46Z",
+          "updatedAt": "2020-09-04T19:54:46Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDgzMDA1NzQz",
+          "commit": {
+            "abbreviatedOid": "ef79a5b"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Ready for last round before 00!",
+          "createdAt": "2020-09-04T23:20:17Z",
+          "updatedAt": "2020-09-04T23:20:17Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 56,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDg3OTc5MzUz",
+      "title": "Address Eric Crockett's review comments.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/56",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "cc @crockeea",
+      "createdAt": "2020-09-16T13:12:00Z",
+      "updatedAt": "2020-09-22T01:56:40Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "eb5855c74d8068fdcd6267bc8beeb7865e8132b8",
+      "headRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "headRefName": "caw/eric-review",
+      "headRefOid": "7e61839c338a8224d277b985c79d909a7ffff813",
+      "closedAt": "2020-09-22T01:56:40Z",
+      "mergedAt": "2020-09-22T01:56:40Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "33e5132a3e7d20f0ef33cb4a1682a3eb490e9540"
+      },
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@hugokraw this PR should be good to go!",
+          "createdAt": "2020-09-18T12:59:46Z",
+          "updatedAt": "2020-09-18T12:59:46Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I am afraid that I did not pushed  my comments (which I wrote them a couple of days ago) before for you to see.  Sorry for that. Eric also asked for a couple of clarifications to add (on the need of forward secrecy and something else). If you need text from me let me know.",
+          "createdAt": "2020-09-19T00:57:30Z",
+          "updatedAt": "2020-09-19T00:57:30Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@hugokraw Thanks for the feedback -- I incorporated your comments. I also added some additional changes on top. Namely:\r\n\r\n- Fix the auth_tag size to the output of HMAC. (One less variable-length thing to worry about.)\r\n- Change how the auth_tag is computed. Previously, it did not include the length of the ciphertext or auth_data, which was worrisome. Now it's computed over the structure:\r\n\r\n```\r\nstruct {\r\n  opaque nonce[32];\r\n  opaque ct<1..2^16-1>;\r\n  opaque auth_data<0..2^16-1>;\r\n} InnerEnvelope;\r\n```\r\n\r\nwhich includes the length of `ct` and `auth_data`.\r\n\r\nPlease let me know what you think!",
+          "createdAt": "2020-09-19T12:25:59Z",
+          "updatedAt": "2020-09-19T12:25:59Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@hugokraw, friendly bump! Please feel free to edit the PR directly if that's easier for you. :-)",
+          "createdAt": "2020-09-21T23:51:53Z",
+          "updatedAt": "2020-09-21T23:51:53Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Sorry for the delay in responding to the latest changes. I was busy welcoming my second grandson... :-)",
+          "createdAt": "2020-09-22T00:45:50Z",
+          "updatedAt": "2020-09-22T00:45:50Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDg5ODU2OTM5",
+          "commit": {
+            "abbreviatedOid": "7d6ffa3"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2020-09-16T17:46:27Z",
+          "updatedAt": "2020-09-19T00:54:26Z",
+          "comments": [
+            {
+              "originalPosition": 108,
+              "body": "You say AKE is out-of-scope but then we define several instantiations. I'm confused.",
+              "createdAt": "2020-09-16T17:46:27Z",
+              "updatedAt": "2020-09-22T01:56:02Z"
+            },
+            {
+              "originalPosition": 82,
+              "body": "Shouldn't this (keygen for OPRF) be part of the above specification of the elements related to OPRF?",
+              "createdAt": "2020-09-16T18:00:03Z",
+              "updatedAt": "2020-09-22T01:56:02Z"
+            },
+            {
+              "originalPosition": 264,
+              "body": "Simplify this sentence as:\r\nApplications may optionally include pkU, idU, or IdS in the Credentials.cleartext_credentials structure, or in envelopeCredentials.secret if secrecy of these values is desired. ",
+              "createdAt": "2020-09-16T18:16:24Z",
+              "updatedAt": "2020-09-22T01:56:02Z"
+            },
+            {
+              "originalPosition": 264,
+              "body": "There is a sentence following this paragraph about server identity but the identity issues are discussed elsewhere A\r\n\r\nAlso: IdS uses capital I (also in other instances). It seems you skipped IdS in the global change to idS.",
+              "createdAt": "2020-09-16T18:20:28Z",
+              "updatedAt": "2020-09-22T01:56:02Z"
+            },
+            {
+              "originalPosition": 305,
+              "body": "change 'authenticate stage' to \"authenticated key exchange stage\"",
+              "createdAt": "2020-09-16T18:23:03Z",
+              "updatedAt": "2020-09-22T01:56:02Z"
+            },
+            {
+              "originalPosition": 401,
+              "body": "It is not clear what it means that \"applications must authenticate pkS\". This value is authenticated by the HMAC computation on the whole envelope so I don't think we need to single out this authentication as a separate/additional step.  Did you mean something different with this sentence?\r\n\r\nThe following text:\r\n\"If an application requires secrecy of pkS, this value SHOULD be omitted from auth_data (step 9).\"\r\nseems to belong to registration where the envelope is created not here.\r\nIf needed, let me know why (btw, the auth_data is now step 10)",
+              "createdAt": "2020-09-16T18:32:06Z",
+              "updatedAt": "2020-09-22T01:56:02Z"
+            },
+            {
+              "originalPosition": 438,
+              "body": "I would not include this sentence about KCI here as it may be distracting. \r\nIf you think it should be there, I would say\r\nThis section describes several instantiations of OPAQUE using different AKE protocols (all of which satisfy the forward secrecy and KCI properties discussed in {{security-considerations}}).",
+              "createdAt": "2020-09-16T18:36:41Z",
+              "updatedAt": "2020-09-22T01:56:02Z"
+            },
+            {
+              "originalPosition": 472,
+              "body": "It needs to be KCI resistant and also forward secure. Also, PQ AKE is not enough to PQ-protect data, also the data encryption scheme needs to be PQ secure.",
+              "createdAt": "2020-09-16T18:41:23Z",
+              "updatedAt": "2020-09-22T01:56:02Z"
+            },
+            {
+              "originalPosition": 792,
+              "body": "Two comments on other parts of the specification:\r\n- Please add Greg Rubin to the list of Acknowledgments \r\n- I would change the following sentence:\r\nNote that this does not prevent a malicious server from conducting a dictionary attack on inputs provided by the client. OPAQUE assumes the server is honest, and only guarantees safeguards against parties who may later compromise the server and any stored user account information.\r\ninto:\r\nNote that a corrupted server can run an exhaustive offline dictionary attack to validate guesses for the user's password; this is inevitable in any aPAKE protocol. (OPAQUE enables a defense against such offline dictionary attacks by distributing the server so that an offline attack is only possible if all - or a minimal number of - servers are compromised.)\r\n",
+              "createdAt": "2020-09-16T19:04:52Z",
+              "updatedAt": "2020-09-22T01:56:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDkxOTkzOTM0",
+          "commit": {
+            "abbreviatedOid": "a64bcea"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-09-19T11:52:58Z",
+          "updatedAt": "2020-09-19T11:52:58Z",
+          "comments": [
+            {
+              "originalPosition": 82,
+              "body": "It's currently not part of the OPRF API, so I left it off the list above. If the OPRF draft changes, we can change this too.",
+              "createdAt": "2020-09-19T11:52:58Z",
+              "updatedAt": "2020-09-22T01:56:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDkxOTkzOTYz",
+          "commit": {
+            "abbreviatedOid": "a64bcea"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-09-19T11:53:37Z",
+          "updatedAt": "2020-09-19T11:53:38Z",
+          "comments": [
+            {
+              "originalPosition": 108,
+              "body": "What I meant is that this document doesn't intend to specify, describe, etc *new* AKEs, but I see how this is confusing. I'll just remove it.",
+              "createdAt": "2020-09-19T11:53:37Z",
+              "updatedAt": "2020-09-22T01:56:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDkxOTk0MDE4",
+          "commit": {
+            "abbreviatedOid": "a64bcea"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-09-19T11:54:51Z",
+          "updatedAt": "2020-09-19T11:54:51Z",
+          "comments": [
+            {
+              "originalPosition": 401,
+              "body": "I think this entire paragraph is probably obsolete. I'll just remove it.",
+              "createdAt": "2020-09-19T11:54:51Z",
+              "updatedAt": "2020-09-22T01:56:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDkxOTk0MDYw",
+          "commit": {
+            "abbreviatedOid": "a64bcea"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-09-19T11:55:34Z",
+          "updatedAt": "2020-09-19T11:55:35Z",
+          "comments": [
+            {
+              "originalPosition": 438,
+              "body": "That's a nice rewrite -- I'll take it!",
+              "createdAt": "2020-09-19T11:55:34Z",
+              "updatedAt": "2020-09-22T01:56:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDkxOTk1NDM2",
+          "commit": {
+            "abbreviatedOid": "adb6579"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-09-19T12:23:49Z",
+          "updatedAt": "2020-09-19T12:23:49Z",
+          "comments": [
+            {
+              "originalPosition": 264,
+              "body": "Fixed!",
+              "createdAt": "2020-09-19T12:23:49Z",
+              "updatedAt": "2020-09-22T01:56:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDkxOTk1NDQ0",
+          "commit": {
+            "abbreviatedOid": "adb6579"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-09-19T12:23:54Z",
+          "updatedAt": "2020-09-19T12:23:54Z",
+          "comments": [
+            {
+              "originalPosition": 305,
+              "body": "Fixed!",
+              "createdAt": "2020-09-19T12:23:54Z",
+              "updatedAt": "2020-09-22T01:56:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDkzMDY5MDU3",
+          "commit": {
+            "abbreviatedOid": "adb6579"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-09-22T00:44:07Z",
+          "updatedAt": "2020-09-22T00:44:08Z",
+          "comments": [
+            {
+              "originalPosition": 874,
+              "body": "Add a reference to the OPAQUE paper at the end of the parentheses",
+              "createdAt": "2020-09-22T00:44:07Z",
+              "updatedAt": "2020-09-22T01:56:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDkzMDY5MTE2",
+          "commit": {
+            "abbreviatedOid": "adb6579"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-09-22T00:44:21Z",
+          "updatedAt": "2020-09-22T00:44:21Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 57,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDg4MzAxNTY3",
+      "title": "Clarify that keys must be unique per account.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/57",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "We can address private key possession proofs and WebAuthn in a future change!",
+      "createdAt": "2020-09-16T23:36:25Z",
+      "updatedAt": "2020-09-18T12:40:32Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "e1ff2f58342b48bb881538e3f80fa77e9af85096",
+      "headRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "headRefName": "caw/key-reuse",
+      "headRefOid": "baf190fd07fbe640d60dd0cbf99ef7e0d6ad7ee0",
+      "closedAt": "2020-09-18T12:40:32Z",
+      "mergedAt": "2020-09-18T12:40:32Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "eb5855c74d8068fdcd6267bc8beeb7865e8132b8"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDkxMTE3ODMx",
+          "commit": {
+            "abbreviatedOid": "baf190f"
+          },
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-09-18T03:02:01Z",
+          "updatedAt": "2020-09-18T03:02:01Z",
+          "comments": []
+        }
+      ]
+    }
+  ]
+}
