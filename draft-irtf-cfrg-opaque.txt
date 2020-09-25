@@ -5,10 +5,10 @@
 Network Working Group                                        H. Krawczyk
 Internet-Draft                                       Algorand Foundation
 Intended status: Informational                                   K. Lewi
-Expires: 26 March 2021                                          Facebook
+Expires: 29 March 2021                                          Facebook
                                                                C.A. Wood
                                                               Cloudflare
-                                                       22 September 2020
+                                                       25 September 2020
 
 
                   The OPAQUE Asymmetric PAKE Protocol
@@ -47,13 +47,13 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 March 2021.
+   This Internet-Draft will expire on 29 March 2021.
 
 
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                 [Page 1]
+Krawczyk, et al.          Expires 29 March 2021                 [Page 1]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                 [Page 2]
+Krawczyk, et al.          Expires 29 March 2021                 [Page 2]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -165,7 +165,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                 [Page 3]
+Krawczyk, et al.          Expires 29 March 2021                 [Page 3]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -221,7 +221,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                 [Page 4]
+Krawczyk, et al.          Expires 29 March 2021                 [Page 4]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -277,7 +277,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                 [Page 5]
+Krawczyk, et al.          Expires 29 March 2021                 [Page 5]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -333,7 +333,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                 [Page 6]
+Krawczyk, et al.          Expires 29 March 2021                 [Page 6]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -389,7 +389,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                 [Page 7]
+Krawczyk, et al.          Expires 29 March 2021                 [Page 7]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -445,7 +445,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                 [Page 8]
+Krawczyk, et al.          Expires 29 March 2021                 [Page 8]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -501,7 +501,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                 [Page 9]
+Krawczyk, et al.          Expires 29 March 2021                 [Page 9]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -557,7 +557,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                [Page 10]
+Krawczyk, et al.          Expires 29 March 2021                [Page 10]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -613,7 +613,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                [Page 11]
+Krawczyk, et al.          Expires 29 March 2021                [Page 11]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -669,7 +669,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                [Page 12]
+Krawczyk, et al.          Expires 29 March 2021                [Page 12]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -725,7 +725,7 @@ Steps:
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                [Page 13]
+Krawczyk, et al.          Expires 29 March 2021                [Page 13]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -750,7 +750,7 @@ Internet-Draft                   OPAQUE                   September 2020
  Steps:
  1. Z = Deserialize(response.data)
  2. N = Unblind(input.data_blind, Z)
- 3. y = Finalize(pwdU, N, "RFCXXXX")
+ 3. y = Finalize(pwdU, N, "OPAQUE00")
  4. rwdU = HKDF-Extract("rwdU", Harden(y, params))
  5. Create secret_credentials with CredentialExtensions matching that
     contained in response.secret_credentials_list
@@ -769,8 +769,8 @@ Internet-Draft                   OPAQUE                   September 2020
  17. Create RegistrationUpload upload with envelope value (envU, pkU)
  18. Output (upload, export_key)
 
-   [[RFC editor: please change "RFCXXXX" to the correct number before
-   publication.]]
+   [[RFC editor: please change "OPAQUE00" to the correct RFC identifier
+   before publication.]]
 
    [[https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/58: Should
    the nonce size be a parameter?]]
@@ -781,7 +781,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                [Page 14]
+Krawczyk, et al.          Expires 29 March 2021                [Page 14]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -837,7 +837,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                [Page 15]
+Krawczyk, et al.          Expires 29 March 2021                [Page 15]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -893,7 +893,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                [Page 16]
+Krawczyk, et al.          Expires 29 March 2021                [Page 16]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -949,7 +949,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                [Page 17]
+Krawczyk, et al.          Expires 29 March 2021                [Page 17]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -974,7 +974,7 @@ Output:
 Steps:
 1. Z = Deserialize(response.data)
 2. N = Unblind(input.data_blind, Z)
-3. y = Finalize(pwdU, N, "RFCXXXX")
+3. y = Finalize(pwdU, N, "OPAQUE00")
 4. contents = response.envelope.contents
 5. nonce = contents.nonce
 6. ct = contents.ct
@@ -990,8 +990,8 @@ Steps:
 16. Create Credentials creds with (secret_credentials, cleartext_credentials)
 17. Output creds, export_key
 
-   [[RFC editor: please change "RFCXXXX" to the correct number before
-   publication.]]
+   [[RFC editor: please change "OPAQUE00" to the correct RFC identifier
+   before publication.]]
 
 3.4.  Export Key
 
@@ -1005,7 +1005,7 @@ Steps:
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                [Page 18]
+Krawczyk, et al.          Expires 29 March 2021                [Page 18]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -1061,7 +1061,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                [Page 19]
+Krawczyk, et al.          Expires 29 March 2021                [Page 19]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -1117,7 +1117,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                [Page 20]
+Krawczyk, et al.          Expires 29 March 2021                [Page 20]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -1173,7 +1173,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                [Page 21]
+Krawczyk, et al.          Expires 29 March 2021                [Page 21]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -1229,7 +1229,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                [Page 22]
+Krawczyk, et al.          Expires 29 March 2021                [Page 22]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -1285,7 +1285,7 @@ Ke3 = HKDF-Expand-Label(handshake_secret, "server enc", "", key_length)
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                [Page 23]
+Krawczyk, et al.          Expires 29 March 2021                [Page 23]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -1341,7 +1341,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                [Page 24]
+Krawczyk, et al.          Expires 29 March 2021                [Page 24]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -1397,7 +1397,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                [Page 25]
+Krawczyk, et al.          Expires 29 March 2021                [Page 25]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -1453,7 +1453,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                [Page 26]
+Krawczyk, et al.          Expires 29 March 2021                [Page 26]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -1509,7 +1509,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                [Page 27]
+Krawczyk, et al.          Expires 29 March 2021                [Page 27]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -1565,7 +1565,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                [Page 28]
+Krawczyk, et al.          Expires 29 March 2021                [Page 28]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -1621,7 +1621,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                [Page 29]
+Krawczyk, et al.          Expires 29 March 2021                [Page 29]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -1677,7 +1677,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                [Page 30]
+Krawczyk, et al.          Expires 29 March 2021                [Page 30]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -1733,7 +1733,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                [Page 31]
+Krawczyk, et al.          Expires 29 March 2021                [Page 31]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -1789,7 +1789,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                [Page 32]
+Krawczyk, et al.          Expires 29 March 2021                [Page 32]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -1845,7 +1845,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                [Page 33]
+Krawczyk, et al.          Expires 29 March 2021                [Page 33]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -1901,7 +1901,7 @@ Authors' Addresses
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                [Page 34]
+Krawczyk, et al.          Expires 29 March 2021                [Page 34]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -1957,4 +1957,4 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 26 March 2021                [Page 35]
+Krawczyk, et al.          Expires 29 March 2021                [Page 35]
