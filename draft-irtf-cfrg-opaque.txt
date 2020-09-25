@@ -97,14 +97,14 @@ Table of Contents
        4.3.1.  SIGMA protocol messages . . . . . . . . . . . . . . .  25
        4.3.2.  SIGMA key derivation  . . . . . . . . . . . . . . . .  25
    5.  Configurations  . . . . . . . . . . . . . . . . . . . . . . .  25
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  26
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  27
      6.1.  Configuration Choice  . . . . . . . . . . . . . . . . . .  28
      6.2.  Static Diffie-Hellman Oracles . . . . . . . . . . . . . .  28
-     6.3.  Input validation  . . . . . . . . . . . . . . . . . . . .  28
+     6.3.  Input validation  . . . . . . . . . . . . . . . . . . . .  29
      6.4.  User authentication versus Authenticated Key Exchange . .  29
      6.5.  OPRF Hardening  . . . . . . . . . . . . . . . . . . . . .  29
-     6.6.  User enumeration  . . . . . . . . . . . . . . . . . . . .  29
-     6.7.  Password salt and storage implications  . . . . . . . . .  30
+     6.6.  User enumeration  . . . . . . . . . . . . . . . . . . . .  30
+     6.7.  Password salt and storage implications  . . . . . . . . .  31
    7.  Performance Considerations  . . . . . . . . . . . . . . . . .  31
 
 
@@ -114,12 +114,12 @@ Krawczyk, et al.          Expires 29 March 2021                 [Page 2]
 Internet-Draft                   OPAQUE                   September 2020
 
 
-   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  31
-   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  31
-     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  31
-     9.2.  Informative References  . . . . . . . . . . . . . . . . .  31
-   Appendix A.  Acknowledgments  . . . . . . . . . . . . . . . . . .  34
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  34
+   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  32
+   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  32
+     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  32
+     9.2.  Informative References  . . . . . . . . . . . . . . . . .  32
+   Appendix A.  Acknowledgments  . . . . . . . . . . . . . . . . . .  35
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  35
 
 1.  Introduction
 
@@ -1415,8 +1415,8 @@ Internet-Draft                   OPAQUE                   September 2020
    The OPAQUE hash function is that which is associated with the OPRF
    variant.  For the variants specified here, only SHA-512 is supported.
 
-   [[OPEN ISSUE: Consider SHA-256 for the curve25519 OPRF suite -
-   SHA-512 is excessive]]
+   [[https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/59: Consider
+   SHA-256 for the Curve25519 OPRF suite - SHA-512 is excessive]]
 
    The OPAQUE MHFs include Argon2 [I-D.irtf-cfrg-argon2], scrypt
    [RFC7914], and PBKDF2 [RFC2898] with suitable parameter choices.
@@ -1427,6 +1427,36 @@ Internet-Draft                   OPAQUE                   September 2020
    The OPAQUE AKE protocols are those which are specified in Section 4.
    Future specifications (such as [I-D.sullivan-tls-opaque]) MAY
    introduce other AKE instantiations.
+
+   [[https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/60: Should we
+   have a registry for configurations?]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Krawczyk, et al.          Expires 29 March 2021                [Page 26]
+
+Internet-Draft                   OPAQUE                   September 2020
+
 
 6.  Security Considerations
 
@@ -1448,15 +1478,6 @@ Internet-Draft                   OPAQUE                   September 2020
    as a fully functional secure communications protocol and can help
    provide privacy to account information sent by the user to the server
    prior to authentication.
-
-
-
-
-
-Krawczyk, et al.          Expires 29 March 2021                [Page 26]
-
-Internet-Draft                   OPAQUE                   September 2020
-
 
    The KCI property required from AKE protocols for use with OPAQUE
    states that knowledge of a party's private key does not allow an
@@ -1483,6 +1504,16 @@ Internet-Draft                   OPAQUE                   September 2020
    [I-D.irtf-cfrg-voprf] is proven in the random oracle model under the
    One-More Diffie-Hellman assumption [JKKX16].
 
+
+
+
+
+
+Krawczyk, et al.          Expires 29 March 2021                [Page 27]
+
+Internet-Draft                   OPAQUE                   September 2020
+
+
    Very few aPAKE protocols have been proven formally, and those proven
    were analyzed in a weak security model that allows for pre-
    computation attacks (e.g., [GMR06]).  This is not just a formal
@@ -1499,20 +1530,6 @@ Internet-Draft                   OPAQUE                   September 2020
    al.  [JKKX16].  None of these papers considered security against pre-
    computation attacks or presented a proof of aPAKE security (not even
    in a weak model).
-
-
-
-
-
-
-
-
-
-
-Krawczyk, et al.          Expires 29 March 2021                [Page 27]
-
-Internet-Draft                   OPAQUE                   September 2020
-
 
 6.1.  Configuration Choice
 
@@ -1546,6 +1563,13 @@ Internet-Draft                   OPAQUE                   September 2020
    theoretical loss of security is with respect to computing discrete
    logarithms, not in reducing the password strength).
 
+
+
+Krawczyk, et al.          Expires 29 March 2021                [Page 28]
+
+Internet-Draft                   OPAQUE                   September 2020
+
+
    (*) Some examples (courtesy of Dan Brown): For P-384, 2^90 calls
    reduce security from 192 to 147 bits; for NIST P-256 the options are
    6-bit reduction with 2153 OPRF calls, about 14 bit reduction with 187
@@ -1562,14 +1586,6 @@ Internet-Draft                   OPAQUE                   September 2020
    during the online key agreement phase.  The validation procedure
    varies depending on the type of key.  For example, for OPAQUE
    instantiations using 3DH with P-256, P-384, or P-521 as the
-
-
-
-Krawczyk, et al.          Expires 29 March 2021                [Page 28]
-
-Internet-Draft                   OPAQUE                   September 2020
-
-
    underlying group, validation is as specified in Section 5.6.2.3.4 of
    [keyagreement].  This includes checking that the coordinates are in
    the correct range, that the point is on the curve, and that the point
@@ -1595,6 +1611,21 @@ Internet-Draft                   OPAQUE                   September 2020
    server.  Applications SHOULD select parameters that balance cost and
    complexity.
 
+
+
+
+
+
+
+
+
+
+
+Krawczyk, et al.          Expires 29 March 2021                [Page 29]
+
+Internet-Draft                   OPAQUE                   September 2020
+
+
 6.6.  User enumeration
 
    User enumeration refers to attacks where the attacker tries to learn
@@ -1618,14 +1649,6 @@ Internet-Draft                   OPAQUE                   September 2020
    plaintext).  Care needs to be taken to avoid side channel leakage
    (e.g., timing) from helping differentiate these operations from a
    regular server response.  The above requires changes to the server-
-
-
-
-Krawczyk, et al.          Expires 29 March 2021                [Page 29]
-
-Internet-Draft                   OPAQUE                   September 2020
-
-
    side implementation but not to the protocol itself or the client
    side.
 
@@ -1649,6 +1672,16 @@ Internet-Draft                   OPAQUE                   September 2020
    look each time as a fresh random string, hence S can simulate the
    encrypted envU also for non-existing users.
 
+
+
+
+
+
+Krawczyk, et al.          Expires 29 March 2021                [Page 30]
+
+Internet-Draft                   OPAQUE                   September 2020
+
+
    Note that the first case above does not change the protocol so its
    implementation is a server's decision (the client side is not
    changed).  The second case, requires changes on the client side so it
@@ -1668,19 +1701,6 @@ Internet-Draft                   OPAQUE                   September 2020
    enables a defense against such offline dictionary attacks by
    distributing the server so that an offline attack is only possible if
    all - or a minimal number of - servers are compromised [OPAQUE].)
-
-
-
-
-
-
-
-
-
-Krawczyk, et al.          Expires 29 March 2021                [Page 30]
-
-Internet-Draft                   OPAQUE                   September 2020
-
 
    Some applications may require learning the user's password for
    enforcing password rules.  Doing so invalidates this important
@@ -1707,6 +1727,17 @@ Internet-Draft                   OPAQUE                   September 2020
    in one of the TLS instantiations where user privacy may require an
    additional round trip.
 
+
+
+
+
+
+
+Krawczyk, et al.          Expires 29 March 2021                [Page 31]
+
+Internet-Draft                   OPAQUE                   September 2020
+
+
 8.  IANA Considerations
 
    This document makes no IANA requests.
@@ -1731,13 +1762,6 @@ Internet-Draft                   OPAQUE                   September 2020
 
 9.2.  Informative References
 
-
-
-Krawczyk, et al.          Expires 29 March 2021                [Page 31]
-
-Internet-Draft                   OPAQUE                   September 2020
-
-
    [AuCPace]  Haase, B. and B. Labrique, "AuCPace: Efficient verifier-
               based PAKE protocol tailored for the IIoT",
               http://eprint.iacr.org/2018/286 , 2018.
@@ -1760,6 +1784,16 @@ Internet-Draft                   OPAQUE                   September 2020
    [FK00]     Ford, W. and B.S. Kaliski, Jr, "Server-assisted generation
               of a strong secret from a password", WETICE , 2000.
 
+
+
+
+
+
+Krawczyk, et al.          Expires 29 March 2021                [Page 32]
+
+Internet-Draft                   OPAQUE                   September 2020
+
+
    [GMR06]    Gentry, C., MacKenzie, P., and . Z, Ramzan, "A method for
               making password-based key exchange resilient to server
               compromise", CRYPTO , 2006.
@@ -1781,18 +1815,6 @@ Internet-Draft                   OPAQUE                   September 2020
               Internet-Draft, draft-irtf-cfrg-hash-to-curve-09, 29 June
               2020, <http://www.ietf.org/internet-drafts/draft-irtf-
               cfrg-hash-to-curve-09.txt>.
-
-
-
-
-
-
-
-
-Krawczyk, et al.          Expires 29 March 2021                [Page 32]
-
-Internet-Draft                   OPAQUE                   September 2020
-
 
    [I-D.irtf-cfrg-voprf]
               Davidson, A., Sullivan, N., and C. Wood, "Oblivious
@@ -1821,6 +1843,13 @@ Internet-Draft                   OPAQUE                   September 2020
               Standards and Technology report, April 2018,
               <https://doi.org/10.6028/nist.sp.800-56ar3>.
 
+
+
+Krawczyk, et al.          Expires 29 March 2021                [Page 33]
+
+Internet-Draft                   OPAQUE                   September 2020
+
+
    [OPAQUE]   Jarecki, S., Krawczyk, H., and J. Xu, "OPAQUE: An
               Asymmetric PAKE Protocol Secure Against Pre-Computation
               Attacks", Eurocrypt , 2018.
@@ -1838,17 +1867,6 @@ Internet-Draft                   OPAQUE                   September 2020
               Key Derivation Function (HKDF)", RFC 5869,
               DOI 10.17487/RFC5869, May 2010,
               <https://www.rfc-editor.org/info/rfc5869>.
-
-
-
-
-
-
-
-Krawczyk, et al.          Expires 29 March 2021                [Page 33]
-
-Internet-Draft                   OPAQUE                   September 2020
-
 
    [RFC7250]  Wouters, P., Ed., Tschofenig, H., Ed., Gilmore, J.,
               Weiler, S., and T. Kivinen, "Using Raw Public Keys in
@@ -1881,6 +1899,13 @@ Internet-Draft                   OPAQUE                   September 2020
               Shoup, V., "Security Analysis of SPAKE2+",
               http://eprint.iacr.org/2020/313 , 2020.
 
+
+
+Krawczyk, et al.          Expires 29 March 2021                [Page 34]
+
+Internet-Draft                   OPAQUE                   September 2020
+
+
 Appendix A.  Acknowledgments
 
    The OPAQUE protocol and its analysis is joint work of the author with
@@ -1899,13 +1924,6 @@ Authors' Addresses
    Email: hugokraw@gmail.com
 
 
-
-
-Krawczyk, et al.          Expires 29 March 2021                [Page 34]
-
-Internet-Draft                   OPAQUE                   September 2020
-
-
    Kevin Lewi
    Facebook
 
@@ -1916,24 +1934,6 @@ Internet-Draft                   OPAQUE                   September 2020
    Cloudflare
 
    Email: caw@heapingbits.net
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
