@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-09-24T00:47:57.494901+00:00",
+  "timestamp": "2020-09-27T00:49:38.995621+00:00",
   "repo": "cfrg/draft-irtf-cfrg-opaque",
   "labels": [
     {
@@ -871,6 +871,38 @@
       "body": "It's currently set 32 bytes, which may be too much (?) in some circumstances. However, adding yet another parameter that applications must choose is not great. ",
       "createdAt": "2020-09-19T12:10:05Z",
       "updatedAt": "2020-09-19T12:10:05Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 59,
+      "id": "MDU6SXNzdWU3MDkyMTA3OTE=",
+      "title": "SHA-256 for Curve25519-based OPRF ciphersuites",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/59",
+      "state": "OPEN",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Currently, SHA-512 is used for all OPRF suites, which is quite excessive. (This is more an issue against the OPRF draft, I'm but filing it here to track the change in our doc.)",
+      "createdAt": "2020-09-25T18:56:57Z",
+      "updatedAt": "2020-09-25T18:56:57Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 60,
+      "id": "MDU6SXNzdWU3MDkyMTEyOTc=",
+      "title": "Consider adding a registry",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/60",
+      "state": "OPEN",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The configurations are rather loosely defined. A registry that allows one to encode an entire configuration (AKE, OPRF, MHF, etc) could be useful. ",
+      "createdAt": "2020-09-25T18:57:48Z",
+      "updatedAt": "2020-09-25T18:57:48Z",
       "closedAt": null,
       "comments": []
     }
