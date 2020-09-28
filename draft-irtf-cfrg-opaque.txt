@@ -5,10 +5,10 @@
 Network Working Group                                        H. Krawczyk
 Internet-Draft                                       Algorand Foundation
 Intended status: Informational                                   K. Lewi
-Expires: 29 March 2021                                          Facebook
+Expires: 1 April 2021                                           Facebook
                                                                C.A. Wood
                                                               Cloudflare
-                                                       25 September 2020
+                                                       28 September 2020
 
 
                   The OPAQUE Asymmetric PAKE Protocol
@@ -47,13 +47,13 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 29 March 2021.
+   This Internet-Draft will expire on 1 April 2021.
 
 
 
 
 
-Krawczyk, et al.          Expires 29 March 2021                 [Page 1]
+Krawczyk, et al.          Expires 1 April 2021                  [Page 1]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -97,29 +97,29 @@ Table of Contents
        4.3.1.  SIGMA protocol messages . . . . . . . . . . . . . . .  25
        4.3.2.  SIGMA key derivation  . . . . . . . . . . . . . . . .  25
    5.  Configurations  . . . . . . . . . . . . . . . . . . . . . . .  25
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  27
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  26
      6.1.  Configuration Choice  . . . . . . . . . . . . . . . . . .  28
      6.2.  Static Diffie-Hellman Oracles . . . . . . . . . . . . . .  28
-     6.3.  Input validation  . . . . . . . . . . . . . . . . . . . .  29
+     6.3.  Input validation  . . . . . . . . . . . . . . . . . . . .  28
      6.4.  User authentication versus Authenticated Key Exchange . .  29
      6.5.  OPRF Hardening  . . . . . . . . . . . . . . . . . . . . .  29
-     6.6.  User enumeration  . . . . . . . . . . . . . . . . . . . .  30
-     6.7.  Password salt and storage implications  . . . . . . . . .  31
+     6.6.  User enumeration  . . . . . . . . . . . . . . . . . . . .  29
+     6.7.  Password salt and storage implications  . . . . . . . . .  30
    7.  Performance Considerations  . . . . . . . . . . . . . . . . .  31
 
 
 
-Krawczyk, et al.          Expires 29 March 2021                 [Page 2]
+Krawczyk, et al.          Expires 1 April 2021                  [Page 2]
 
 Internet-Draft                   OPAQUE                   September 2020
 
 
-   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  32
-   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  32
-     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  32
+   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  31
+   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  31
+     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  31
      9.2.  Informative References  . . . . . . . . . . . . . . . . .  32
-   Appendix A.  Acknowledgments  . . . . . . . . . . . . . . . . . .  35
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  35
+   Appendix A.  Acknowledgments  . . . . . . . . . . . . . . . . . .  34
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  34
 
 1.  Introduction
 
@@ -165,7 +165,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 29 March 2021                 [Page 3]
+Krawczyk, et al.          Expires 1 April 2021                  [Page 3]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -198,15 +198,15 @@ Internet-Draft                   OPAQUE                   September 2020
    to a single-server implementation).
 
    OPAQUE is defined and proven as the composition of two
-   functionalities: an Oblivious PRF (OPRF) and a key-exchange (KE)
-   protocol.  It can be seen as a "compiler" for transforming any
-   suitable AKE protocol into a secure aPAKE protocol.  (See Section 6
-   for requirements of the OPRF and AKE protocols.)  This document
-   specifies OPAQUE instantiations based on a variety of AKE protocols,
-   including HMQV [HMQV], 3DH [SIGNAL] and SIGMA [SIGMA].  In general,
-   the modularity of OPAQUE's design makes it easy to integrate with
-   additional AKE protocols, e.g., IKEv2, and with future ones such as
-   those based on post-quantum techniques.
+   functionalities: an Oblivious PRF (OPRF) and an authenticated key-
+   exchange (AKE) protocol.  It can be seen as a "compiler" for
+   transforming any suitable AKE protocol into a secure aPAKE protocol.
+   (See Section 6 for requirements of the OPRF and AKE protocols.)  This
+   document specifies OPAQUE instantiations based on a variety of AKE
+   protocols, including HMQV [HMQV], 3DH [SIGNAL] and SIGMA [SIGMA].  In
+   general, the modularity of OPAQUE's design makes it easy to integrate
+   with additional AKE protocols, e.g., IKEv2, and with future ones such
+   as those based on post-quantum techniques.
 
    Currently, the most widely deployed (PKI-free) aPAKE is SRP
    [RFC2945], which is vulnerable to pre-computation attacks, lacks a
@@ -221,7 +221,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 29 March 2021                 [Page 4]
+Krawczyk, et al.          Expires 1 April 2021                  [Page 4]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -251,6 +251,10 @@ Internet-Draft                   OPAQUE                   September 2020
    *  kX: An OPRF private key used in role X.  For example, kU refers to
       U's private OPRF key.
 
+   *  I2OSP and OS2IP: Convert a byte string to and from a non-negative
+      integer as described in [RFC8017].  Note that these functions
+      operate on byte strings in big-endian byte order.
+
    *  concat(x0, ..., xN): Concatenation of byte strings. "concat(0x01,
       0x0203, 0x040506) = 0x010203040506".
 
@@ -265,6 +269,19 @@ Internet-Draft                   OPAQUE                   September 2020
       and "b", which are assumed to be of equal length, irrespective of
       the values "a" or "b".
 
+
+
+
+
+
+
+
+
+Krawczyk, et al.          Expires 1 April 2021                  [Page 5]
+
+Internet-Draft                   OPAQUE                   September 2020
+
+
    Except if said otherwise, random choices in this specification refer
    to drawing with uniform distribution from a given set (i.e., "random"
    is short for "uniformly random").  Random choices can be replaced
@@ -274,13 +291,6 @@ Internet-Draft                   OPAQUE                   September 2020
 
    The name OPAQUE is a homonym of O-PAKE where O is for Oblivious (the
    name OPAKE was taken).
-
-
-
-Krawczyk, et al.          Expires 29 March 2021                 [Page 5]
-
-Internet-Draft                   OPAQUE                   September 2020
-
 
 2.  Cryptographic Protocol and Algorithm Dependencies
 
@@ -318,6 +328,16 @@ Internet-Draft                   OPAQUE                   September 2020
 
    *  Memory Hard Function (MHF):
 
+
+
+
+
+
+Krawczyk, et al.          Expires 1 April 2021                  [Page 6]
+
+Internet-Draft                   OPAQUE                   September 2020
+
+
       -  Harden(msg, params): Repeatedly apply a memory hard function
          with parameters "params" to strengthen the input "msg" against
          offline dictionary attacks.  This function also needs to
@@ -325,33 +345,25 @@ Internet-Draft                   OPAQUE                   September 2020
 
    We also assume the existence of a function "KeyGen" from
    [I-D.irtf-cfrg-voprf], which generates an OPRF private and public
-   key.  OPAQUE only requires an OPRF private key We write "(kU, _) =
+   key.  OPAQUE only requires an OPRF private key.  We write "(kU, _) =
    KeyGen()" to denote use of this function for generating secret key
    "kU" (and discarding the corresponding public key).
-
-
-
-
-
-Krawczyk, et al.          Expires 29 March 2021                 [Page 6]
-
-Internet-Draft                   OPAQUE                   September 2020
-
 
 3.  Core Protocol
 
    OPAQUE consists of two stages: registration and authenticated key
-   exchange.  In the first stage, a client stores its encrypted
-   credentials on the server.  In the second stage, a client obtains
-   those credentials and subsequently uses them as input to an
+   exchange.  In the first stage, a client registers its password with
+   the server and stores its encrypted credentials on the server.  In
+   the second stage, a client obtains those credentials, unlocks them
+   using the user's password and subsequently uses them as input to an
    authenticated key exchange (AKE) protocol.
 
    Both registration and authenticated key exchange stages require
    running an OPRF protocol.  The latter stage additionally requires
    running a mutually-authenticated key-exchange protocol (AKE) using
    credentials recovered after the OPRF protocol completes.  (The key-
-   exchange protocol MUST satisfy the KCI requirement discussed in
-   Section 6.)
+   exchange protocol MUST satisfy forward secrecy and the KCI
+   requirement discussed in Section 6.)
 
    We first define the core OPAQUE protocol based on a generic OPRF,
    hash, and MHF function.  Section 4 describes specific instantiations
@@ -377,19 +389,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-Krawczyk, et al.          Expires 29 March 2021                 [Page 7]
+Krawczyk, et al.          Expires 1 April 2021                  [Page 7]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -415,12 +415,12 @@ Internet-Draft                   OPAQUE                   September 2020
        };
    } ProtocolMessage;
 
-   Additionally, OPAQUE makes use of an additional structure
-   "Credentials" to store user (client) credentials.  A "Credentials"
-   structure consists of secret and cleartext "CredentialExtension"
-   values.  Each "CredentialExtension" indicates the type of extension
-   and carries the raw bytes.  This specification includes extensions
-   for OPAQUE, including:
+   OPAQUE makes use of an additional structure "Credentials" to store
+   user (client) credentials.  A "Credentials" structure consists of
+   secret and cleartext "CredentialExtension" values.  Each
+   "CredentialExtension" indicates the type of extension and carries the
+   raw bytes.  This specification includes extensions for OPAQUE,
+   including:
 
    *  skU: The encoded user private key for the AKE protocol.
 
@@ -445,7 +445,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 29 March 2021                 [Page 8]
+Krawczyk, et al.          Expires 1 April 2021                  [Page 8]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -501,7 +501,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 29 March 2021                 [Page 9]
+Krawczyk, et al.          Expires 1 April 2021                  [Page 9]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -557,7 +557,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 29 March 2021                [Page 10]
+Krawczyk, et al.          Expires 1 April 2021                 [Page 10]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -613,7 +613,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 29 March 2021                [Page 11]
+Krawczyk, et al.          Expires 1 April 2021                 [Page 11]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -669,7 +669,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 29 March 2021                [Page 12]
+Krawczyk, et al.          Expires 1 April 2021                 [Page 12]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -725,7 +725,7 @@ Steps:
 
 
 
-Krawczyk, et al.          Expires 29 March 2021                [Page 13]
+Krawczyk, et al.          Expires 1 April 2021                 [Page 13]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -775,13 +775,13 @@ Internet-Draft                   OPAQUE                   September 2020
    [[https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/58: Should
    the nonce size be a parameter?]]
 
-   The inputs to HKDF-Expand are as specified in [RFC5869].  The
-   underlying hash function is that which is associated with the OPAQUE
-   configuration (see Section 5).
+   The inputs to HKDF-Extract and HKDF-Expand are as specified in
+   [RFC5869].  The underlying hash function is that which is associated
+   with the OPAQUE configuration (see Section 5).
 
 
 
-Krawczyk, et al.          Expires 29 March 2021                [Page 14]
+Krawczyk, et al.          Expires 1 April 2021                 [Page 14]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -799,7 +799,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
    The server identity "idS" comes from context.  For example, if
    registering with a server within the context of a TLS connection, the
-   identity might be the server domain name.
+   identity might be the server domain name.  See Section 3.5.
 
    See Section 3.4 for details about the output export_key usage.
 
@@ -837,7 +837,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 29 March 2021                [Page 15]
+Krawczyk, et al.          Expires 1 April 2021                 [Page 15]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -893,7 +893,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 29 March 2021                [Page 16]
+Krawczyk, et al.          Expires 1 April 2021                 [Page 16]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -949,7 +949,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 29 March 2021                [Page 17]
+Krawczyk, et al.          Expires 1 April 2021                 [Page 17]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -1005,7 +1005,7 @@ Steps:
 
 
 
-Krawczyk, et al.          Expires 29 March 2021                [Page 18]
+Krawczyk, et al.          Expires 1 April 2021                 [Page 18]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -1049,7 +1049,8 @@ Internet-Draft                   OPAQUE                   September 2020
    KE1, KE2, KE3, where KE1 and KE2 include key exchange shares (DH
    values) sent by client and server, respectively, and KE3 provides
    explicit client authentication and full forward security (without it,
-   forward secrecy is only achieved against eavesdroppers).
+   forward secrecy is only achieved against eavesdroppers which is
+   insufficient for OPAQUE security).
 
    As shown in [OPAQUE], OPAQUE cannot use less than three messages so
    the 3-message instantiations presented here are optimal in terms of
@@ -1060,8 +1061,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-
-Krawczyk, et al.          Expires 29 March 2021                [Page 19]
+Krawczyk, et al.          Expires 1 April 2021                 [Page 19]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -1094,10 +1094,11 @@ Internet-Draft                   OPAQUE                   September 2020
    resistance and forward secrecy) outlined in Section 6.  This document
    does not specify such an instantiation.  Note that such an
    instantiation is not quantum safe unless the OPRF and data encryption
-   schemes are quantum safe.  However, such an instantiation may have
-   benefits since breaking the OPRF does not retroactively affect the
-   security of data transferred over a secure channel protected with a
-   PQ AKE protocol.
+   schemes are quantum safe.  However, an instantiation where both AKE
+   and data encryption are quantum safe, but the OPRF is not, would
+   still ensure data security against future quantum attacks since
+   breaking the OPRF does not retroactively affect the security of data
+   transferred over a quantum-safe secure channel.
 
 4.1.  Key Schedule Utility Functions
 
@@ -1116,8 +1117,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-
-Krawczyk, et al.          Expires 29 March 2021                [Page 20]
+Krawczyk, et al.          Expires 1 April 2021                 [Page 20]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -1142,20 +1142,21 @@ Internet-Draft                   OPAQUE                   September 2020
    in HMQV: Just 1/6 of an exponentiation for each party over the cost
    of a regular DH exchange.  However, HMQV is encumbered by an IBM
    patent, hence we also present OPAQUE with 3DH which only differs in
-   the key derivation function at the cost of an extra exponentiation
-   (and less resilience to the compromise of ephemeral exponents).  We
-   note that 3DH serves as a basis for the key-exchange protocol of
-   [SIGNAL].  Importantly, many other protocols follow a similar format
-   with differences mainly in the key derivation function.  This
-   includes the Noise family of protocols.  Extensions may also apply to
-   KEM-based AKE protocols as in many post-quantum candidates.
+   the key derivation function at the cost of two additional
+   exponentiations (and less resilience to the compromise of ephemeral
+   exponents).  We note that 3DH serves as a basis for the key-exchange
+   protocol of [SIGNAL].  Importantly, many other protocols follow a
+   similar format with differences mainly in the key derivation
+   function.  This includes the Noise family of protocols.  Extensions
+   also apply to KEM-based AKE protocols as in many post-quantum
+   candidates.
 
 4.2.1.  HMQV and 3DH protocol messages
 
    HMQV and 3DH are both implemented using a suitable cyclic group of
    prime order p.  All operations in the key derivation steps in
-   Section 4.2.2.1 and Section 4.2.2.2 are performed in this group using
-   multiplicative notation.
+   Section 4.2.2.1 and Section 4.2.2.2 are performed in this group and
+   represented here using multiplicative notation.
 
    OPAQUE with HMQV and OPAQUE with 3DH comprises:
 
@@ -1172,8 +1173,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-
-Krawczyk, et al.          Expires 29 March 2021                [Page 21]
+Krawczyk, et al.          Expires 1 April 2021                 [Page 21]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -1229,7 +1229,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 29 March 2021                [Page 22]
+Krawczyk, et al.          Expires 1 April 2021                 [Page 22]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -1277,15 +1277,15 @@ Ke3 = HKDF-Expand-Label(handshake_secret, "server enc", "", key_length)
 
    The HKDF input parameter "info" is computed as follows:
 
-   info = "HMQV keys" || len(nonceU) || nonceU
-                      || len(nonceS) || nonceS
-                      || len(idU) || idU
-                      || len(idS) || idS
+   info = "HMQV keys" || I2OSP(len(nonceU), 2) || nonceU
+                      || I2OSP(len(nonceS), 2) || nonceS
+                      || I2OSP(len(idU), 2) || idU
+                      || I2OSP(len(idS), 2) || idS
 
 
 
 
-Krawczyk, et al.          Expires 29 March 2021                [Page 23]
+Krawczyk, et al.          Expires 1 April 2021                 [Page 23]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -1307,26 +1307,26 @@ Internet-Draft                   OPAQUE                   September 2020
 
    In both cases, "u" is computed as follows:
 
-   hashInput = len(epkU) || epkU ||
-               len(info) || info ||
-               len("client") || "client"
+   hashInput = I2OSP(len(epkU), 2) || epkU ||
+               I2OSP(len(info), 2) || info ||
+               I2OSP(len("client"), 2) || "client"
    u = Hash(hashInput) mod (len(p)-1)
 
    Likewise, "s" is computed as follows:
 
-   hashInput = len(epkS) || epkS ||
-               len(info) || info ||
-               len("server") || "server"
+   hashInput = I2OSP(len(epkS), 2) || epkS ||
+               I2OSP(len(info), 2) || info ||
+               I2OSP(len("server"), 2) || "server"
    s = Hash(hashInput) mod (len(p)-1)
 
 4.2.2.2.  3DH key derivation
 
    The HKDF input parameter "info" is computed as follows:
 
-   info = "3DH keys" || len(nonceU) || nonceU
-                     || len(nonceS) || nonceS
-                     || len(idU) || idU
-                     || len(idS) || idS
+   info = "3DH keys" || I2OSP(len(nonceU), 2) || nonceU
+                     || I2OSP(len(nonceS), 2) || nonceS
+                     || I2OSP(len(idU), 2) || idU
+                     || I2OSP(len(idS), 2) || idS
 
    The input parameter "IKM" is "K3dh", where "K3dh" is the
    concatenation of three DH values computed by the client as follows:
@@ -1341,14 +1341,14 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 29 March 2021                [Page 24]
+Krawczyk, et al.          Expires 1 April 2021                 [Page 24]
 
 Internet-Draft                   OPAQUE                   September 2020
 
 
 4.3.  Instantiation with SIGMA-I
 
-   We show how OPAQUE is built around the 3-message SIGMA-I protocol
+   We show the integration of OPAQUE with the 3-message SIGMA-I protocol
    [SIGMA].  This is an example of a signature-based protocol and also
    serves as a basis for integration of OPAQUE with TLS 1.3 as specified
    in [I-D.sullivan-tls-opaque].  This specification can be extended to
@@ -1365,12 +1365,12 @@ Internet-Draft                   OPAQUE                   September 2020
 
    *  KE3 = info3_, Einfo3_, Sign(skU; transcript3-), MAC(Km3; idU)}
 
-   See explanation of fields above.  In addition, for the signed
-   material, transcript2- is defined similarly to transcript2, however
-   if transcript2 includes information that identifies the user, such
-   information can be eliminated in transcript2- (this is advised if
-   signing user's identification information by the server is deemed to
-   have adverse privacy consequences).  Similarly, transcript3- is
+   See explanation of fields in Section 4.2.1.  In addition, for the
+   signed material, transcript2- is defined similarly to transcript2,
+   however if transcript2 includes information that identifies the user,
+   such information can be eliminated in transcript2- (this is advised
+   if signing user's identification information by the server is deemed
+   to have adverse privacy consequences).  Similarly, transcript3- is
    defined as transcript3 with server identification information removed
    if so desired.
 
@@ -1380,10 +1380,10 @@ Internet-Draft                   OPAQUE                   September 2020
    as specified in Section 4.2.2.  The HKDF input parameter "info" is
    computed as follows:
 
-   info = "SIGMA-I keys" || len(nonceU) || nonceU
-                         || len(nonceS) || nonceS
-                         || len(idU) || idU
-                         || len(idS) || idS
+   info = "SIGMA-I keys" || I2OSP(len(nonceU), 2) || nonceU
+                         || I2OSP(len(nonceS), 2) || nonceS
+                         || I2OSP(len(idU), 2) || idU
+                         || I2OSP(len(idS), 2) || idS
 
    The input parameter "IKM" is "Ksigma", where "Ksigma" is computed by
    clients as "epkS^eskU" and by servers as "epkU^eskS".
@@ -1397,7 +1397,7 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 29 March 2021                [Page 25]
+Krawczyk, et al.          Expires 1 April 2021                 [Page 25]
 
 Internet-Draft                   OPAQUE                   September 2020
 
@@ -1431,53 +1431,35 @@ Internet-Draft                   OPAQUE                   September 2020
    [[https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/60: Should we
    have a registry for configurations?]]
 
+6.  Security Considerations
+
+   OPAQUE is defined and proven as the composition of two
+   functionalities: An Oblivious PRF (OPRF) and an authenticated key-
+   exchange (AKE) protocol.  It can be seen as a "compiler" for
+   transforming any AKE protocol (with KCI security and forward secrecy
+   - see below) into a secure aPAKE protocol.  In OPAQUE, the user
+   stores a secret private key at the server during password
+   registration and retrieves this key each time it needs to
+   authenticate to the server.  The OPRF security properties ensure that
+   only the correct password can unlock the private key while at the
+   same time avoiding potential offline guessing attacks.  This general
+   composability property provides great flexibility and enables a
+   variety of OPAQUE instantiations, from optimized performance to
+   integration with TLS.  The latter aspect is of prime importance as
+   the use of OPAQUE with TLS constitutes a major security improvement
+   relative to the standard password-over-TLS practice.  At the same
+   time, the combination with TLS builds OPAQUE as a fully functional
+   secure communications protocol and can help provide privacy to
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Krawczyk, et al.          Expires 29 March 2021                [Page 26]
+Krawczyk, et al.          Expires 1 April 2021                 [Page 26]
 
 Internet-Draft                   OPAQUE                   September 2020
 
 
-6.  Security Considerations
-
-   OPAQUE is defined and proven as the composition of two
-   functionalities: An Oblivious PRF (OPRF) and a key-exchange protocol.
-   It can be seen as a "compiler" for transforming any key-exchange
-   protocol (with KCI security and forward secrecy - see below) into a
-   secure aPAKE protocol.  In OPAQUE, the user stores a secret private
-   key at the server during password registration and retrieves this key
-   each time it needs to authenticate to the server.  The OPRF security
-   properties ensure that only the correct password can unlock the
-   private key while at the same time avoiding potential offline
-   guessing attacks.  This general composability property provides great
-   flexibility and enables a variety of OPAQUE instantiations, from
-   optimized performance to integration with TLS.  The latter aspect is
-   of prime importance as the use of OPAQUE with TLS constitutes a major
-   security improvement relative to the standard password-over-TLS
-   practice.  At the same time, the combination with TLS builds OPAQUE
-   as a fully functional secure communications protocol and can help
-   provide privacy to account information sent by the user to the server
-   prior to authentication.
+   account information sent by the user to the server prior to
+   authentication.
 
    The KCI property required from AKE protocols for use with OPAQUE
    states that knowledge of a party's private key does not allow an
@@ -1495,24 +1477,14 @@ Internet-Draft                   OPAQUE                   September 2020
    protocols for use in OPAQUE is to provide forward secrecy (against
    active attackers).
 
-   Jarecki et al.  [OPAQUE] recently proved the security of OPAQUE in a
-   strong aPAKE model that ensures security against pre-computation
-   attacks and is formulated in the Universal Composability (UC)
-   framework [Canetti01] under the random oracle model.  This assumes
-   security of the OPRF function and of the underlying key-exchange
-   protocol.  In turn, the security of the OPRF protocol from
-   [I-D.irtf-cfrg-voprf] is proven in the random oracle model under the
-   One-More Diffie-Hellman assumption [JKKX16].
-
-
-
-
-
-
-Krawczyk, et al.          Expires 29 March 2021                [Page 27]
-
-Internet-Draft                   OPAQUE                   September 2020
-
+   Jarecki et al.  [OPAQUE] proved the security of OPAQUE in a strong
+   aPAKE model that ensures security against pre-computation attacks and
+   is formulated in the Universal Composability (UC) framework
+   [Canetti01] under the random oracle model.  This assumes security of
+   the OPRF function and of the underlying key-exchange protocol.  In
+   turn, the security of the OPRF protocol from [I-D.irtf-cfrg-voprf] is
+   proven in the random oracle model under the One-More Diffie-Hellman
+   assumption [JKKX16].
 
    Very few aPAKE protocols have been proven formally, and those proven
    were analyzed in a weak security model that allows for pre-
@@ -1530,6 +1502,17 @@ Internet-Draft                   OPAQUE                   September 2020
    al.  [JKKX16].  None of these papers considered security against pre-
    computation attacks or presented a proof of aPAKE security (not even
    in a weak model).
+
+
+
+
+
+
+
+Krawczyk, et al.          Expires 1 April 2021                 [Page 27]
+
+Internet-Draft                   OPAQUE                   September 2020
+
 
 6.1.  Configuration Choice
 
@@ -1563,13 +1546,6 @@ Internet-Draft                   OPAQUE                   September 2020
    theoretical loss of security is with respect to computing discrete
    logarithms, not in reducing the password strength).
 
-
-
-Krawczyk, et al.          Expires 29 March 2021                [Page 28]
-
-Internet-Draft                   OPAQUE                   September 2020
-
-
    (*) Some examples (courtesy of Dan Brown): For P-384, 2^90 calls
    reduce security from 192 to 147 bits; for NIST P-256 the options are
    6-bit reduction with 2153 OPRF calls, about 14 bit reduction with 187
@@ -1586,6 +1562,14 @@ Internet-Draft                   OPAQUE                   September 2020
    during the online key agreement phase.  The validation procedure
    varies depending on the type of key.  For example, for OPAQUE
    instantiations using 3DH with P-256, P-384, or P-521 as the
+
+
+
+Krawczyk, et al.          Expires 1 April 2021                 [Page 28]
+
+Internet-Draft                   OPAQUE                   September 2020
+
+
    underlying group, validation is as specified in Section 5.6.2.3.4 of
    [keyagreement].  This includes checking that the coordinates are in
    the correct range, that the point is on the curve, and that the point
@@ -1611,21 +1595,6 @@ Internet-Draft                   OPAQUE                   September 2020
    server.  Applications SHOULD select parameters that balance cost and
    complexity.
 
-
-
-
-
-
-
-
-
-
-
-Krawczyk, et al.          Expires 29 March 2021                [Page 29]
-
-Internet-Draft                   OPAQUE                   September 2020
-
-
 6.6.  User enumeration
 
    User enumeration refers to attacks where the attacker tries to learn
@@ -1649,6 +1618,14 @@ Internet-Draft                   OPAQUE                   September 2020
    plaintext).  Care needs to be taken to avoid side channel leakage
    (e.g., timing) from helping differentiate these operations from a
    regular server response.  The above requires changes to the server-
+
+
+
+Krawczyk, et al.          Expires 1 April 2021                 [Page 29]
+
+Internet-Draft                   OPAQUE                   September 2020
+
+
    side implementation but not to the protocol itself or the client
    side.
 
@@ -1672,16 +1649,6 @@ Internet-Draft                   OPAQUE                   September 2020
    look each time as a fresh random string, hence S can simulate the
    encrypted envU also for non-existing users.
 
-
-
-
-
-
-Krawczyk, et al.          Expires 29 March 2021                [Page 30]
-
-Internet-Draft                   OPAQUE                   September 2020
-
-
    Note that the first case above does not change the protocol so its
    implementation is a server's decision (the client side is not
    changed).  The second case, requires changes on the client side so it
@@ -1701,6 +1668,19 @@ Internet-Draft                   OPAQUE                   September 2020
    enables a defense against such offline dictionary attacks by
    distributing the server so that an offline attack is only possible if
    all - or a minimal number of - servers are compromised [OPAQUE].)
+
+
+
+
+
+
+
+
+
+Krawczyk, et al.          Expires 1 April 2021                 [Page 30]
+
+Internet-Draft                   OPAQUE                   September 2020
+
 
    Some applications may require learning the user's password for
    enforcing password rules.  Doing so invalidates this important
@@ -1724,19 +1704,9 @@ Internet-Draft                   OPAQUE                   September 2020
    exponentiations for 3DH, and it is one signature generation and
    verification in the case of SIGMA and TLS 1.3.  These instantiations
    preserve the number of messages in the underlying AKE protocol except
-   in one of the TLS instantiations where user privacy may require an
-   additional round trip.
-
-
-
-
-
-
-
-Krawczyk, et al.          Expires 29 March 2021                [Page 31]
-
-Internet-Draft                   OPAQUE                   September 2020
-
+   in implementations such as [I-D.sullivan-tls-opaque] where an
+   additional round trip is required to provide privacy to account
+   information.
 
 8.  IANA Considerations
 
@@ -1759,6 +1729,14 @@ Internet-Draft                   OPAQUE                   September 2020
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+
+
+
+
+Krawczyk, et al.          Expires 1 April 2021                 [Page 31]
+
+Internet-Draft                   OPAQUE                   September 2020
+
 
 9.2.  Informative References
 
@@ -1784,16 +1762,6 @@ Internet-Draft                   OPAQUE                   September 2020
    [FK00]     Ford, W. and B.S. Kaliski, Jr, "Server-assisted generation
               of a strong secret from a password", WETICE , 2000.
 
-
-
-
-
-
-Krawczyk, et al.          Expires 29 March 2021                [Page 32]
-
-Internet-Draft                   OPAQUE                   September 2020
-
-
    [GMR06]    Gentry, C., MacKenzie, P., and . Z, Ramzan, "A method for
               making password-based key exchange resilient to server
               compromise", CRYPTO , 2006.
@@ -1815,6 +1783,16 @@ Internet-Draft                   OPAQUE                   September 2020
               Internet-Draft, draft-irtf-cfrg-hash-to-curve-09, 29 June
               2020, <http://www.ietf.org/internet-drafts/draft-irtf-
               cfrg-hash-to-curve-09.txt>.
+
+
+
+
+
+
+Krawczyk, et al.          Expires 1 April 2021                 [Page 32]
+
+Internet-Draft                   OPAQUE                   September 2020
+
 
    [I-D.irtf-cfrg-voprf]
               Davidson, A., Sullivan, N., and C. Wood, "Oblivious
@@ -1843,13 +1821,6 @@ Internet-Draft                   OPAQUE                   September 2020
               Standards and Technology report, April 2018,
               <https://doi.org/10.6028/nist.sp.800-56ar3>.
 
-
-
-Krawczyk, et al.          Expires 29 March 2021                [Page 33]
-
-Internet-Draft                   OPAQUE                   September 2020
-
-
    [OPAQUE]   Jarecki, S., Krawczyk, H., and J. Xu, "OPAQUE: An
               Asymmetric PAKE Protocol Secure Against Pre-Computation
               Attacks", Eurocrypt , 2018.
@@ -1868,6 +1839,17 @@ Internet-Draft                   OPAQUE                   September 2020
               DOI 10.17487/RFC5869, May 2010,
               <https://www.rfc-editor.org/info/rfc5869>.
 
+
+
+
+
+
+
+Krawczyk, et al.          Expires 1 April 2021                 [Page 33]
+
+Internet-Draft                   OPAQUE                   September 2020
+
+
    [RFC7250]  Wouters, P., Ed., Tschofenig, H., Ed., Gilmore, J.,
               Weiler, S., and T. Kivinen, "Using Raw Public Keys in
               Transport Layer Security (TLS) and Datagram Transport
@@ -1877,6 +1859,11 @@ Internet-Draft                   OPAQUE                   September 2020
    [RFC7914]  Percival, C. and S. Josefsson, "The scrypt Password-Based
               Key Derivation Function", RFC 7914, DOI 10.17487/RFC7914,
               August 2016, <https://www.rfc-editor.org/info/rfc7914>.
+
+   [RFC8017]  Moriarty, K., Ed., Kaliski, B., Jonsson, J., and A. Rusch,
+              "PKCS #1: RSA Cryptography Specifications Version 2.2",
+              RFC 8017, DOI 10.17487/RFC8017, November 2016,
+              <https://www.rfc-editor.org/info/rfc8017>.
 
    [RFC8125]  Schmidt, J., "Requirements for Password-Authenticated Key
               Agreement (PAKE) Schemes", RFC 8125, DOI 10.17487/RFC8125,
@@ -1899,13 +1886,6 @@ Internet-Draft                   OPAQUE                   September 2020
               Shoup, V., "Security Analysis of SPAKE2+",
               http://eprint.iacr.org/2020/313 , 2020.
 
-
-
-Krawczyk, et al.          Expires 29 March 2021                [Page 34]
-
-Internet-Draft                   OPAQUE                   September 2020
-
-
 Appendix A.  Acknowledgments
 
    The OPAQUE protocol and its analysis is joint work of the author with
@@ -1917,6 +1897,14 @@ Appendix A.  Acknowledgments
    Resch, Greg Rubin, Nick Sullivan.
 
 Authors' Addresses
+
+
+
+
+Krawczyk, et al.          Expires 1 April 2021                 [Page 34]
+
+Internet-Draft                   OPAQUE                   September 2020
+
 
    Hugo Krawczyk
    Algorand Foundation
@@ -1957,4 +1945,16 @@ Authors' Addresses
 
 
 
-Krawczyk, et al.          Expires 29 March 2021                [Page 35]
+
+
+
+
+
+
+
+
+
+
+
+
+Krawczyk, et al.          Expires 1 April 2021                 [Page 35]
