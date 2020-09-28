@@ -118,8 +118,8 @@ Internet-Draft                   OPAQUE                   September 2020
    9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  31
      9.1.  Normative References  . . . . . . . . . . . . . . . . . .  31
      9.2.  Informative References  . . . . . . . . . . . . . . . . .  32
-   Appendix A.  Acknowledgments  . . . . . . . . . . . . . . . . . .  34
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  34
+   Appendix A.  Acknowledgments  . . . . . . . . . . . . . . . . . .  35
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  35
 
 1.  Introduction
 
@@ -1574,7 +1574,10 @@ Internet-Draft                   OPAQUE                   September 2020
    [keyagreement].  This includes checking that the coordinates are in
    the correct range, that the point is on the curve, and that the point
    is not the point at infinity.  Additionally, validation MUST ensure
-   the Diffie-Hellman shared secret is not the point at infinity.
+   the Diffie-Hellman shared secret is not the point at infinity.  For
+   X25519 and X448, validation is as described in [RFC7748].  In
+   particular, where applicable, endpoints MUST check whether the
+   Diffie-Hellman shared secret is the all-zero value and abort if so.
 
 6.4.  User authentication versus Authenticated Key Exchange
 
@@ -1615,9 +1618,6 @@ Internet-Draft                   OPAQUE                   September 2020
    kU'=f(MK'; idU) and responds with values beta=alpha^kU and envU,
    where the latter is computed as follows. rwdU is set to kU' and AEenv
    is set to the all-zero string (of the length of a regular envU
-   plaintext).  Care needs to be taken to avoid side channel leakage
-   (e.g., timing) from helping differentiate these operations from a
-   regular server response.  The above requires changes to the server-
 
 
 
@@ -1626,6 +1626,9 @@ Krawczyk, et al.          Expires 1 April 2021                 [Page 29]
 Internet-Draft                   OPAQUE                   September 2020
 
 
+   plaintext).  Care needs to be taken to avoid side channel leakage
+   (e.g., timing) from helping differentiate these operations from a
+   regular server response.  The above requires changes to the server-
    side implementation but not to the protocol itself or the client
    side.
 
@@ -1668,9 +1671,6 @@ Internet-Draft                   OPAQUE                   September 2020
    enables a defense against such offline dictionary attacks by
    distributing the server so that an offline attack is only possible if
    all - or a minimal number of - servers are compromised [OPAQUE].)
-
-
-
 
 
 
@@ -1856,6 +1856,10 @@ Internet-Draft                   OPAQUE                   September 2020
               Layer Security (DTLS)", RFC 7250, DOI 10.17487/RFC7250,
               June 2014, <https://www.rfc-editor.org/info/rfc7250>.
 
+   [RFC7748]  Langley, A., Hamburg, M., and S. Turner, "Elliptic Curves
+              for Security", RFC 7748, DOI 10.17487/RFC7748, January
+              2016, <https://www.rfc-editor.org/info/rfc7748>.
+
    [RFC7914]  Percival, C. and S. Josefsson, "The scrypt Password-Based
               Key Derivation Function", RFC 7914, DOI 10.17487/RFC7914,
               August 2016, <https://www.rfc-editor.org/info/rfc7914>.
@@ -1886,6 +1890,22 @@ Internet-Draft                   OPAQUE                   September 2020
               Shoup, V., "Security Analysis of SPAKE2+",
               http://eprint.iacr.org/2020/313 , 2020.
 
+
+
+
+
+
+
+
+
+
+
+
+Krawczyk, et al.          Expires 1 April 2021                 [Page 34]
+
+Internet-Draft                   OPAQUE                   September 2020
+
+
 Appendix A.  Acknowledgments
 
    The OPAQUE protocol and its analysis is joint work of the author with
@@ -1897,14 +1917,6 @@ Appendix A.  Acknowledgments
    Resch, Greg Rubin, Nick Sullivan.
 
 Authors' Addresses
-
-
-
-
-Krawczyk, et al.          Expires 1 April 2021                 [Page 34]
-
-Internet-Draft                   OPAQUE                   September 2020
-
 
    Hugo Krawczyk
    Algorand Foundation
@@ -1922,18 +1934,6 @@ Internet-Draft                   OPAQUE                   September 2020
    Cloudflare
 
    Email: caw@heapingbits.net
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
