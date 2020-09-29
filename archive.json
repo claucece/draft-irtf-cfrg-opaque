@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-09-27T00:49:38.995621+00:00",
+  "timestamp": "2020-09-29T00:48:04.690487+00:00",
   "repo": "cfrg/draft-irtf-cfrg-opaque",
   "labels": [
     {
@@ -3416,6 +3416,70 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 61,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDkzNzk2NDI5",
+      "title": "Update draft-irtf-cfrg-opaque.md",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/61",
+      "state": "MERGED",
+      "author": "hugokraw",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I made some minir edits, nothing worth highlighting I think.\r\nTwo issues that we may want to address before submitting are:\r\n\r\n1. We say IBM has a patent on HMQV. Is that enough (for now at least) or do we need to have some formal IP notice?\r\n\r\n2. Section 6.3 (called from section 3.2 and 4.2.1) refers to SP800-56A Sec 5.6.2.3.4 which seems to be phrased for ephemeral keys while in the context of Sec 3.2 we talk about static ones. More importantly, the NIST document omits any tests of membership as they assume/require cofactor clearing. Is this something we want to assume/require ourselves? I thought we would \"outsource\" these issues to documents describing the curves themselves as the choice between explicit membership tests, prime order tests, cofactor operations, etc. may depend on the specific curve. If you do not want to get into these issues now (I am happy not to), we should still mention membership tests in Section 6.3. \r\n\r\nOnce we are done with these two issues, we can submit.\r\n",
+      "createdAt": "2020-09-27T23:32:55Z",
+      "updatedAt": "2020-09-28T18:33:11Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "13b1c0dcf6489faf7ca72b102358eda7168bee31",
+      "headRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "headRefName": "hugokraw-patch-1",
+      "headRefOid": "e3e25988db565e6c8d2eeb16fad92ca0e165d94c",
+      "closedAt": "2020-09-28T18:33:11Z",
+      "mergedAt": "2020-09-28T18:33:11Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "3c9462c70a3f2966d0b2ab3cfd8dafc805fae563"
+      },
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> We say IBM has a patent on HMQV. Is that enough (for now at least) or do we need to have some formal IP notice?\r\n\r\nI think you can submit IPR here: https://datatracker.ietf.org/ipr/\r\n\r\n> If you do not want to get into these issues now (I am happy not to), we should still mention membership tests in Section 6.3.\r\n\r\nI think this is covered by \"MUST validate the other party's public key(s) used for the execution of OPAQUE\", no? If not, what would you change?",
+          "createdAt": "2020-09-28T14:31:58Z",
+          "updatedAt": "2020-09-28T14:31:58Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Regarding:\r\n\r\n> >If you do not want to get into these issues now (I am happy not to), we should still mention membership tests in Section 6.3.\r\n\r\n> I think this is covered by \"MUST validate the other party's public key(s) used for the execution of OPAQUE\", no? If not, what would you change?\r\n\r\nThe problem is that we refer to the NIST document that does not include membership tests as they assume cofactor clearing which we don't assume. \r\nNote that we say explicitly:\r\n\r\nepkU, epkS are Diffie-Hellman ephemeral public keys chosen by user and server, respectively, which MUST be validated to be in the correct group (see {{validation}});\r\n\r\nbut then the membership test is lost in the reference to NIST.\r\n",
+          "createdAt": "2020-09-28T16:55:28Z",
+          "updatedAt": "2020-09-28T16:55:28Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The NIST document pertains only to the NIST curves, which don't require cofactor clearing (h=1). The other curves may involve cofactor clearing, but I think that's covered by the public key validation text. ",
+          "createdAt": "2020-09-28T17:24:15Z",
+          "updatedAt": "2020-09-28T17:24:15Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Oh. Ok. I missed the (clear) point that this is an example that only pertains to the NIST curves. Sorry for the confusion. You can go ahead and submit. Thanks.",
+          "createdAt": "2020-09-28T18:25:38Z",
+          "updatedAt": "2020-09-28T18:25:38Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Perfect -- thanks!",
+          "createdAt": "2020-09-28T18:33:08Z",
+          "updatedAt": "2020-09-28T18:33:08Z"
+        }
+      ],
+      "reviews": []
     }
   ]
 }
