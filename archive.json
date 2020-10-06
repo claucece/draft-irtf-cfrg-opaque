@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-09-29T00:48:04.690487+00:00",
+  "timestamp": "2020-10-06T00:50:04.920563+00:00",
   "repo": "cfrg/draft-irtf-cfrg-opaque",
   "labels": [
     {
@@ -903,6 +903,38 @@
       "body": "The configurations are rather loosely defined. A registry that allows one to encode an entire configuration (AKE, OPRF, MHF, etc) could be useful. ",
       "createdAt": "2020-09-25T18:57:48Z",
       "updatedAt": "2020-09-25T18:57:48Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 62,
+      "id": "MDU6SXNzdWU3MTQ0MTcyNjc=",
+      "title": "Envelope format in registration versus login",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/62",
+      "state": "OPEN",
+      "author": "kevinlewi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Should this line (https://github.com/cfrg/draft-irtf-cfrg-opaque/blame/master/draft-irtf-cfrg-opaque.md#L583) be similar to this line (https://github.com/cfrg/draft-irtf-cfrg-opaque/blame/master/draft-irtf-cfrg-opaque.md#L787)?\r\n\r\nEither both should read `Envelope envelope;`, or both should read `opaque envelope<1..2^16-1>`, right?",
+      "createdAt": "2020-10-04T22:37:27Z",
+      "updatedAt": "2020-10-04T22:41:16Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 63,
+      "id": "MDU6SXNzdWU3MTQ0NTQ0NjY=",
+      "title": "Extraneous parameter pkS in CredentialResponse",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/63",
+      "state": "OPEN",
+      "author": "kevinlewi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Why is it necessary to [put pkS in the CredentialResponse struct](https://github.com/cfrg/draft-irtf-cfrg-opaque/blame/master/draft-irtf-cfrg-opaque.md#L788)?\r\n\r\nAccording to [this](https://github.com/cfrg/draft-irtf-cfrg-opaque/blame/master/draft-irtf-cfrg-opaque.md#L460-L464), pkS must be included within the envelope already. So, when the client parses the CredentialResponse struct, shouldn't it be able to obtain pkS from the envelope already?",
+      "createdAt": "2020-10-05T01:47:20Z",
+      "updatedAt": "2020-10-05T01:47:20Z",
       "closedAt": null,
       "comments": []
     }
@@ -3479,6 +3511,32 @@
           "updatedAt": "2020-09-28T18:33:08Z"
         }
       ],
+      "reviews": []
+    },
+    {
+      "number": 64,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDk3NTQ0MTQ2",
+      "title": "Fixing typo in CredentialExtension definition and updating affiliation",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/64",
+      "state": "OPEN",
+      "author": "kevinlewi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I believe the type of the parameter `data` in `CredentialExtension` should be `opaque`, since there is no `CredentialData` defined anywhere.\r\n\r\nAlso updating my affiliation",
+      "createdAt": "2020-10-05T02:21:20Z",
+      "updatedAt": "2020-10-05T02:21:20Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "3c9462c70a3f2966d0b2ab3cfd8dafc805fae563",
+      "headRepository": "kevinlewi/draft-irtf-cfrg-opaque",
+      "headRefName": "fix_typo_1",
+      "headRefOid": "405d25a53e81a3a3e51207f543712330b37969e3",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
       "reviews": []
     }
   ]
