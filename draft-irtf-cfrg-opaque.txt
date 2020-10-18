@@ -5,10 +5,10 @@
 Network Working Group                                        H. Krawczyk
 Internet-Draft                                       Algorand Foundation
 Intended status: Informational                                   K. Lewi
-Expires: 1 April 2021                                           Facebook
+Expires: 21 April 2021                                          Facebook
                                                                C.A. Wood
                                                               Cloudflare
-                                                       28 September 2020
+                                                         18 October 2020
 
 
                   The OPAQUE Asymmetric PAKE Protocol
@@ -47,15 +47,15 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 April 2021.
+   This Internet-Draft will expire on 21 April 2021.
 
 
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                  [Page 1]
+Krawczyk, et al.          Expires 21 April 2021                 [Page 1]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
 Copyright Notice
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                  [Page 2]
+Krawczyk, et al.          Expires 21 April 2021                 [Page 2]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
    8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  31
@@ -165,9 +165,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                  [Page 3]
+Krawczyk, et al.          Expires 21 April 2021                 [Page 3]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
    Despite the existence of multiple designs for (PKI-free) aPAKE
@@ -221,9 +221,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                  [Page 4]
+Krawczyk, et al.          Expires 21 April 2021                 [Page 4]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
 1.1.  Requirements Notation
@@ -277,9 +277,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                  [Page 5]
+Krawczyk, et al.          Expires 21 April 2021                 [Page 5]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
    Except if said otherwise, random choices in this specification refer
@@ -333,9 +333,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                  [Page 6]
+Krawczyk, et al.          Expires 21 April 2021                 [Page 6]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
       -  Harden(msg, params): Repeatedly apply a memory hard function
@@ -389,9 +389,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                  [Page 7]
+Krawczyk, et al.          Expires 21 April 2021                 [Page 7]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
    enum {
@@ -445,9 +445,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                  [Page 8]
+Krawczyk, et al.          Expires 21 April 2021                 [Page 8]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
    enum {
@@ -501,9 +501,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                  [Page 9]
+Krawczyk, et al.          Expires 21 April 2021                 [Page 9]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
    struct {
@@ -557,9 +557,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                 [Page 10]
+Krawczyk, et al.          Expires 21 April 2021                [Page 10]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
    Client (idU, pwdU, skU, pkU)                 Server (skS, pkS)
@@ -613,9 +613,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                 [Page 11]
+Krawczyk, et al.          Expires 21 April 2021                [Page 11]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
    data  An encoded element in the OPRF group.  See
@@ -669,9 +669,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                 [Page 12]
+Krawczyk, et al.          Expires 21 April 2021                [Page 12]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
 CreateRegistrationResponse(request, pkS)
@@ -725,9 +725,9 @@ Steps:
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                 [Page 13]
+Krawczyk, et al.          Expires 21 April 2021                [Page 13]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
  FinalizeRequest(idU, pwdU, skU, metadata, request, response)
@@ -781,9 +781,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                 [Page 14]
+Krawczyk, et al.          Expires 21 April 2021                [Page 14]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
    OPAQUE security requires authentication for all "CredentialExtension"
@@ -837,9 +837,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                 [Page 15]
+Krawczyk, et al.          Expires 21 April 2021                [Page 15]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
  Client (idU, pwdU)                           Server (skS, pkS)
@@ -893,9 +893,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                 [Page 16]
+Krawczyk, et al.          Expires 21 April 2021                [Page 16]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
    data  An encoded element in the OPRF group.  See
@@ -949,9 +949,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                 [Page 17]
+Krawczyk, et al.          Expires 21 April 2021                [Page 17]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
 3.3.2.3.  RecoverCredentials(pwdU, metadata, request, response)
@@ -1005,9 +1005,9 @@ Steps:
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                 [Page 18]
+Krawczyk, et al.          Expires 21 April 2021                [Page 18]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
    The exporter_key MUST NOT be used in any way before the HMAC value in
@@ -1061,9 +1061,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                 [Page 19]
+Krawczyk, et al.          Expires 21 April 2021                [Page 19]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
    The generic outline of OPAQUE with a 3-message AKE protocol is as
@@ -1117,9 +1117,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                 [Page 20]
+Krawczyk, et al.          Expires 21 April 2021                [Page 20]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
    struct {
@@ -1173,9 +1173,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                 [Page 21]
+Krawczyk, et al.          Expires 21 April 2021                [Page 21]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
    *  The private and public keys of the parties in these examples are
@@ -1229,9 +1229,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                 [Page 22]
+Krawczyk, et al.          Expires 21 April 2021                [Page 22]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
    *  The inclusion of the values credential_request and
@@ -1285,9 +1285,9 @@ Ke3 = HKDF-Expand-Label(handshake_secret, "server enc", "", key_length)
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                 [Page 23]
+Krawczyk, et al.          Expires 21 April 2021                [Page 23]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
    The input parameter "IKM" is "Khmqv", where "Khmqv" is computed by
@@ -1341,9 +1341,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                 [Page 24]
+Krawczyk, et al.          Expires 21 April 2021                [Page 24]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
 4.3.  Instantiation with SIGMA-I
@@ -1397,9 +1397,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                 [Page 25]
+Krawczyk, et al.          Expires 21 April 2021                [Page 25]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
    *  OPRF(curve25519, SHA-512)
@@ -1453,9 +1453,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                 [Page 26]
+Krawczyk, et al.          Expires 21 April 2021                [Page 26]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
    account information sent by the user to the server prior to
@@ -1509,9 +1509,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                 [Page 27]
+Krawczyk, et al.          Expires 21 April 2021                [Page 27]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
 6.1.  Configuration Choice
@@ -1565,9 +1565,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                 [Page 28]
+Krawczyk, et al.          Expires 21 April 2021                [Page 28]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
    underlying group, validation is as specified in Section 5.6.2.3.4 of
@@ -1621,9 +1621,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                 [Page 29]
+Krawczyk, et al.          Expires 21 April 2021                [Page 29]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
    plaintext).  Care needs to be taken to avoid side channel leakage
@@ -1677,9 +1677,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                 [Page 30]
+Krawczyk, et al.          Expires 21 April 2021                [Page 30]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
    Some applications may require learning the user's password for
@@ -1733,9 +1733,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                 [Page 31]
+Krawczyk, et al.          Expires 21 April 2021                [Page 31]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
 9.2.  Informative References
@@ -1780,18 +1780,18 @@ Internet-Draft                   OPAQUE                   September 2020
    [I-D.irtf-cfrg-hash-to-curve]
               Faz-Hernandez, A., Scott, S., Sullivan, N., Wahby, R., and
               C. Wood, "Hashing to Elliptic Curves", Work in Progress,
-              Internet-Draft, draft-irtf-cfrg-hash-to-curve-09, 29 June
-              2020, <http://www.ietf.org/internet-drafts/draft-irtf-
-              cfrg-hash-to-curve-09.txt>.
+              Internet-Draft, draft-irtf-cfrg-hash-to-curve-10, 11
+              October 2020, <http://www.ietf.org/internet-drafts/draft-
+              irtf-cfrg-hash-to-curve-10.txt>.
 
 
 
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                 [Page 32]
+Krawczyk, et al.          Expires 21 April 2021                [Page 32]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
    [I-D.irtf-cfrg-voprf]
@@ -1845,9 +1845,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                 [Page 33]
+Krawczyk, et al.          Expires 21 April 2021                [Page 33]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
    [RFC7250]  Wouters, P., Ed., Tschofenig, H., Ed., Gilmore, J.,
@@ -1901,9 +1901,9 @@ Internet-Draft                   OPAQUE                   September 2020
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                 [Page 34]
+Krawczyk, et al.          Expires 21 April 2021                [Page 34]
 
-Internet-Draft                   OPAQUE                   September 2020
+Internet-Draft                   OPAQUE                     October 2020
 
 
 Appendix A.  Acknowledgments
@@ -1957,4 +1957,4 @@ Authors' Addresses
 
 
 
-Krawczyk, et al.          Expires 1 April 2021                 [Page 35]
+Krawczyk, et al.          Expires 21 April 2021                [Page 35]
