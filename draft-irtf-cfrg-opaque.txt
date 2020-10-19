@@ -5,7 +5,7 @@
 Network Working Group                                        H. Krawczyk
 Internet-Draft                                       Algorand Foundation
 Intended status: Informational                                   K. Lewi
-Expires: 22 April 2021                                              Novi
+Expires: 22 April 2021                                          Facebook
                                                                C.A. Wood
                                                               Cloudflare
                                                          19 October 2020
@@ -461,7 +461,7 @@ Internet-Draft                   OPAQUE                     October 2020
 
    struct {
      CredentialType type;
-     opaque data<0..2^16-1>;
+     CredentialData data<0..2^16-1>;
    } CredentialExtension;
 
    struct {
@@ -1925,7 +1925,7 @@ Authors' Addresses
 
 
    Kevin Lewi
-   Novi
+   Facebook
 
    Email: lewi.kevin.k@gmail.com
 
