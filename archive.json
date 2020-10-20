@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-10-06T00:50:04.920563+00:00",
+  "timestamp": "2020-10-20T00:55:12.780573+00:00",
   "repo": "cfrg/draft-irtf-cfrg-opaque",
   "labels": [
     {
@@ -911,16 +911,24 @@
       "id": "MDU6SXNzdWU3MTQ0MTcyNjc=",
       "title": "Envelope format in registration versus login",
       "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/62",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "kevinlewi",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Should this line (https://github.com/cfrg/draft-irtf-cfrg-opaque/blame/master/draft-irtf-cfrg-opaque.md#L583) be similar to this line (https://github.com/cfrg/draft-irtf-cfrg-opaque/blame/master/draft-irtf-cfrg-opaque.md#L787)?\r\n\r\nEither both should read `Envelope envelope;`, or both should read `opaque envelope<1..2^16-1>`, right?",
       "createdAt": "2020-10-04T22:37:27Z",
-      "updatedAt": "2020-10-04T22:41:16Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2020-10-20T00:47:44Z",
+      "closedAt": "2020-10-20T00:47:44Z",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Doh, yes, that's an error. Let's make them both the former (`Envelope envelope`). Can you please submit a PR to correct this?",
+          "createdAt": "2020-10-19T18:32:21Z",
+          "updatedAt": "2020-10-19T18:32:21Z"
+        }
+      ]
     },
     {
       "number": 63,
@@ -934,9 +942,76 @@
       "labels": [],
       "body": "Why is it necessary to [put pkS in the CredentialResponse struct](https://github.com/cfrg/draft-irtf-cfrg-opaque/blame/master/draft-irtf-cfrg-opaque.md#L788)?\r\n\r\nAccording to [this](https://github.com/cfrg/draft-irtf-cfrg-opaque/blame/master/draft-irtf-cfrg-opaque.md#L460-L464), pkS must be included within the envelope already. So, when the client parses the CredentialResponse struct, shouldn't it be able to obtain pkS from the envelope already?",
       "createdAt": "2020-10-05T01:47:20Z",
-      "updatedAt": "2020-10-05T01:47:20Z",
+      "updatedAt": "2020-10-19T22:23:30Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "That's a good question! I *think* it can probably be removed, but let's see what @hugokraw thinks?",
+          "createdAt": "2020-10-19T18:31:10Z",
+          "updatedAt": "2020-10-19T18:31:10Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I did not notice pkS is sent outside the envelope. Not only it would be redundant but pkS is the most important element to be authenticated as part of the envelope. Sending it outside may lead people to accept it without authentication.",
+          "createdAt": "2020-10-19T22:23:30Z",
+          "updatedAt": "2020-10-19T22:23:30Z"
+        }
+      ]
+    },
+    {
+      "number": 65,
+      "id": "MDU6SXNzdWU3MjQ0MDY5ODk=",
+      "title": "Omitting idU parameter in RegistrationRequest and CredentialRequest messages",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/65",
+      "state": "OPEN",
+      "author": "kevinlewi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The idU parameter is not used by the server when receiving the `RegistrationRequest` and `CredentialRequest` messages from the client. Can this parameter be omitted from the specification of these messages?\r\n\r\nIn theory, the server does need some \"username\" equivalent in order to look up the client's record, so this information does need to be sent, but I don't think it should be included in the OPAQUE messages, since it has no function within OPAQUE other than to set/retrieve the appropriate password file.\r\n\r\nPresumably, any wrapper protocol which uses OPAQUE will not want to look into the bytes of the OPAQUE messages in order to figure out what the username is.",
+      "createdAt": "2020-10-19T08:43:53Z",
+      "updatedAt": "2020-10-20T00:14:19Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Well, it needs to be included in the transcript for the AKEs, I think, so that's why it's part of the `CredentialRequest` message. ",
+          "createdAt": "2020-10-19T18:30:37Z",
+          "updatedAt": "2020-10-19T18:30:37Z"
+        },
+        {
+          "author": "kevinlewi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "The presence of idU is dependent on the AKE protocol used, and so even though it may get sent over as the first message of the AKE, shouldn't this be controlled by the specification of the AKE, and not the OPRF component?\r\n\r\nAlso, this is only for `CredentialRequest`, since `RegistrationRequest` does not use idU. I would be happy with delegating the specifying of idU to the AKE component.",
+          "createdAt": "2020-10-19T23:35:56Z",
+          "updatedAt": "2020-10-19T23:35:56Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> The presence of idU is dependent on the AKE protocol used, and so even though it may get sent over as the first message of the AKE, shouldn't this be controlled by the specification of the AKE, and not the OPRF component?\r\n\r\nThat's true. One thing I have in my implementation notes is whether we ought to include *both* `idU` and `pwdU` in the OPRF input, rather than just `pwdU`. Given that `kU` is unique per `idU`, this probably doesn't make a meaningful change in security, though I wonder if it's just cleaner aesthetically?\r\n\r\nI could go either way, I guess. I'm curious to hear what @hugokraw thinks.",
+          "createdAt": "2020-10-20T00:04:25Z",
+          "updatedAt": "2020-10-20T00:04:25Z"
+        },
+        {
+          "author": "kevinlewi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": ">  One thing I have in my implementation notes is whether we ought to include both idU and pwdU in the OPRF input, rather than just pwdU.\r\n\r\nThat is certainly a valid consideration, but regardless of whether or not this is changed, I believe we can still omit idU from the `RegistrationRequest` and `CredentialRequest` messages, since the server doesn't use them (except for in the AKE component potentially).",
+          "createdAt": "2020-10-20T00:09:22Z",
+          "updatedAt": "2020-10-20T00:09:22Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "True, though I wonder if that just complicates things. (I don't disagree with the proposal. I just need to think about it more.)",
+          "createdAt": "2020-10-20T00:14:18Z",
+          "updatedAt": "2020-10-20T00:14:18Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -3518,26 +3593,84 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NDk3NTQ0MTQ2",
       "title": "Fixing typo in CredentialExtension definition and updating affiliation",
       "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/64",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "kevinlewi",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "I believe the type of the parameter `data` in `CredentialExtension` should be `opaque`, since there is no `CredentialData` defined anywhere.\r\n\r\nAlso updating my affiliation",
       "createdAt": "2020-10-05T02:21:20Z",
-      "updatedAt": "2020-10-05T02:21:20Z",
+      "updatedAt": "2020-10-19T18:29:41Z",
       "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
       "baseRefName": "master",
       "baseRefOid": "3c9462c70a3f2966d0b2ab3cfd8dafc805fae563",
       "headRepository": "kevinlewi/draft-irtf-cfrg-opaque",
       "headRefName": "fix_typo_1",
       "headRefOid": "405d25a53e81a3a3e51207f543712330b37969e3",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2020-10-19T18:29:41Z",
+      "mergedAt": "2020-10-19T18:29:41Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "225bc77bec4a91c86519858ac20671fc6cd82aab"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTEyMDQ2NzE1",
+          "commit": {
+            "abbreviatedOid": "405d25a"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-10-19T18:29:35Z",
+          "updatedAt": "2020-10-19T18:29:35Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 66,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTA2MjE2MTYw",
+      "title": "Changing envelope representation in CredentialResponse",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/66",
+      "state": "MERGED",
+      "author": "kevinlewi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "See #62 ",
+      "createdAt": "2020-10-19T19:07:37Z",
+      "updatedAt": "2020-10-20T00:47:33Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "225bc77bec4a91c86519858ac20671fc6cd82aab",
+      "headRepository": "kevinlewi/draft-irtf-cfrg-opaque",
+      "headRefName": "fix_issue_62",
+      "headRefOid": "05d229212a21eb826abe1c9c7e29bff26d86b52b",
+      "closedAt": "2020-10-20T00:47:33Z",
+      "mergedAt": "2020-10-20T00:47:33Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "550c550ecdc86ce362d613afebad67ce186cae73"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTEyMjU0OTc4",
+          "commit": {
+            "abbreviatedOid": "05d2292"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-10-20T00:47:29Z",
+          "updatedAt": "2020-10-20T00:47:29Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
