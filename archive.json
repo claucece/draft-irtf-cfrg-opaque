@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-10-20T00:55:12.780573+00:00",
+  "timestamp": "2020-10-22T00:56:34.143736+00:00",
   "repo": "cfrg/draft-irtf-cfrg-opaque",
   "labels": [
     {
@@ -870,9 +870,17 @@
       "labels": [],
       "body": "It's currently set 32 bytes, which may be too much (?) in some circumstances. However, adding yet another parameter that applications must choose is not great. ",
       "createdAt": "2020-09-19T12:10:05Z",
-      "updatedAt": "2020-09-19T12:10:05Z",
+      "updatedAt": "2020-10-21T22:42:39Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "kevinlewi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I think it should be fine to keep this as 32 bytes, erroring on the side of safety without too much of a drawback.",
+          "createdAt": "2020-10-21T22:42:38Z",
+          "updatedAt": "2020-10-21T22:42:38Z"
+        }
+      ]
     },
     {
       "number": 59,
@@ -942,7 +950,7 @@
       "labels": [],
       "body": "Why is it necessary to [put pkS in the CredentialResponse struct](https://github.com/cfrg/draft-irtf-cfrg-opaque/blame/master/draft-irtf-cfrg-opaque.md#L788)?\r\n\r\nAccording to [this](https://github.com/cfrg/draft-irtf-cfrg-opaque/blame/master/draft-irtf-cfrg-opaque.md#L460-L464), pkS must be included within the envelope already. So, when the client parses the CredentialResponse struct, shouldn't it be able to obtain pkS from the envelope already?",
       "createdAt": "2020-10-05T01:47:20Z",
-      "updatedAt": "2020-10-19T22:23:30Z",
+      "updatedAt": "2020-10-21T22:35:57Z",
       "closedAt": null,
       "comments": [
         {
@@ -958,6 +966,13 @@
           "body": "I did not notice pkS is sent outside the envelope. Not only it would be redundant but pkS is the most important element to be authenticated as part of the envelope. Sending it outside may lead people to accept it without authentication.",
           "createdAt": "2020-10-19T22:23:30Z",
           "updatedAt": "2020-10-19T22:23:30Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Let's drop it. @kevinlewi, can you please prep a PR to do this?",
+          "createdAt": "2020-10-21T22:35:57Z",
+          "updatedAt": "2020-10-21T22:35:57Z"
         }
       ]
     },
@@ -973,7 +988,7 @@
       "labels": [],
       "body": "The idU parameter is not used by the server when receiving the `RegistrationRequest` and `CredentialRequest` messages from the client. Can this parameter be omitted from the specification of these messages?\r\n\r\nIn theory, the server does need some \"username\" equivalent in order to look up the client's record, so this information does need to be sent, but I don't think it should be included in the OPAQUE messages, since it has no function within OPAQUE other than to set/retrieve the appropriate password file.\r\n\r\nPresumably, any wrapper protocol which uses OPAQUE will not want to look into the bytes of the OPAQUE messages in order to figure out what the username is.",
       "createdAt": "2020-10-19T08:43:53Z",
-      "updatedAt": "2020-10-20T00:14:19Z",
+      "updatedAt": "2020-10-21T22:35:25Z",
       "closedAt": null,
       "comments": [
         {
@@ -1010,6 +1025,125 @@
           "body": "True, though I wonder if that just complicates things. (I don't disagree with the proposal. I just need to think about it more.)",
           "createdAt": "2020-10-20T00:14:18Z",
           "updatedAt": "2020-10-20T00:14:18Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Kevin, as you say correctly some form of user identity needs to be sent to the server for fetching the user's record. I would actually think that this transmission of identity is very much a role of the password authentication protocol, namely, OPAQUE. I can also see that this information may be transmitted in some other way (e.g., a wrapper) but I would not want to rely 100% on that possibility. Can we make the idU in the CredentialRequest message optional? Would that address your concern? \r\nThe setting in which the RegistrationRequest message acts is more complex as there are many issues involved in this case, particularly ways for the server to validate it is talking to the claimed user. In that case there may be a more complex wrapper. But even then, it feels that a support for a minimal implementation that  communicated idU from client to server could be supported. But in issues of implementation and deployment I  let you guys have the last word.\r\n\r\nAs for including idU under the OPRF input, I am ok with it. I am in favor of analyzing minimalistic protocols to understand what's the minimum elements the protocol's security requires. But I am happy to add elements that add robustness to the protocol (against misuse, etc.). I had examples in the past that I thought adding idU would be useful but I do not remember. It seems that if servers choose per-user kU (which they should) then adding idU does not add much value. Otoh, it makes idU more static as you cannot decide to change idU after registration (some websites would let you change userid)",
+          "createdAt": "2020-10-20T06:29:51Z",
+          "updatedAt": "2020-10-20T06:29:51Z"
+        },
+        {
+          "author": "huitseeker",
+          "authorAssociation": "NONE",
+          "body": "> some form of user identity needs to be sent to the server for fetching the user's record.\r\n\r\nI think this hinges on whether the protocol is described as a component of a session (L5+). It seems to me that this is one natural way of interpreting (or implementing) the Registration flow, on the one hand, and the Credential flow, on the other hand. During each of those, the idU parameter remains a constant.\r\n\r\nOnce the session parameters are determined \u2014 including of course the user's claim to identity (idU) \u2014 there is no need for the application to receive them again in further messages. The repetition would in fact no only consume bandwidth, but complicate implementation, by requiring a check that the idU value has indeed been kept constant on every message of a session, and demanding that the server emits a new error case if that session invariant is broken.\r\n\r\nHowever, such a re-transmission may be useful for auxiliary stateless tooling that does not have an understanding of a session, such as firewalls implementing packet filtering based on the idU field.\r\n\r\nWe've worked on implementation with a L7 in mind, but it's perfectly understandable that you could think of OPAQUE + KE as a lower-level initial session establishment protocol, in which case the stateless interpretation would make sense. \r\n\r\nAre there two recommendations to make to implementers here, depending on their use case?  \r\n\r\n",
+          "createdAt": "2020-10-20T18:23:51Z",
+          "updatedAt": "2020-10-20T18:24:26Z"
+        },
+        {
+          "author": "kevinlewi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Just to be extra clear -- the inefficiency I am highlighting is the fact that the idU parameter included by RegistrationRequest is never used by the OPAQUE server implementation. Leaving it out would have no impact on anything within OPAQUE. One could argue the use for it by a wrapper protocol, but then the wrapper protocol would need to inspect the bytes of the OPAQUE protocol in order to extract idU, which could change depending on the OPAQUE version, and in general does not seem like a good abstraction.\r\n\r\nFor CredentialRequest, the same is true, except that the AKE component may use idU. However, I believe we should include the idU in the \"first message of the key exchange\" if the specification for that key exchange so requires, rather than placing it next to the OPRF component where it may or may not be consumed by the AKE.\r\n\r\nBTW @hugokraw, I believe the idU parameter is already optional (since it can be specified as 0 bytes as per \"`opaque id<0..2^16-1>;`\"). The question I am asking is if we should remove the already-optional parameter from the message being sent from client to server.",
+          "createdAt": "2020-10-20T18:49:55Z",
+          "updatedAt": "2020-10-20T18:49:55Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I am not completely sure I understand the issue here. I can see that there are cases where sending IdU inside OPAQUE can be redundant or even complicate things. But I think that giving the option to send it as part of the OPAQUE messages is necessary for ensuring one standard way for signaling the userid information to the server when the wrapper/application around it is not doing so. If you take the ability to send userid completely out of OPAQUE, what would be the answer to people's question \"how is the client supposed to communicate the identity of the user to the server\"?. Would the answer be:  \"it is not OPAQUE's responsibility but rather the application/wrapper around it\"? \r\n\r\nA related issue is privacy of the user id/account information. If you send it as part of OPAQUE and you run OPAQUE inside a confidential channel, such as server-authenticated TLS, then you get that protection. If you send it by other means, you need to trust that this other means take care of privacy. \r\n\r\nOnce thing that is **for sure** is that the AKE needs to have a notion of identities agreed by both parties (agreement needs to be at the level of bit representation as these are input into the KDF) as verifying such agreement is a fundamental part of the AKE functionality. Since these identities will be known in most cases to the parties before the AKE starts (the server needs it to fetch the user's record and the user will typically have an identity of the server in order to contacting it), sending it in the AKE may be redundant in some/many cases. But I am ok with any decision here as long as we make sure this agreement on identities is established before running the authentication steps in the AKE.",
+          "createdAt": "2020-10-21T15:41:26Z",
+          "updatedAt": "2020-10-21T15:41:26Z"
+        },
+        {
+          "author": "kevinlewi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> I am not completely sure I understand the issue here. I can see that there are cases where sending IdU inside OPAQUE can be redundant or even complicate things. But I think that giving the option to send it as part of the OPAQUE messages is necessary for ensuring one standard way for signaling the userid information to the server when the wrapper/application around it is not doing so. If you take the ability to send userid completely out of OPAQUE, what would be the answer to people's question \"how is the client supposed to communicate the identity of the user to the server\"?. Would the answer be: \"it is not OPAQUE's responsibility but rather the application/wrapper around it\"?\r\n\r\nThat's correct, I am of the opinion that \"it is not OPAQUE's responsibility but rather the application/wrapper around it\"\r\n\r\n> A related issue is privacy of the user id/account information. If you send it as part of OPAQUE and you run OPAQUE inside a confidential channel, such as server-authenticated TLS, then you get that protection. If you send it by other means, you need to trust that this other means take care of privacy.\r\n> \r\n> Once thing that is **for sure** is that the AKE needs to have a notion of identities agreed by both parties (agreement needs to be at the level of bit representation as these are input into the KDF) as verifying such agreement is a fundamental part of the AKE functionality. Since these identities will be known in most cases to the parties before the AKE starts (the server needs it to fetch the user's record and the user will typically have an identity of the server in order to contacting it), sending it in the AKE may be redundant in some/many cases. But I am ok with any decision here as long as we make sure this agreement on identities is established before running the authentication steps in the AKE.\r\n\r\nAgreed on the AKE point. I am also ok with leaving it as an optional parameter in RegistrationRequest and CredentialRequest, but I do want to point out that this idU parameter is the only remaining parameter in the OPAQUE protocol which is sent over the wire, but the receiving party does not do anything with it (within the specification).\r\n\r\nTo me, the rule I'd like to follow is: the only code which should be interpreting / deserializing any bytes sent as part of the OPAQUE protocol is the OPAQUE code itself -- having a wrapper protocol attempt to do the deserialization may end up causing versioning / upgrading nightmares for these wrapper implementations. As such, I'd like to avoid the possibility of a wrapper call understanding the organization of bytes in the OPAQUE messages, and hence would lean towards completely omitting this idU in OPAQUE's RegistrationRequest and the core part (not the AKE part) of CredentialRequest.",
+          "createdAt": "2020-10-21T21:50:16Z",
+          "updatedAt": "2020-10-21T21:50:16Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@kevinlewi can you please prep a PR with this suggested change?",
+          "createdAt": "2020-10-21T22:35:24Z",
+          "updatedAt": "2020-10-21T22:35:24Z"
+        }
+      ]
+    },
+    {
+      "number": 67,
+      "id": "MDU6SXNzdWU3MjY4NjkzNTc=",
+      "title": "Allow OPRF context creation with external key",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/67",
+      "state": "OPEN",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This is more of an issue with the OPRF draft, but noting it here for now. The OPRF context constructor does not allow creation of a server with an existing key, which makes the OPRF credential response generation function somewhat annoying to implement. ",
+      "createdAt": "2020-10-21T21:16:22Z",
+      "updatedAt": "2020-10-21T21:16:22Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 68,
+      "id": "MDU6SXNzdWU3MjY4Njk4NTE=",
+      "title": "OPRF evaluation output",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/68",
+      "state": "OPEN",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The output of `Evaluate` in the OPRF draft is an `Evaluation` object, which has both a blinded and signed element, as well as a proof. We should either adopt that type here, or make it clear in our notation that the output of `Evaluate` is just the blinded and signed element.\r\n\r\nNote that this affects what's carried in a `RequestMetadata` struct. ",
+      "createdAt": "2020-10-21T21:17:15Z",
+      "updatedAt": "2020-10-21T21:17:57Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 69,
+      "id": "MDU6SXNzdWU3MjY4NzEwNjQ=",
+      "title": "Specify harden parameters",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/69",
+      "state": "OPEN",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Clients need a way to recover credential information during registration. So we should either (a) fix some Harden parameters, or (b) have servers send these during the registration and authentication flows. \r\n\r\n@kevinlewi, what do you think?",
+      "createdAt": "2020-10-21T21:19:22Z",
+      "updatedAt": "2020-10-22T00:01:18Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "kevinlewi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Can you clarify what you mean by (a)? If you mean to provide concrete settings, I think we may want to avoid that since these numbers can become out of date, and are application-dependent. For (b), I think we should avoid this as well, unless we start also deciding to send information about group representation / hash functions during these flows. Also, there is no way for the server to enforce that the client follows the harden parameters, and so these are at best recommendations.\r\n\r\nMy approach would be to allow for parameterizing the protocol based on harden parameters. So in the same way that we can have OPAQUE with Ristretto points versus Edwards, or OPAQUE with SHA3 versus Blake3, the choice of a hardened hash function should just be another parameter.",
+          "createdAt": "2020-10-21T22:12:30Z",
+          "updatedAt": "2020-10-21T22:12:30Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": ">  If you mean to provide concrete settings, I think we may want to avoid that since these numbers can become out of date, and are application-dependent. \r\n\r\nYeah, that's what I mean, and that's the risk. \r\n\r\n> My approach would be to allow for parameterizing the protocol based on harden parameters. So in the same way that we can have OPAQUE with Ristretto points versus Edwards, or OPAQUE with SHA3 versus Blake3, the choice of a hardened hash function should just be another parameter.\r\n\r\nI think there's generally too much flexibility in what's currently in the document. We have ciphersuites, configurations, optional parameters, etc. All of this runs the risk of making implementations challenging to get right. I would be in favor of something a bit more rigid. Could you please draft a PR to take care of this with your proposal? (This would also ideally address #58.)",
+          "createdAt": "2020-10-21T22:35:00Z",
+          "updatedAt": "2020-10-21T22:36:27Z"
+        },
+        {
+          "author": "kevinlewi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I might have misinterpreted, but I was not suggesting to modify the current proposal in any way, except to suggest that when producing test vectors, we have a set which instantiates Harden with a specific function.\r\n\r\nSo my proposal is to keep everything in the draft the same, and when presenting test vectors, we provide annotated options such as:\r\n- OPAQUE-X25519-3DH-SHA256-Scrypt10k,\r\n- OPAQUE-Ristretto255-SigmaI-Blake3-Argon2i100k,\r\n- etc.\r\n\r\nThis means that we will be supporting the increased flexibility that you may be against.\r\n\r\nBtw, while we are on the topic, the flexible parameters I am currently tracking are:\r\n- Group representation\r\n- Keypair format\r\n- AKE protocol\r\n- Hash function\r\n- Harden function\r\n\r\n(Also represented in code [here](https://github.com/novifinancial/opaque-ke/blob/master/src/ciphersuite.rs#L15-L23))\r\n\r\nLet me know if you think I am missing any others...",
+          "createdAt": "2020-10-21T22:48:43Z",
+          "updatedAt": "2020-10-21T22:48:43Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Those match my understanding, yeah. Do we really *need* this sort of flexibility? I'm not sure! \r\n\r\nThough, hmm... on reflection, why are the parameters of Harden something the configuration (server?) ought to specify at all?",
+          "createdAt": "2020-10-22T00:01:18Z",
+          "updatedAt": "2020-10-22T00:01:18Z"
         }
       ]
     }
@@ -3671,6 +3805,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 70,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTA3ODgyNjY4",
+      "title": "Add a preliminary Sage implementation with many TODOs",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/70",
+      "state": "OPEN",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This gets us started towards test vectors, with something that's \"as close\" to the specification as possible. There's definitely lots of ways this can be improved, including adding proper configuration and agility support, supporting different credentials in client and server, implementing a proper password file, etc. If this generally seems useful, we can add these missing pieces and then wrap it with code that generates test vectors from a variety of flows. \r\n\r\nNote that this *does not* have AKE integration. It only implements the OPAQUE core protocol. For the specification, I wonder if it makes sense to include test vectors for both the core protocol and AKE instantiations. \r\n\r\n@kevinlewi, please have a look!",
+      "createdAt": "2020-10-21T21:47:26Z",
+      "updatedAt": "2020-10-21T21:47:26Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "550c550ecdc86ce362d613afebad67ce186cae73",
+      "headRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "headRefName": "caw/ref-impl",
+      "headRefOid": "dbfb4c2d52519f01ed14fc440e28858c9a9485c8",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
