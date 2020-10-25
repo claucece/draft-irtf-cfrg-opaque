@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-10-22T00:56:34.143736+00:00",
+  "timestamp": "2020-10-25T00:59:31.481903+00:00",
   "repo": "cfrg/draft-irtf-cfrg-opaque",
   "labels": [
     {
@@ -988,7 +988,7 @@
       "labels": [],
       "body": "The idU parameter is not used by the server when receiving the `RegistrationRequest` and `CredentialRequest` messages from the client. Can this parameter be omitted from the specification of these messages?\r\n\r\nIn theory, the server does need some \"username\" equivalent in order to look up the client's record, so this information does need to be sent, but I don't think it should be included in the OPAQUE messages, since it has no function within OPAQUE other than to set/retrieve the appropriate password file.\r\n\r\nPresumably, any wrapper protocol which uses OPAQUE will not want to look into the bytes of the OPAQUE messages in order to figure out what the username is.",
       "createdAt": "2020-10-19T08:43:53Z",
-      "updatedAt": "2020-10-21T22:35:25Z",
+      "updatedAt": "2020-10-22T15:08:19Z",
       "closedAt": null,
       "comments": [
         {
@@ -1067,6 +1067,13 @@
           "body": "@kevinlewi can you please prep a PR with this suggested change?",
           "createdAt": "2020-10-21T22:35:24Z",
           "updatedAt": "2020-10-21T22:35:24Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I said in a previous post in this thread:\r\n> I had examples in the past that I thought adding idU [in the OPRF input, in addition to the password] would be useful but I do not remember\r\n\r\nSo now I remembered: It helps against an online attack where the attacker poses as the server with its own chosen value k*. If only pwd is included then, the attacker can build a universal dictionary of values H(pwd)^k* for all pwd in a dictionary and use it against any user to check the client response. On the other hand, if idU is included under H then the attacker needs to build a dictionary per idU.  This would mean that at login and before talking to the server, the client knows a value of idU that was set at registration. If this is considered too problematic, one can live with the above issue as online attacks, particularly from the server side are not so damaging (I think). One can also include the server identity under H as may always be needed by the client in order to contact the server.",
+          "createdAt": "2020-10-22T15:08:19Z",
+          "updatedAt": "2020-10-22T15:08:19Z"
         }
       ]
     },
@@ -1098,9 +1105,17 @@
       "labels": [],
       "body": "The output of `Evaluate` in the OPRF draft is an `Evaluation` object, which has both a blinded and signed element, as well as a proof. We should either adopt that type here, or make it clear in our notation that the output of `Evaluate` is just the blinded and signed element.\r\n\r\nNote that this affects what's carried in a `RequestMetadata` struct. ",
       "createdAt": "2020-10-21T21:17:15Z",
-      "updatedAt": "2020-10-21T21:17:57Z",
+      "updatedAt": "2020-10-22T14:41:01Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Aside from the specification issues, I would explicitly note (if not done yet) that we use the OPRF without proof/verifiability. Doing so would require the user to carry the g^kU value with him/her contradicting the password-only property of OPAQUE.",
+          "createdAt": "2020-10-22T14:41:01Z",
+          "updatedAt": "2020-10-22T14:41:01Z"
+        }
+      ]
     },
     {
       "number": 69,
@@ -1114,7 +1129,7 @@
       "labels": [],
       "body": "Clients need a way to recover credential information during registration. So we should either (a) fix some Harden parameters, or (b) have servers send these during the registration and authentication flows. \r\n\r\n@kevinlewi, what do you think?",
       "createdAt": "2020-10-21T21:19:22Z",
-      "updatedAt": "2020-10-22T00:01:18Z",
+      "updatedAt": "2020-10-22T17:17:09Z",
       "closedAt": null,
       "comments": [
         {
@@ -1144,6 +1159,58 @@
           "body": "Those match my understanding, yeah. Do we really *need* this sort of flexibility? I'm not sure! \r\n\r\nThough, hmm... on reflection, why are the parameters of Harden something the configuration (server?) ought to specify at all?",
           "createdAt": "2020-10-22T00:01:18Z",
           "updatedAt": "2020-10-22T00:01:18Z"
+        },
+        {
+          "author": "kevinlewi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Agreed, I don't think the specification needs to specify the parameters of Harden, but an implementation may want to provide options for configuring them.",
+          "createdAt": "2020-10-22T01:15:24Z",
+          "updatedAt": "2020-10-22T01:15:24Z"
+        },
+        {
+          "author": "kevinlewi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "After some offline discussion, we have settled on the following as the main point of discussion:\r\n\r\nLet's suppose a client registers their password using a particular hardening function. How should the client on login know what parameters for the hardening function to use? Two potential options:\r\n1) This shouldn't be part of the OPAQUE protocol, and it should be the responsibility of the wrapping protocol to ensure that the login surface's hardening parameters match those of registration, or to optionally store an annotation at registration time to help inform what parameters to use for login.\r\n2) This should be incorporated into OPAQUE, potentially through an extra client-specified field that can be stored alongside the password file.\r\n\r\nIf we go with Option 2, there are more follow-up questions, such as whether or not this field should be free-form, if it should be authenticated, etc.\r\n\r\ncc: @chris-wood",
+          "createdAt": "2020-10-22T02:42:14Z",
+          "updatedAt": "2020-10-22T02:42:14Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "If the hardening parameters are transmitted from server to client, it would be better to authenticate them, or otherwise a cheating server can either apply a DoS attack on the client by sending extremely large parameters or help in a dictionary attack with small parameters (the latter would only apply to an online attack posing as the server).",
+          "createdAt": "2020-10-22T14:58:20Z",
+          "updatedAt": "2020-10-22T14:58:20Z"
+        },
+        {
+          "author": "huitseeker",
+          "authorAssociation": "NONE",
+          "body": "I vote for option 1: This shouldn't be part of the OPAQUE protocol. While it's one of the strengths of the abstract protocol to be generic, in practice deployments will be content with one particular suite of sub-protocols (for each of the available choices). \r\n\r\nAllowing the server to fix a set of choices without any further variability in messages avoids the headache of downgrade attacks.",
+          "createdAt": "2020-10-22T17:17:09Z",
+          "updatedAt": "2020-10-22T17:17:09Z"
+        }
+      ]
+    },
+    {
+      "number": 72,
+      "id": "MDU6SXNzdWU3MjY5OTM2MDk=",
+      "title": "Why does FinalizeRequest take in idU as a parameter?",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/72",
+      "state": "OPEN",
+      "author": "kevinlewi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "According to [this](https://github.com/cfrg/draft-irtf-cfrg-opaque/blame/master/draft-irtf-cfrg-opaque.md#L651), idU is used to construct FinalizeRequest, despite it only being applicable if the application decides to include it in the Credentials struct: > \"Applications may optionally include\r\n> `pkU`, `idU`, or `idS` in the `Credentials.cleartext_credentials` structure, or in\r\n> `Credentials.secret_credentials` if secrecy of these values is desired.\"\r\n\r\nBut if this is the case, then why not also make idS and pkU parameters to FinalizeRequest as well?\r\n\r\nSame goes for RecoverCredentials. Either they should take in all of these optional parameters as inputs, or they should not include any of them.",
+      "createdAt": "2020-10-22T02:32:52Z",
+      "updatedAt": "2020-10-23T21:09:43Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Proposal: remove application-specific credential information from the parameter list, and call out to the application to build `Credentials` based on the server's `secret` and `cleartext` list.",
+          "createdAt": "2020-10-23T21:09:43Z",
+          "updatedAt": "2020-10-23T21:09:43Z"
         }
       ]
     }
@@ -3825,6 +3892,74 @@
       "headRepository": "cfrg/draft-irtf-cfrg-opaque",
       "headRefName": "caw/ref-impl",
       "headRefOid": "dbfb4c2d52519f01ed14fc440e28858c9a9485c8",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 71,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTA3OTU3MDY4",
+      "title": "Remove pkS from CredentialResponse",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/71",
+      "state": "MERGED",
+      "author": "kevinlewi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "See #63 ",
+      "createdAt": "2020-10-22T01:42:06Z",
+      "updatedAt": "2020-10-23T21:04:21Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "550c550ecdc86ce362d613afebad67ce186cae73",
+      "headRepository": "kevinlewi/draft-irtf-cfrg-opaque",
+      "headRefName": "fix_issue_63",
+      "headRefOid": "dddf8300098fcd9aa71c4c54b0fa5e801008553d",
+      "closedAt": "2020-10-23T21:04:20Z",
+      "mergedAt": "2020-10-23T21:04:20Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "630173e46eaff00862dbb8446aa8a3c0b0bed8d1"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTE2MDA5NTEz",
+          "commit": {
+            "abbreviatedOid": "dddf830"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-10-23T21:04:16Z",
+          "updatedAt": "2020-10-23T21:04:16Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 73,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTA3OTcxMjYz",
+      "title": "Omitting idU from RegistrationRequest and CredentialRequest",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/73",
+      "state": "OPEN",
+      "author": "kevinlewi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This removes the inclusion of idU from RegistrationRequest and CredentialRequest (see #65)\r\n\r\nI also noticed that the functions `RecoverCredentials` and `FinalizeRequest` should either not take idU, or should take idU, idS, and pkU as parameters. In this PR I simply made RecoverCredentials also take idU as a parameter, but I opened #72 to discuss this further.",
+      "createdAt": "2020-10-22T02:33:22Z",
+      "updatedAt": "2020-10-22T02:33:22Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "550c550ecdc86ce362d613afebad67ce186cae73",
+      "headRepository": "kevinlewi/draft-irtf-cfrg-opaque",
+      "headRefName": "fix_issue_65",
+      "headRefOid": "d1201f48baab1974997b0002eee66c82841f7ce8",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
