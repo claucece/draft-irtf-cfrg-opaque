@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-10-25T00:59:31.481903+00:00",
+  "timestamp": "2020-10-27T00:58:18.103444+00:00",
   "repo": "cfrg/draft-irtf-cfrg-opaque",
   "labels": [
     {
@@ -943,15 +943,15 @@
       "id": "MDU6SXNzdWU3MTQ0NTQ0NjY=",
       "title": "Extraneous parameter pkS in CredentialResponse",
       "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/63",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "kevinlewi",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Why is it necessary to [put pkS in the CredentialResponse struct](https://github.com/cfrg/draft-irtf-cfrg-opaque/blame/master/draft-irtf-cfrg-opaque.md#L788)?\r\n\r\nAccording to [this](https://github.com/cfrg/draft-irtf-cfrg-opaque/blame/master/draft-irtf-cfrg-opaque.md#L460-L464), pkS must be included within the envelope already. So, when the client parses the CredentialResponse struct, shouldn't it be able to obtain pkS from the envelope already?",
       "createdAt": "2020-10-05T01:47:20Z",
-      "updatedAt": "2020-10-21T22:35:57Z",
-      "closedAt": null,
+      "updatedAt": "2020-10-26T21:45:05Z",
+      "closedAt": "2020-10-26T21:45:05Z",
       "comments": [
         {
           "author": "chris-wood",
