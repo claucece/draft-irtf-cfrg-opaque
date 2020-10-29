@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-10-27T00:58:18.103444+00:00",
+  "timestamp": "2020-10-29T00:59:59.466840+00:00",
   "repo": "cfrg/draft-irtf-cfrg-opaque",
   "labels": [
     {
@@ -71,16 +71,24 @@
       "id": "MDU6SXNzdWU2MjAyNDg5NTU=",
       "title": "Move security property discussion to considerations section",
       "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/3",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "chris-wood",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "This will shorten the introduction and help readers get straight to the protocol details. HPKE does a good job with this sort of structure, so we might look there as a guide.",
       "createdAt": "2020-05-18T14:19:28Z",
-      "updatedAt": "2020-05-18T14:19:28Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2020-10-28T13:03:22Z",
+      "closedAt": "2020-10-28T13:03:22Z",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This has since been done.",
+          "createdAt": "2020-10-28T13:03:22Z",
+          "updatedAt": "2020-10-28T13:03:22Z"
+        }
+      ]
     },
     {
       "number": 4,
@@ -94,7 +102,7 @@
       "labels": [],
       "body": "Should we clarify how much trust we place in the server? For example, since OPAQUE stores encrypted keys in the server, and that same server has the OPRF secret key, it could in theory do a dictionary attack and recover the private key for each user. This is pretty nonsensical, but I think it does highlight that OPAQUE assumes the server is honest-but-curious, rather than entirely malicious.\r\n\r\nThis is sort of fundamental, but some folks might miss it.",
       "createdAt": "2020-05-18T14:19:58Z",
-      "updatedAt": "2020-05-18T14:19:58Z",
+      "updatedAt": "2020-10-28T13:03:01Z",
       "closedAt": null,
       "comments": []
     },
@@ -142,7 +150,7 @@
       "labels": [],
       "body": "Endpoints MUST agree on these identities (and use the right values!) for security. ",
       "createdAt": "2020-05-18T14:27:09Z",
-      "updatedAt": "2020-05-18T14:27:09Z",
+      "updatedAt": "2020-10-28T13:03:01Z",
       "closedAt": null,
       "comments": []
     },
@@ -212,7 +220,7 @@
       "labels": [],
       "body": "The DST might include the \"RFCXXXX\" identifier, similar to what we did for HPKE.",
       "createdAt": "2020-05-21T18:16:49Z",
-      "updatedAt": "2020-05-21T18:16:49Z",
+      "updatedAt": "2020-10-28T13:03:01Z",
       "closedAt": null,
       "comments": []
     },
@@ -606,7 +614,7 @@
       "labels": [],
       "body": "At the end of the `#protocol-messages` section is a description of the envelope structure as seen here:\r\n\r\n```\r\nOPAQUE uses an `Envelope` structure to encapsulate an encrypted `Credentials` structure.\r\nIt is encoded as follows.\r\n\r\n~~~\r\nstruct {\r\n  opaque nonce[32];\r\n  opaque ct<1..2^16-1>;\r\n  opaque auth_data<0..2^16-1>;\r\n  opaque auth_tag<1..2^16-1>;\r\n} Envelope;\r\n~~~\r\n\r\nnonce\r\n: A unique 32-byte nonce used to protect this Envelope.\r\n\r\nct\r\n: Encoding of encrypted and authenticated credential extensions list.\r\n\r\nauth_data\r\n: Encoding of an authenticated credential extensions list.\r\n\r\nauth_tag\r\n: Authentication tag protecting the contents of the envelope.\r\n```\r\n\r\nas an implementer of opaque (see here https://github.com/stef/libsphinx/blob/master/src/opaque.c) i wonder how to parse this structure when both fields might be of variable length. In such a case it is useful to have the lengths included in the auth_data section at known offsets of the envelope. hence i propose to move the auth_data section infront of the ct section, either at the very beginning before the nonce, or between the nonce and the ct, in both cases an instantiation of the protocol can decide to include the lengths at known offsets and will be able to parse the envelope, even if this means that these lengths are used before they are authenticated.",
       "createdAt": "2020-09-01T22:25:34Z",
-      "updatedAt": "2020-09-04T20:02:15Z",
+      "updatedAt": "2020-10-28T13:03:02Z",
       "closedAt": null,
       "comments": [
         {
@@ -863,15 +871,15 @@
       "id": "MDU6SXNzdWU3MDQ4NzA5ODM=",
       "title": "Should the nonce length be a parameter?",
       "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/58",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "chris-wood",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "It's currently set 32 bytes, which may be too much (?) in some circumstances. However, adding yet another parameter that applications must choose is not great. ",
       "createdAt": "2020-09-19T12:10:05Z",
-      "updatedAt": "2020-10-21T22:42:39Z",
-      "closedAt": null,
+      "updatedAt": "2020-10-28T13:05:35Z",
+      "closedAt": "2020-10-28T13:05:34Z",
       "comments": [
         {
           "author": "kevinlewi",
@@ -879,6 +887,13 @@
           "body": "I think it should be fine to keep this as 32 bytes, erroring on the side of safety without too much of a drawback.",
           "createdAt": "2020-10-21T22:42:38Z",
           "updatedAt": "2020-10-21T22:42:38Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I applied this directly on main. Closing.",
+          "createdAt": "2020-10-28T13:05:34Z",
+          "updatedAt": "2020-10-28T13:05:34Z"
         }
       ]
     },
@@ -894,7 +909,7 @@
       "labels": [],
       "body": "Currently, SHA-512 is used for all OPRF suites, which is quite excessive. (This is more an issue against the OPRF draft, I'm but filing it here to track the change in our doc.)",
       "createdAt": "2020-09-25T18:56:57Z",
-      "updatedAt": "2020-09-25T18:56:57Z",
+      "updatedAt": "2020-10-28T13:03:02Z",
       "closedAt": null,
       "comments": []
     },
@@ -903,16 +918,24 @@
       "id": "MDU6SXNzdWU3MDkyMTEyOTc=",
       "title": "Consider adding a registry",
       "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/60",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "chris-wood",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "The configurations are rather loosely defined. A registry that allows one to encode an entire configuration (AKE, OPRF, MHF, etc) could be useful. ",
       "createdAt": "2020-09-25T18:57:48Z",
-      "updatedAt": "2020-09-25T18:57:48Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2020-10-28T13:05:48Z",
+      "closedAt": "2020-10-28T13:05:48Z",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Nevermind! Closing.",
+          "createdAt": "2020-10-28T13:05:48Z",
+          "updatedAt": "2020-10-28T13:05:48Z"
+        }
+      ]
     },
     {
       "number": 62,
@@ -981,15 +1004,15 @@
       "id": "MDU6SXNzdWU3MjQ0MDY5ODk=",
       "title": "Omitting idU parameter in RegistrationRequest and CredentialRequest messages",
       "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/65",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "kevinlewi",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "The idU parameter is not used by the server when receiving the `RegistrationRequest` and `CredentialRequest` messages from the client. Can this parameter be omitted from the specification of these messages?\r\n\r\nIn theory, the server does need some \"username\" equivalent in order to look up the client's record, so this information does need to be sent, but I don't think it should be included in the OPAQUE messages, since it has no function within OPAQUE other than to set/retrieve the appropriate password file.\r\n\r\nPresumably, any wrapper protocol which uses OPAQUE will not want to look into the bytes of the OPAQUE messages in order to figure out what the username is.",
       "createdAt": "2020-10-19T08:43:53Z",
-      "updatedAt": "2020-10-22T15:08:19Z",
-      "closedAt": null,
+      "updatedAt": "2020-10-28T18:59:13Z",
+      "closedAt": "2020-10-28T18:59:13Z",
       "comments": [
         {
           "author": "chris-wood",
@@ -1089,7 +1112,7 @@
       "labels": [],
       "body": "This is more of an issue with the OPRF draft, but noting it here for now. The OPRF context constructor does not allow creation of a server with an existing key, which makes the OPRF credential response generation function somewhat annoying to implement. ",
       "createdAt": "2020-10-21T21:16:22Z",
-      "updatedAt": "2020-10-21T21:16:22Z",
+      "updatedAt": "2020-10-28T13:03:02Z",
       "closedAt": null,
       "comments": []
     },
@@ -1105,7 +1128,7 @@
       "labels": [],
       "body": "The output of `Evaluate` in the OPRF draft is an `Evaluation` object, which has both a blinded and signed element, as well as a proof. We should either adopt that type here, or make it clear in our notation that the output of `Evaluate` is just the blinded and signed element.\r\n\r\nNote that this affects what's carried in a `RequestMetadata` struct. ",
       "createdAt": "2020-10-21T21:17:15Z",
-      "updatedAt": "2020-10-22T14:41:01Z",
+      "updatedAt": "2020-10-28T13:03:03Z",
       "closedAt": null,
       "comments": [
         {
@@ -1129,7 +1152,7 @@
       "labels": [],
       "body": "Clients need a way to recover credential information during registration. So we should either (a) fix some Harden parameters, or (b) have servers send these during the registration and authentication flows. \r\n\r\n@kevinlewi, what do you think?",
       "createdAt": "2020-10-21T21:19:22Z",
-      "updatedAt": "2020-10-22T17:17:09Z",
+      "updatedAt": "2020-10-28T13:03:03Z",
       "closedAt": null,
       "comments": [
         {
@@ -1195,15 +1218,15 @@
       "id": "MDU6SXNzdWU3MjY5OTM2MDk=",
       "title": "Why does FinalizeRequest take in idU as a parameter?",
       "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/72",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "kevinlewi",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "According to [this](https://github.com/cfrg/draft-irtf-cfrg-opaque/blame/master/draft-irtf-cfrg-opaque.md#L651), idU is used to construct FinalizeRequest, despite it only being applicable if the application decides to include it in the Credentials struct: > \"Applications may optionally include\r\n> `pkU`, `idU`, or `idS` in the `Credentials.cleartext_credentials` structure, or in\r\n> `Credentials.secret_credentials` if secrecy of these values is desired.\"\r\n\r\nBut if this is the case, then why not also make idS and pkU parameters to FinalizeRequest as well?\r\n\r\nSame goes for RecoverCredentials. Either they should take in all of these optional parameters as inputs, or they should not include any of them.",
       "createdAt": "2020-10-22T02:32:52Z",
-      "updatedAt": "2020-10-23T21:09:43Z",
-      "closedAt": null,
+      "updatedAt": "2020-10-28T18:59:00Z",
+      "closedAt": "2020-10-28T18:59:00Z",
       "comments": [
         {
           "author": "chris-wood",
@@ -1211,6 +1234,260 @@
           "body": "Proposal: remove application-specific credential information from the parameter list, and call out to the application to build `Credentials` based on the server's `secret` and `cleartext` list.",
           "createdAt": "2020-10-23T21:09:43Z",
           "updatedAt": "2020-10-23T21:09:43Z"
+        }
+      ]
+    },
+    {
+      "number": 74,
+      "id": "MDU6SXNzdWU3MzAwNzYyODg=",
+      "title": "Clarifying optional versus required parameters in the AKE section",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/74",
+      "state": "OPEN",
+      "author": "kevinlewi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "In this [section on AKE](https://github.com/cfrg/draft-irtf-cfrg-opaque/blame/master/draft-irtf-cfrg-opaque.md#L1008-L1014), we should clear up exactly which parameters are required and which are optional. Then we can also work towards defining a wire format for these AKEs if necessary.\r\n\r\nA couple of concrete questions:\r\n1) Can we simply set idU = static pkU and idS = static pkS?\r\n2) Can we remove mention of all of the following: info1*, info2*, Einfo2*, info3*, Einfo3*?\r\n",
+      "createdAt": "2020-10-27T03:42:24Z",
+      "updatedAt": "2020-10-29T00:06:50Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> 1. Can we simply set idU = static pkU and idS = static pkS?\r\n\r\nThis had been discussed in the past, and I think it depends on whether or not there exists a secure binding between the public key(s) and corresponding identity. (And that seems mostly external to the protocol.) I need to think about this more. @hugokraw probably also has opinions. :-)\r\n\r\n> 2. Can we remove mention of all of the following: info1*, info2*, Einfo2*, info3*, Einfo3*?\r\n\r\nThese fields exist to make the AKE instantiation more generic, e.g., maybe `info1` contains the client's set of application protocols run on top of the AKE. I think we should remove them, since applications that need this flexibility should be using TLS. I view the 3DH and SIGMA-I variants as minimalist OPAQUE instantiations. ",
+          "createdAt": "2020-10-28T13:01:30Z",
+          "updatedAt": "2020-10-28T13:01:30Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Regarding point 1: In general, identities refer to logical entities on the basis of which policy decisions by the receiving party are made (do I want to talk to this identity, under what security level, which access rights, etc.) A public key may be used as an identity but most of the time it is not (e.g. , it is the subject in a certificate rather than the public key). In the case of OPAQUE,  using public keys may be more acceptable since those are fixed after registration and the client authenticates the server's public key via the password. I am not sure if this means that the client will never need to make decisions based on the server's logical identity but I do not see an obvious setting where this is the case. However, note that in the three protocols in the draft, the client does not use the user's public key. So if we are going to use it then we either send it as part of the authenticated information in the envelope or require the client to re-compute it from the user's private key at the cost of an exponentiation.",
+          "createdAt": "2020-10-28T16:28:57Z",
+          "updatedAt": "2020-10-28T16:28:57Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Regarding point 2: We want these AKEs to be minimalistic but not useless. I do not see the case of any key exchange protocol that does not require sending some additional setting-specific information in its flows. Instead of having these fields named specifically, you may define some extensibility mechanism to transport additional information, but some mechanism for that must exist.",
+          "createdAt": "2020-10-28T16:31:11Z",
+          "updatedAt": "2020-10-28T16:31:11Z"
+        },
+        {
+          "author": "kevinlewi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Thank you for the comments!\r\n\r\nFor point 1: I would be in favor of requiring the client to re-compute the user's public key from its private key at the cost of an exponentiation, if it means that we do not need to send idU over the wire for the KE1 message. Similarly, for idS, since the server's public key is already required to be a part of the authenticated envelope, I would be in favor of omitting idS from the KE2 message as well (it is not currently there but just in case that comes up).\r\n\r\nFor point 2: Fair enough, we can keep them as optional parameters, but just to double-check, for the sake of minimalism: do you think we need both the plaintext variants (info1*, info2*, info3*) in addition to the encrypted variants (Einfo2*, Einfo3*), or would one set of these suffice?",
+          "createdAt": "2020-10-28T18:56:53Z",
+          "updatedAt": "2020-10-28T18:56:53Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Regarding point 2, why can't applications send info *after* the AKE completes? (I understand that it burns a round trip, but that seems preferable to additional complexity in the AKE protocol itself.) In other words, an AKE without application slots is *not* useless. It's minimal, and allows applications to build whatever it is they need on top. \r\n\r\nSimply put, absent a specific use case for extensions, I'm not convinced they need to exist. ",
+          "createdAt": "2020-10-28T19:15:02Z",
+          "updatedAt": "2020-10-28T19:16:19Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The plaintext info field may be needed to transport information needed to select the algorithms and type of protection applied by the AKE and cannot be postponed to after the end of the AKE. The encrypted info field may be needed to transport information that requires privacy. I am all for simplifying wherever possible but I also want a usable specification. Eliminating all information beyond the core crypt operations does not seem to lead to such usable specification.  \r\n\r\nI am ok with letting pkU and pkS act as identities but I can also see implementations that would prefer to use something like a uid@site.dom as idU and save the computation of pkU. Would you be ok with having the id's be optional elements in the envelope (but omitted from the AKE messages)? \r\n ",
+          "createdAt": "2020-10-28T22:10:20Z",
+          "updatedAt": "2020-10-28T22:10:20Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> The plaintext info field may be needed to transport information needed to select the algorithms and type of protection applied by the AKE and cannot be postponed to after the end of the AKE. \r\n\r\nI'm not sure I agree with this. If cryptographic algorithm negotiation is needed for the AKE, then we should specify the mechanics to do that. We shouldn't just provide a generic slot for application info and punt the problem downstream. (Or, put differently, leaving just `info` and assuming it'll be used for cryptographic algorithm negotiation is an underspecified AKE, and not something applications can implement safely or correctly on their own.)\r\n\r\n> The encrypted info field may be needed to transport information that requires privacy. \r\n\r\nIf privacy is required, this information can be sent after the AKE completes. Why does it need to be done in-band?\r\n\r\n> I am all for simplifying wherever possible but I also want a usable specification. Eliminating all information beyond the core crypt operations does not seem to lead to such usable specification.\r\n\r\nI think it's the opposite. If we keep the specification as minimal as I'm advocating for, then applications are free to use the AKE's output however they want. ",
+          "createdAt": "2020-10-28T22:22:40Z",
+          "updatedAt": "2020-10-28T22:24:12Z"
+        },
+        {
+          "author": "kevinlewi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> Would you be ok with having the id's be optional elements in the envelope (but omitted from the AKE messages)?\r\n\r\nI believe idU and idS can already be specified as optional elements in the envelope (see [here](https://github.com/cfrg/draft-irtf-cfrg-opaque/blame/master/draft-irtf-cfrg-opaque.md#L438-L439)), and so I would be happy to go with omitting them from the AKE messages.",
+          "createdAt": "2020-10-28T22:29:19Z",
+          "updatedAt": "2020-10-28T22:29:19Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> > Would you be ok with having the id's be optional elements in the envelope (but omitted from the AKE messages)?\r\n> \r\n> I believe idU and idS can already be specified as optional elements in the envelope (see [here](https://github.com/cfrg/draft-irtf-cfrg-opaque/blame/master/draft-irtf-cfrg-opaque.md#L438-L439)), and so I would be happy to go with omitting them from the AKE messages.\r\n\r\nOk. So we can eliminate them from the AKE messages but have an explicit specification that the values idU and idS in the KDF are those specified in the envelope or, if omitted there, then pkU and pkS  (with a note that pkU will need to be computed by the client if not transmitted in the envelope).\r\n\r\n\r\n",
+          "createdAt": "2020-10-28T22:32:38Z",
+          "updatedAt": "2020-10-28T22:32:38Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> I think it's the opposite. If we keep the specification as minimal as I'm advocating for, then applications are free to use the AKE's output however they want.\r\n\r\nThe are always free to use the AKE output however they want. The question is whether they will have enough information to run and complete the AKE if they cannot send more than the bare cryptographic elements during the AKE. \r\n",
+          "createdAt": "2020-10-28T22:37:09Z",
+          "updatedAt": "2020-10-28T22:37:09Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> The are always free to use the AKE output however they want. The question is whether they will have enough information to run and complete the AKE if they cannot send more than the bare cryptographic elements during the AKE.\r\n\r\nAs specified currently, and ignoring the `info` fields, is this the case? If so, shouldn't we specify everything that's needed to complete the AKE in this spec? I don't see how we can punt on that!",
+          "createdAt": "2020-10-28T22:38:55Z",
+          "updatedAt": "2020-10-28T22:38:55Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> As specified currently, and ignoring the `info` fields, is this the case? If so, shouldn't we specify everything that's needed to complete the AKE in this spec? I don't see how we can punt on that!\r\n\r\nI am thinking of these AKEs as something people will need to customize to their application/setting. The usage by Facebook and the ones by AWS are very different and they will need to fill in the details according to their needs.",
+          "createdAt": "2020-10-28T22:44:40Z",
+          "updatedAt": "2020-10-28T22:44:40Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "If it helps (I am not fully convinced), I am ok with removing info and einfo in the current description, and instead adding language saying that what is shown is the minimal cryptographic skeleton and that applications may need to transport additional information as part of the AKE. In such a case, any information transmitted as part of the AKE messages must be included in the transcript fields (that are mac-ed in 3DH/HMQV and signed in SIGMA).  In addition, we specify the derivation of authenticated encryption keys (denote Ke2, Ke3) to be used for confidentiality protection of elements in the transcript that require such protection.",
+          "createdAt": "2020-10-28T23:07:17Z",
+          "updatedAt": "2020-10-28T23:07:17Z"
+        },
+        {
+          "author": "kevinlewi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Since the discussion on point #2 seems to be around either: leaving in the optional parameters info and einfo, or omitting them entirely, it seems like the tradeoffs are the following:\r\n\r\nPros for leaving in the optional parameters info* and einfo*:\r\n- A potential application that wants to use these fields can do so without having to wait the extra round trip for AKE to finish\r\n\r\nCons for leaving in the optional parameters info* and einfo*:\r\n- Increased spec / API complexity for implementers\r\n- Increased bandwidth due to bytes spent on length-prefixing the optional parameters in AKE even if they are not used\r\n\r\nIs this an accurate summary? If so, I am leaning slightly towards keeping in the optional parameters, but not with a strong preference :) ",
+          "createdAt": "2020-10-28T23:22:52Z",
+          "updatedAt": "2020-10-28T23:22:52Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Is this an accurate summary? If so, I am leaning slightly towards keeping in the optional parameters, but not with a strong preference :)\r\n\r\nYeah, I think that's mostly accurate. Can you elaborate on why you're leaning that way? (If you used them in your implementation, what were the values of the fields?)",
+          "createdAt": "2020-10-28T23:33:51Z",
+          "updatedAt": "2020-10-28T23:33:51Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "My feeling is that we serve better the potential implementers of OPAQUE that need to embed the protocol in their specific application by guiding them toward they way of adding application specific elements to the protocol, in particular telling them that they should add these elements to the authenticated transcript and use Ke to protect confidentiality if needed. As I wrote elsewhere, I am ok if we remove info, einfo from the spec but then we must have English text about the need to include such elements under the authenticated transcript. Also noting the potential need for Ke (which we would include in the key derivation even if we do not show einfo* explicitly).  My bottom line: We would be serving implementers of OPAQUE in specific applications better with the info fields than without. (But who am I to tell what implementers really need? :-)\r\n ",
+          "createdAt": "2020-10-28T23:36:24Z",
+          "updatedAt": "2020-10-28T23:36:24Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> My bottom line: We would be serving implementers of OPAQUE in specific applications better with the info fields than without.\r\n\r\nYeah, I think if the goal is to allow applications to build a one-off AKE specific to their use case, then I think this is the right call. If, on the other hand, we're specifying a feature-complete AKE in this spec, I lean the other way. ",
+          "createdAt": "2020-10-28T23:38:54Z",
+          "updatedAt": "2020-10-28T23:38:54Z"
+        },
+        {
+          "author": "kevinlewi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> > Is this an accurate summary? If so, I am leaning slightly towards keeping in the optional parameters, but not with a strong preference :)\r\n> \r\n> Yeah, I think that's mostly accurate. Can you elaborate on why you're leaning that way? (If you used them in your implementation, what were the values of the fields?)\r\n\r\nOne example that comes to mind is the following: Suppose a client is using a password to log in to a server, and on the KE2 message, the server wants to send to the client auxiliary information about the last time the client successfully logged in (IP address, # of incorrect login attempts since last login, etc.). These are of course things that can wait 1 more round trip for, but in certain applications it may be more convenient to not have to wait.\r\n\r\nAnyway, the main reason why I am leaning towards including the optional parameters is because I feel like we are more likely to regret excluding them than the other way around. I believe the added API complexity only affects those who have to implement a spec-compliant OPAQUE (hopefully a small population) and the benefits of having the flexiblity to use these optional parameters would affect those who use the spec-compliant OPAQUE implementations (hopefully a larger population).\r\n\r\n@huitseeker in case he has any additional thoughts on this",
+          "createdAt": "2020-10-29T00:06:49Z",
+          "updatedAt": "2020-10-29T00:06:49Z"
+        }
+      ]
+    },
+    {
+      "number": 75,
+      "id": "MDU6SXNzdWU3MzA5ODIzNDM=",
+      "title": "Swap 3DH label strings around",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/75",
+      "state": "OPEN",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Currently, the 3DH key schedule computes two MAC and two encryption keys, as follows:\r\n\r\n```\r\nKm2 = HKDF-Expand-Label(handshake_secret, \"client mac\", \"\", Hash.length)\r\nKm3 = HKDF-Expand-Label(handshake_secret, \"server mac\", \"\", Hash.length)\r\nKe2 = HKDF-Expand-Label(handshake_secret, \"client enc\", \"\", key_length)\r\nKe3 = HKDF-Expand-Label(handshake_secret, \"server enc\", \"\", key_length)\r\n```\r\n\r\n`Km2` is the key used to compute the server's MAC in `KE2`:\r\n\r\n```\r\nKE2 = credential_response, nonceS, info2, epkS, Einfo2, MAC(Km2; transcript2),\r\n```\r\n\r\nUsing the label `\"client mac\"` to derive `Km2` seems backwards. Let's swap them around, like so:\r\n\r\n```\r\nKm2 = HKDF-Expand-Label(handshake_secret, \"server mac\", \"\", Hash.length)\r\nKm3 = HKDF-Expand-Label(handshake_secret, \"client mac\", \"\", Hash.length)\r\nKe2 = HKDF-Expand-Label(handshake_secret, \"server enc\", \"\", key_length)\r\nKe3 = HKDF-Expand-Label(handshake_secret, \"client enc\", \"\", key_length)\r\n```\r\n\r\ncc @hugokraw, @kevinlewi ",
+      "createdAt": "2020-10-28T00:47:29Z",
+      "updatedAt": "2020-10-28T15:23:12Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Definitely a typo. Good catch.",
+          "createdAt": "2020-10-28T15:23:11Z",
+          "updatedAt": "2020-10-28T15:23:11Z"
+        }
+      ]
+    },
+    {
+      "number": 77,
+      "id": "MDU6SXNzdWU3MzE0MzgzMjk=",
+      "title": "Drop SIGMA-I instantiation",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/77",
+      "state": "OPEN",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "TLS 1.3 *is* the SIGMA-I instantiation, so I think we should drop this from the OPAQUE document. It's redundant, and will likely cause confusion between people who want to choose between one or the other. \r\n\r\ncc @kevinlewi ",
+      "createdAt": "2020-10-28T13:24:01Z",
+      "updatedAt": "2020-10-28T23:10:12Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I don't agree with this one. It is important to show that OPAQUE can use any AKE protocol and 3DH/HMQV are of a very special type. In particular, signature-based protocols are always KCI-secure while KEM-based (and \"implicitly authenticated\") are not always. Moreover, if you go by efficiency and you do not want to use HMQV because of the patent, then SIGMA-I is more efficient than 3DH. These are illustrations of the protocol if you want to build it as standalone, not necessarily with TLS. Those building upon TLS are more likely to use the version based on exported authenticators than a 3-flow handshake. \r\nYou can always choose 3DH as the must-to-implement protocol and leave SIGMA-I as optional.",
+          "createdAt": "2020-10-28T15:33:17Z",
+          "updatedAt": "2020-10-28T15:33:17Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I don't see any variant in the document as mandatory to implement. I see them as different flavors of AKEs that applications can choose to implement based on their needs. And I think that decision tree should look like the following:\r\n\r\n- If we don't need signatures for authentication, use 3DH (or HMQV)\r\n- If we do need signatures for authentication, use TLS 1.3 with OPAQUE\r\n\r\nCurrently, the decision tree is something like the following:\r\n\r\n- If we don't need signatures for authentication, use 3DH\r\n- If we do need signatures for authentication, use SIGMA-I or TLS 1.3 with OPAQUE. (How do we decide to use TLS 1.3 or SIGMA-I?)\r\n\r\nThe core of this issue is that I don't think it's best to introduce *yet another* AKE with the same shape as TLS 1.3. ",
+          "createdAt": "2020-10-28T16:21:09Z",
+          "updatedAt": "2020-10-28T16:21:09Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I agree that there is no need to have a must-to-implement version other than for interoperability tests. But I am not sure that someone using a standalone implementation of OPAQUE will necessarily need all the complexities of TLS 1.3 to implement a simple OPAQUE-SIGMA version. An example of a protocol that would favor a signature-based instantiation that is not TLS 1.3 is IKEv2, although they would use SIGMA-R. Yet illustrating SIGMA-I in the document would help that case too.",
+          "createdAt": "2020-10-28T16:38:24Z",
+          "updatedAt": "2020-10-28T16:38:24Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "So, as I see it, the delta between OPAQUE-SIGMA-I and TLS 1.3+OPAQUE is the wire format, not much more. If, however, we drop the \"info\" and additional fields (extensions) from OPAQUE-SIGMA-I, then there is a substantial difference. I would be in favor of keeping OPAQUE-SIGMA-I if it dropped extensions, because otherwise it's essentially TLS 1.3 but with a different wire format, and I don't think that rises to the level needed to specify yet another AKE.",
+          "createdAt": "2020-10-28T19:11:54Z",
+          "updatedAt": "2020-10-28T19:11:54Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I am not convinced that the complexity of implementing SIGMA-I with the info fields is same as implementing TLS 1.3. It may be the case if you understand the cryptography and system issues of TLS 1.3 well enough to just use the minimal skeleton that serves you in SIGMA-I. But how many such (real) experts are out there? Once we already define the flows for 3DH and HKDF, having them for SIGMA is no big deal. I am not sure that eliminating the SIGMA specific elements makes a huge difference.\r\nAnd I am not sure that we will end defining a flavor of OPAQUE with TLS 1.3 that will use just the three handshake flows (as opposed to defining it with EA and 5 flows).",
+          "createdAt": "2020-10-28T22:26:41Z",
+          "updatedAt": "2020-10-28T22:26:41Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> It may be the case if you understand the cryptography and system issues of TLS 1.3 well enough to just use the minimal skeleton that serves you in SIGMA-I. But how many such (real) experts are out there? \r\n\r\nThis is my key point: there are probably very few. I don't think it's wise for us to standardize something that the majority of folks may not understand when or how to use when the TLS 1.3 instantiation exists. Moreover, folks who think they can make an informed decision between the two and get it wrong will likely have a bad day. \r\n\r\n> It may be the case if you understand the cryptography and system issues of TLS 1.3 well enough to just use the minimal skeleton that serves you in SIGMA-I. But how many such (real) experts are out there? \r\n\r\nThat's a fair point! If the TLS WG decided to forgo all but the EA flow, then certainly there's a larger difference between SIGMA-I and TLS 1.3+OPAQUE. But if not, I think the delta between these two is small enough that it's not in the CFRG's (or IETF's) best interest to specify.",
+          "createdAt": "2020-10-28T22:31:53Z",
+          "updatedAt": "2020-10-28T22:33:51Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "(Meta comment: perhaps we should also ask the list and see what they think?)",
+          "createdAt": "2020-10-28T22:36:14Z",
+          "updatedAt": "2020-10-28T22:36:28Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "It has to be understood that these AKEs are \"informational\"/illustrative, not intended as full specifications. Having the unspecified/optional info fields makes it very clear that we are not providing a full specification. \r\n\r\nI am ok with raising this in the list. ",
+          "createdAt": "2020-10-28T22:42:08Z",
+          "updatedAt": "2020-10-28T22:42:08Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> It has to be understood that these AKEs are \"informational\"/illustrative, not intended as full specifications. Having the unspecified/optional info fields makes it very clear that we are not providing a full specification.\r\n\r\nAha, well, that's the source of this disagreement! I was approaching this as a complete specification, as that allows us to provide test vectors. If it's incomplete, I'm not sure how we provide test vectors. This definitely seems like something that list should weigh in on. I'll craft a message!",
+          "createdAt": "2020-10-28T22:45:41Z",
+          "updatedAt": "2020-10-28T22:45:41Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "You can produce test vectors that omit all optional fields. Or you can omit these optional fields from the specification as I just wrote in another thread and say in English that such elements may need to be transmitted by applications but we do not specify them as they will be application specific (we do say that they need to be included in the transcript).",
+          "createdAt": "2020-10-28T23:10:12Z",
+          "updatedAt": "2020-10-28T23:10:12Z"
         }
       ]
     }
@@ -3878,25 +4155,33 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NTA3ODgyNjY4",
       "title": "Add a preliminary Sage implementation with many TODOs",
       "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/70",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "chris-wood",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "This gets us started towards test vectors, with something that's \"as close\" to the specification as possible. There's definitely lots of ways this can be improved, including adding proper configuration and agility support, supporting different credentials in client and server, implementing a proper password file, etc. If this generally seems useful, we can add these missing pieces and then wrap it with code that generates test vectors from a variety of flows. \r\n\r\nNote that this *does not* have AKE integration. It only implements the OPAQUE core protocol. For the specification, I wonder if it makes sense to include test vectors for both the core protocol and AKE instantiations. \r\n\r\n@kevinlewi, please have a look!",
       "createdAt": "2020-10-21T21:47:26Z",
-      "updatedAt": "2020-10-21T21:47:26Z",
+      "updatedAt": "2020-10-28T01:21:44Z",
       "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
       "baseRefName": "master",
       "baseRefOid": "550c550ecdc86ce362d613afebad67ce186cae73",
       "headRepository": "cfrg/draft-irtf-cfrg-opaque",
       "headRefName": "caw/ref-impl",
       "headRefOid": "dbfb4c2d52519f01ed14fc440e28858c9a9485c8",
-      "closedAt": null,
+      "closedAt": "2020-10-28T01:21:43Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing for now -- I'll re-open when the 3DH implementation is in place.",
+          "createdAt": "2020-10-28T01:21:43Z",
+          "updatedAt": "2020-10-28T01:21:43Z"
+        }
+      ],
       "reviews": []
     },
     {
@@ -3946,25 +4231,83 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NTA3OTcxMjYz",
       "title": "Omitting idU from RegistrationRequest and CredentialRequest",
       "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/73",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "kevinlewi",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "This removes the inclusion of idU from RegistrationRequest and CredentialRequest (see #65)\r\n\r\nI also noticed that the functions `RecoverCredentials` and `FinalizeRequest` should either not take idU, or should take idU, idS, and pkU as parameters. In this PR I simply made RecoverCredentials also take idU as a parameter, but I opened #72 to discuss this further.",
       "createdAt": "2020-10-22T02:33:22Z",
-      "updatedAt": "2020-10-22T02:33:22Z",
+      "updatedAt": "2020-10-27T22:59:30Z",
       "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
       "baseRefName": "master",
-      "baseRefOid": "550c550ecdc86ce362d613afebad67ce186cae73",
+      "baseRefOid": "630173e46eaff00862dbb8446aa8a3c0b0bed8d1",
       "headRepository": "kevinlewi/draft-irtf-cfrg-opaque",
       "headRefName": "fix_issue_65",
-      "headRefOid": "d1201f48baab1974997b0002eee66c82841f7ce8",
+      "headRefOid": "7b76e78abfaa2a6a5f37f2b83438928d774b9412",
+      "closedAt": "2020-10-27T22:59:30Z",
+      "mergedAt": "2020-10-27T22:59:29Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "b775d13311dcc73bbf9eefad1b00453c9ba1bb2f"
+      },
+      "comments": [
+        {
+          "author": "kevinlewi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@chris-wood : This should be ready to review",
+          "createdAt": "2020-10-27T03:27:32Z",
+          "updatedAt": "2020-10-27T03:27:32Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTE4MjEyMzE1",
+          "commit": {
+            "abbreviatedOid": "7b76e78"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-10-27T22:59:25Z",
+          "updatedAt": "2020-10-27T22:59:25Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 76,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTExNTMzNjQ5",
+      "title": "Remove the performance considerations section.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/pull/76",
+      "state": "OPEN",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Closes #5.\r\n\r\nIt was somewhat stale, and I'm not sure it adds much to the document.\r\n\r\ncc @kevinlewi ",
+      "createdAt": "2020-10-28T13:08:34Z",
+      "updatedAt": "2020-10-28T19:13:21Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "baseRefName": "master",
+      "baseRefOid": "30a4a795bf17e7352a4c197d621dd4ede1db8101",
+      "headRepository": "cfrg/draft-irtf-cfrg-opaque",
+      "headRefName": "caw/remove-perf-section",
+      "headRefOid": "85366a81b2bcfe89beb2c4b6dd8c874146538602",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "kevinlewi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": " This is fine by me",
+          "createdAt": "2020-10-28T19:13:20Z",
+          "updatedAt": "2020-10-28T19:13:20Z"
+        }
+      ],
       "reviews": []
     }
   ]
