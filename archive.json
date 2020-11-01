@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-10-29T00:59:59.466840+00:00",
+  "timestamp": "2020-11-01T00:37:40.826109+00:00",
   "repo": "cfrg/draft-irtf-cfrg-opaque",
   "labels": [
     {
@@ -1249,7 +1249,7 @@
       "labels": [],
       "body": "In this [section on AKE](https://github.com/cfrg/draft-irtf-cfrg-opaque/blame/master/draft-irtf-cfrg-opaque.md#L1008-L1014), we should clear up exactly which parameters are required and which are optional. Then we can also work towards defining a wire format for these AKEs if necessary.\r\n\r\nA couple of concrete questions:\r\n1) Can we simply set idU = static pkU and idS = static pkS?\r\n2) Can we remove mention of all of the following: info1*, info2*, Einfo2*, info3*, Einfo3*?\r\n",
       "createdAt": "2020-10-27T03:42:24Z",
-      "updatedAt": "2020-10-29T00:06:50Z",
+      "updatedAt": "2020-10-29T02:26:22Z",
       "closedAt": null,
       "comments": [
         {
@@ -1377,6 +1377,20 @@
           "body": "> > Is this an accurate summary? If so, I am leaning slightly towards keeping in the optional parameters, but not with a strong preference :)\r\n> \r\n> Yeah, I think that's mostly accurate. Can you elaborate on why you're leaning that way? (If you used them in your implementation, what were the values of the fields?)\r\n\r\nOne example that comes to mind is the following: Suppose a client is using a password to log in to a server, and on the KE2 message, the server wants to send to the client auxiliary information about the last time the client successfully logged in (IP address, # of incorrect login attempts since last login, etc.). These are of course things that can wait 1 more round trip for, but in certain applications it may be more convenient to not have to wait.\r\n\r\nAnyway, the main reason why I am leaning towards including the optional parameters is because I feel like we are more likely to regret excluding them than the other way around. I believe the added API complexity only affects those who have to implement a spec-compliant OPAQUE (hopefully a small population) and the benefits of having the flexiblity to use these optional parameters would affect those who use the spec-compliant OPAQUE implementations (hopefully a larger population).\r\n\r\n@huitseeker in case he has any additional thoughts on this",
           "createdAt": "2020-10-29T00:06:49Z",
           "updatedAt": "2020-10-29T00:06:49Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "\r\n> I feel like we are more likely to regret excluding them than the other way around\r\n\r\nI would have not dared to show my feelings like Kevin's but I strongly feel like him :-)\r\n\r\n",
+          "createdAt": "2020-10-29T02:22:07Z",
+          "updatedAt": "2020-10-29T02:22:07Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Yeah, I think if the goal is to allow applications to build a one-off AKE specific to their use case, then I think this is the right call. If, on the other hand, we're specifying a feature-complete AKE in this spec, I lean the other way.\r\n\r\nThis is indeed the point in which our view diverge. I hear of several people with various interests, including Kevin/Facebook, Crockett/AWS and people from some banks. They were all talking of specific applications they have rather than using a general Web/TLS-based protocol. I think that the document we are writing needs to serve these people. It can also serve those integrating OPAQUE in other protocols IKEv2, SSH, ...",
+          "createdAt": "2020-10-29T02:26:22Z",
+          "updatedAt": "2020-10-29T02:26:22Z"
         }
       ]
     },
