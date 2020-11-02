@@ -5,10 +5,10 @@
 Network Working Group                                        H. Krawczyk
 Internet-Draft                                       Algorand Foundation
 Intended status: Informational                                   K. Lewi
-Expires: 1 May 2021                                             Facebook
+Expires: 6 May 2021                                                 Novi
                                                                C.A. Wood
                                                               Cloudflare
-                                                         28 October 2020
+                                                         2 November 2020
 
 
                   The OPAQUE Asymmetric PAKE Protocol
@@ -47,15 +47,15 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 May 2021.
+   This Internet-Draft will expire on 6 May 2021.
 
 
 
 
 
-Krawczyk, et al.           Expires 1 May 2021                   [Page 1]
+Krawczyk, et al.           Expires 6 May 2021                   [Page 1]
 
-Internet-Draft                   OPAQUE                     October 2020
+Internet-Draft                   OPAQUE                    November 2020
 
 
 Copyright Notice
@@ -75,7 +75,7 @@ Copyright Notice
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
-     1.1.  Requirements Notation . . . . . . . . . . . . . . . . . .   5
+     1.1.  Requirements Notation . . . . . . . . . . . . . . . . . .   4
      1.2.  Notation  . . . . . . . . . . . . . . . . . . . . . . . .   5
    2.  Cryptographic Protocol and Algorithm Dependencies . . . . . .   6
    3.  Core Protocol . . . . . . . . . . . . . . . . . . . . . . . .   7
@@ -105,21 +105,20 @@ Table of Contents
      6.5.  OPRF Hardening  . . . . . . . . . . . . . . . . . . . . .  29
      6.6.  User enumeration  . . . . . . . . . . . . . . . . . . . .  29
      6.7.  Password salt and storage implications  . . . . . . . . .  30
-   7.  Performance Considerations  . . . . . . . . . . . . . . . . .  31
+   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  31
 
 
 
-Krawczyk, et al.           Expires 1 May 2021                   [Page 2]
+Krawczyk, et al.           Expires 6 May 2021                   [Page 2]
 
-Internet-Draft                   OPAQUE                     October 2020
+Internet-Draft                   OPAQUE                    November 2020
 
 
-   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  31
-   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  31
-     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  31
-     9.2.  Informative References  . . . . . . . . . . . . . . . . .  32
-   Appendix A.  Acknowledgments  . . . . . . . . . . . . . . . . . .  35
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  35
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  31
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  31
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .  31
+   Appendix A.  Acknowledgments  . . . . . . . . . . . . . . . . . .  34
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  34
 
 1.  Introduction
 
@@ -154,22 +153,6 @@ Internet-Draft                   OPAQUE                     October 2020
    leading to almost instantaneous leakage of passwords upon server
    compromise.
 
-
-
-
-
-
-
-
-
-
-
-
-Krawczyk, et al.           Expires 1 May 2021                   [Page 3]
-
-Internet-Draft                   OPAQUE                     October 2020
-
-
    Despite the existence of multiple designs for (PKI-free) aPAKE
    protocols, none of these protocols are secure against pre-computation
    attacks.  In particular, none of these protocols can use the standard
@@ -179,6 +162,13 @@ Internet-Draft                   OPAQUE                     October 2020
    salt from server to user in the clear, hence losing the secrecy of
    the salt and its defense against pre-computation.  Furthermore,
    transmitting the salt may require additional protocol messages.
+
+
+
+Krawczyk, et al.           Expires 6 May 2021                   [Page 3]
+
+Internet-Draft                   OPAQUE                    November 2020
+
 
    This document describes OPAQUE, a PKI-free secure aPAKE that is
    secure against pre-computation attacks and capable of using a secret
@@ -219,13 +209,6 @@ Internet-Draft                   OPAQUE                     October 2020
    This draft complies with the requirements for PAKE protocols set
    forth in [RFC8125].
 
-
-
-Krawczyk, et al.           Expires 1 May 2021                   [Page 4]
-
-Internet-Draft                   OPAQUE                     October 2020
-
-
 1.1.  Requirements Notation
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
@@ -233,6 +216,15 @@ Internet-Draft                   OPAQUE                     October 2020
    "OPTIONAL" in this document are to be interpreted as described in
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
+
+
+
+
+
+Krawczyk, et al.           Expires 6 May 2021                   [Page 4]
+
+Internet-Draft                   OPAQUE                    November 2020
+
 
 1.2.  Notation
 
@@ -269,19 +261,6 @@ Internet-Draft                   OPAQUE                     October 2020
       and "b", which are assumed to be of equal length, irrespective of
       the values "a" or "b".
 
-
-
-
-
-
-
-
-
-Krawczyk, et al.           Expires 1 May 2021                   [Page 5]
-
-Internet-Draft                   OPAQUE                     October 2020
-
-
    Except if said otherwise, random choices in this specification refer
    to drawing with uniform distribution from a given set (i.e., "random"
    is short for "uniformly random").  Random choices can be replaced
@@ -291,6 +270,17 @@ Internet-Draft                   OPAQUE                     October 2020
 
    The name OPAQUE is a homonym of O-PAKE where O is for Oblivious (the
    name OPAKE was taken).
+
+
+
+
+
+
+
+Krawczyk, et al.           Expires 6 May 2021                   [Page 5]
+
+Internet-Draft                   OPAQUE                    November 2020
+
 
 2.  Cryptographic Protocol and Algorithm Dependencies
 
@@ -328,16 +318,6 @@ Internet-Draft                   OPAQUE                     October 2020
 
    *  Memory Hard Function (MHF):
 
-
-
-
-
-
-Krawczyk, et al.           Expires 1 May 2021                   [Page 6]
-
-Internet-Draft                   OPAQUE                     October 2020
-
-
       -  Harden(msg, params): Repeatedly apply a memory hard function
          with parameters "params" to strengthen the input "msg" against
          offline dictionary attacks.  This function also needs to
@@ -348,6 +328,15 @@ Internet-Draft                   OPAQUE                     October 2020
    key.  OPAQUE only requires an OPRF private key.  We write "(kU, _) =
    KeyGen()" to denote use of this function for generating secret key
    "kU" (and discarding the corresponding public key).
+
+
+
+
+
+Krawczyk, et al.           Expires 6 May 2021                   [Page 6]
+
+Internet-Draft                   OPAQUE                    November 2020
+
 
 3.  Core Protocol
 
@@ -375,9 +364,9 @@ Internet-Draft                   OPAQUE                     October 2020
 
    The OPAQUE protocol runs the OPRF protocol in two stages:
    registration and authenticated key exchange.  A client and server
-   exchange messages in executing these stages.  The encoding of these
-   messages is specific to each instantiation of OPAQUE.  See Section 4
-   for examples.
+   exchange protocol messages in executing these stages.  This section
+   specifies the structure of these protocol messages using TLS notation
+   (see [RFC8446], Section 3).
 
 
 
@@ -389,9 +378,20 @@ Internet-Draft                   OPAQUE                     October 2020
 
 
 
-Krawczyk, et al.           Expires 1 May 2021                   [Page 7]
+
+
+
+
+
+
+
+
+
+
+
+Krawczyk, et al.           Expires 6 May 2021                   [Page 7]
 
-Internet-Draft                   OPAQUE                     October 2020
+Internet-Draft                   OPAQUE                    November 2020
 
 
    enum {
@@ -445,9 +445,9 @@ Internet-Draft                   OPAQUE                     October 2020
 
 
 
-Krawczyk, et al.           Expires 1 May 2021                   [Page 8]
+Krawczyk, et al.           Expires 6 May 2021                   [Page 8]
 
-Internet-Draft                   OPAQUE                     October 2020
+Internet-Draft                   OPAQUE                    November 2020
 
 
    enum {
@@ -461,7 +461,7 @@ Internet-Draft                   OPAQUE                     October 2020
 
    struct {
      CredentialType type;
-     CredentialData data<0..2^16-1>;
+     opaque data<0..2^16-1>;
    } CredentialExtension;
 
    struct {
@@ -501,9 +501,9 @@ Internet-Draft                   OPAQUE                     October 2020
 
 
 
-Krawczyk, et al.           Expires 1 May 2021                   [Page 9]
+Krawczyk, et al.           Expires 6 May 2021                   [Page 9]
 
-Internet-Draft                   OPAQUE                     October 2020
+Internet-Draft                   OPAQUE                    November 2020
 
 
    struct {
@@ -557,29 +557,29 @@ Internet-Draft                   OPAQUE                     October 2020
 
 
 
-Krawczyk, et al.           Expires 1 May 2021                  [Page 10]
+Krawczyk, et al.           Expires 6 May 2021                  [Page 10]
 
-Internet-Draft                   OPAQUE                     October 2020
+Internet-Draft                   OPAQUE                    November 2020
 
 
- Client (idU, pwdU, skU, pkU)                 Server (skS, pkS)
-  -----------------------------------------------------------------
-   request, metadata = CreateRegistrationRequest(idU, pwdU)
+    Client (idU, pwdU, skU, pkU)                 Server (skS, pkS)
+     -----------------------------------------------------------------
+      request, metadata = CreateRegistrationRequest(pwdU)
 
-                                   request
-                              ----------------->
+                                      request
+                                 ----------------->
 
-            (response, kU) = CreateRegistrationResponse(request, pkS)
+               (response, kU) = CreateRegistrationResponse(request, pkS)
 
-                                   response
-                              <-----------------
+                                      response
+                                 <-----------------
 
- record = FinalizeRequest(idU, pwdU, skU, pkU, metadata, request, response)
+    record = FinalizeRequest(pwdU, skU, metadata, request, response)
 
-                                    record
-                              ------------------>
+                                       record
+                                 ------------------>
 
-                                             StoreUserRecord(record)
+                                                StoreUserRecord(record)
 
    Both client and server MUST validate the other party's public key
    before use.  See Section 6.3 for more details.
@@ -587,12 +587,8 @@ Internet-Draft                   OPAQUE                     October 2020
 3.2.1.  Registration messages
 
    struct {
-       opaque id<0..2^16-1>;
        opaque data<1..2^16-1>;
    } RegistrationRequest;
-
-   id  An opaque string carrying the client account information, if
-      available.
 
    data  An encoded element in the OPRF group.  See
       [I-D.irtf-cfrg-voprf] for a description of this encoding.
@@ -611,15 +607,16 @@ Internet-Draft                   OPAQUE                     October 2020
        CredentialType cleartext_types<0..255>;
    } RegistrationResponse;
 
-
-
-Krawczyk, et al.           Expires 1 May 2021                  [Page 11]
-
-Internet-Draft                   OPAQUE                     October 2020
-
-
    data  An encoded element in the OPRF group.  See
       [I-D.irtf-cfrg-voprf] for a description of this encoding.
+
+
+
+
+Krawczyk, et al.           Expires 6 May 2021                  [Page 11]
+
+Internet-Draft                   OPAQUE                    November 2020
+
 
    pkS  An encoded public key that will be used for the online
       authenticated key exchange stage.
@@ -639,10 +636,9 @@ Internet-Draft                   OPAQUE                     October 2020
 
 3.2.2.1.  CreateRegistrationRequest
 
-   CreateRegistrationRequest(idU, pwdU)
+   CreateRegistrationRequest(pwdU)
 
    Input:
-   - idU, an opaque byte string containing the user's identity
    - pwdU, an opaque byte string containing the user's password
 
    Output:
@@ -652,7 +648,7 @@ Internet-Draft                   OPAQUE                     October 2020
    Steps:
    1. (r, M) = Blind(pwdU)
    2. data = Serialize(M)
-   3. Create RegistrationRequest request with (idU, data)
+   3. Create RegistrationRequest request with data
    4. Create RequestMetadata metadata with Serialize(r)
    5. Output (request, metadata)
 
@@ -669,9 +665,13 @@ Internet-Draft                   OPAQUE                     October 2020
 
 
 
-Krawczyk, et al.           Expires 1 May 2021                  [Page 12]
+
+
+
+
+Krawczyk, et al.           Expires 6 May 2021                  [Page 12]
 
-Internet-Draft                   OPAQUE                     October 2020
+Internet-Draft                   OPAQUE                    November 2020
 
 
 CreateRegistrationResponse(request, pkS)
@@ -694,7 +694,7 @@ Steps:
 1. (kU, _) = KeyGen()
 2. M = Deserialize(request.data)
 3. Z = Evaluate(kU, M)
-4. data = Serialize(Z)
+4. data = Z.encode()
 5. Create RegistrationResponse response with
      (data, pkS, secret_credentials_list, cleartext_credentials_list)
 6. Output (response, kU)
@@ -725,21 +725,19 @@ Steps:
 
 
 
-Krawczyk, et al.           Expires 1 May 2021                  [Page 13]
+Krawczyk, et al.           Expires 6 May 2021                  [Page 13]
 
-Internet-Draft                   OPAQUE                     October 2020
+Internet-Draft                   OPAQUE                    November 2020
 
 
- FinalizeRequest(idU, pwdU, skU, pkU, metadata, request, response)
+ FinalizeRequest(pwdU, skU, metadata, request, response)
 
  Parameters:
  - params, the MHF parameters established out of band
 
  Input:
- - idU, an opaque byte string containing the user's identity
  - pwdU, an opaque byte string containing the user's password
  - skU, the user's private key
- - pkU, the user's public key
  - metadata, a RequestMetadata structure
  - request, a RegistrationRequest structure
  - response, a RegistrationResponse structure
@@ -750,41 +748,28 @@ Internet-Draft                   OPAQUE                     October 2020
 
  Steps:
  1. Z = Deserialize(response.data)
- 2. N = Unblind(metadata.data_blind, Z)
+ 2. N = Unblind(input.data_blind, Z)
  3. y = Finalize(pwdU, N, "OPAQUE00")
- 4. y_harden = Harden(y, params)
- 5. rwdU = HKDF-Extract("rwdU", Harden(y, params))
- 6. Create secret_credentials with CredentialExtensions matching that
+ 4. rwdU = HKDF-Extract("rwdU", Harden(y, params))
+ 5. Create secret_credentials with CredentialExtensions matching that
     contained in response.secret_credentials_list
- 7. Create cleartext_credentials with CredentialExtensions matching that
+ 6. Create cleartext_credentials with CredentialExtensions matching that
     contained in response.cleartext_credentials_list
- 8. pt = SerializeExtensions(secret_credentials)
- 9. nonce = random(32)
- 10. pseudorandom_pad = HKDF-Expand(rwdU, concat(nonce, "Pad"), len(pt))
- 11. auth_key = HKDF-Expand(rwdU, concat(nonce, "AuthKey"), Nh)
- 12. export_key = HKDF-Expand(rwdU, concat(nonce, "ExportKey"), Nh)
- 13. ct = xor(pt, pseudorandom_pad)
- 14. auth_data = SerializeExtensions(cleartext_credentials)
- 15. Create InnerEnvelope contents with (nonce, ct, auth_data)
- 17. t = HMAC(auth_key, contents)
- 18. Create Envelope envU with (contents, t)
- 19. Create RegistrationUpload upload with envelope value (envU, pkU)
- 20. Output (upload, export_key)
+ 7. pt = SerializeExtensions(secret_credentials)
+ 8. nonce = random(32)
+ 9. pseudorandom_pad = HKDF-Expand(rwdU, concat(nonce, "Pad"), len(pt))
+ 10. auth_key = HKDF-Expand(rwdU, concat(nonce, "AuthKey"), Nh)
+ 11. export_key = HKDF-Expand(rwdU, concat(nonce, "ExportKey"), Nh)
+ 12. ct = xor(pt, pseudorandom_pad)
+ 13. auth_data = SerializeExtensions(cleartext_credentials)
+ 14. Create InnerEnvelope contents with (nonce, ct, auth_data)
+ 15. t = HMAC(auth_key, contents)
+ 16. Create Envelope envU with (contents, t)
+ 17. Create RegistrationUpload upload with envelope value (envU, pkU)
+ 18. Output (upload, export_key)
 
    [[RFC editor: please change "OPAQUE00" to the correct RFC identifier
    before publication.]]
-
-   [[https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/58: Should
-   the nonce size be a parameter?]]
-
-
-
-
-
-Krawczyk, et al.           Expires 1 May 2021                  [Page 14]
-
-Internet-Draft                   OPAQUE                     October 2020
-
 
    The inputs to HKDF-Extract and HKDF-Expand are as specified in
    [RFC5869].  The underlying hash function is that which is associated
@@ -793,6 +778,14 @@ Internet-Draft                   OPAQUE                     October 2020
    OPAQUE security requires authentication for all "CredentialExtension"
    values, and secrecy for "skU".  If an application additionally
    requires secrecy of "pkS", this value SHOULD be included in the
+
+
+
+Krawczyk, et al.           Expires 6 May 2021                  [Page 14]
+
+Internet-Draft                   OPAQUE                    November 2020
+
+
    "Credentials.secret_credentials" list (step 5), and MUST NOT be
    included in the "Credentials.cleartext_credentials" list.
    Applications may optionally include "pkU", "idU", or "idS" in the
@@ -837,19 +830,26 @@ Internet-Draft                   OPAQUE                     October 2020
 
 
 
-Krawczyk, et al.           Expires 1 May 2021                  [Page 15]
+
+
+
+
+
+
+
+Krawczyk, et al.           Expires 6 May 2021                  [Page 15]
 
-Internet-Draft                   OPAQUE                     October 2020
+Internet-Draft                   OPAQUE                    November 2020
 
 
  Client (idU, pwdU)                           Server (skS, pkS)
   -----------------------------------------------------------------
-   request, metadata = CreateCredentialRequest(idU, pwdU)
+   request, metadata = CreateCredentialRequest(pwdU)
 
                                    request
                               ----------------->
 
-         (response, pkU) = CreateCredentialResponse(request, pkS)
+         (response, pkU) = CreateCredentialResponse(request)
 
                                    response
                               <-----------------
@@ -874,7 +874,6 @@ Internet-Draft                   OPAQUE                     October 2020
 3.3.1.  Authenticated key exchange messages
 
    struct {
-       opaque id<0..2^16-1>;
        opaque data<1..2^16-1>;
    } CredentialRequest;
 
@@ -887,33 +886,29 @@ Internet-Draft                   OPAQUE                     October 2020
 
    struct {
        opaque data<1..2^16-1>;
-       opaque envelope<1..2^16-1>;
-       opaque pkS<0..2^16-1>;
+       Envelope envelope;
    } CredentialResponse;
 
-
-
-Krawczyk, et al.           Expires 1 May 2021                  [Page 16]
-
-Internet-Draft                   OPAQUE                     October 2020
-
-
    data  An encoded element in the OPRF group.  See
+
+
+
+Krawczyk, et al.           Expires 6 May 2021                  [Page 16]
+
+Internet-Draft                   OPAQUE                    November 2020
+
+
       [I-D.irtf-cfrg-voprf] for a description of this encoding.
 
    envelope  An authenticated encoding of a Credentials structure.
 
-   pkS  An encoded public key that will be used for the online
-      authenticated key exchange stage.  This field is optional.
-
 3.3.2.  Authenticated key exchange functions
 
-3.3.2.1.  CreateCredentialRequest(idU, pwdU)
+3.3.2.1.  CreateCredentialRequest(pwdU)
 
-   CreateCredentialRequest(idU, pwdU)
+   CreateCredentialRequest(pwdU)
 
    Input:
-   - idU, an opaque byte string containing the user's identity
    - pwdU, an opaque byte string containing the user's password
 
    Output:
@@ -923,17 +918,16 @@ Internet-Draft                   OPAQUE                     October 2020
    Steps:
    1. (r, M) = Blind(pwdU)
    2. data = Serialize(M)
-   3. Create CredentialRequest request with (idU, data)
+   3. Create CredentialRequest request with data
    4. Create RequestMetadata metadata with Serialize(r)
    5. Output (request, metadata)
 
-3.3.2.2.  CreateCredentialResponse(request, pkS)
+3.3.2.2.  CreateCredentialResponse(request)
 
-   CreateCredentialResponse(request, pkS)
+   CreateCredentialResponse(request)
 
    Input:
-   - request, an CredentialRequest structure
-   - pkS, public key of the server
+   - request, a CredentialRequest structure
 
    Output:
    - response, a CredentialResponse structure
@@ -944,17 +938,21 @@ Internet-Draft                   OPAQUE                     October 2020
    2. M = Deserialize(request.data)
    3. Z = Evaluate(kU, M)
    4. data = Z.encode()
-   5. Create CredentialResponse response with (data, envU, pkS)
+   5. Create CredentialResponse response with (data, envU)
    6. Output (response, pkU)
 
-
-
-Krawczyk, et al.           Expires 1 May 2021                  [Page 17]
-
-Internet-Draft                   OPAQUE                     October 2020
-
-
 3.3.2.3.  RecoverCredentials(pwdU, metadata, request, response)
+
+
+
+
+
+
+
+Krawczyk, et al.           Expires 6 May 2021                  [Page 17]
+
+Internet-Draft                   OPAQUE                    November 2020
+
 
 RecoverCredentials(pwdU, metadata, request, response)
 
@@ -1001,17 +999,16 @@ Steps:
    functionality that is separate from the contents of the Credentials
    structure.
 
-
-
-
-
-Krawczyk, et al.           Expires 1 May 2021                  [Page 18]
-
-Internet-Draft                   OPAQUE                     October 2020
-
-
    The exporter_key MUST NOT be used in any way before the HMAC value in
    the envelope is validated.
+
+
+
+
+Krawczyk, et al.           Expires 6 May 2021                  [Page 18]
+
+Internet-Draft                   OPAQUE                    November 2020
+
 
 3.5.  AKE Execution and Party Identities
 
@@ -1058,16 +1055,16 @@ Internet-Draft                   OPAQUE                     October 2020
    using OPAQUE with protocols with more than 3 messages as in the case
    of IKEv2 (or the underlying SIGMA-R protocol [SIGMA]).
 
-
-
-
-Krawczyk, et al.           Expires 1 May 2021                  [Page 19]
-
-Internet-Draft                   OPAQUE                     October 2020
-
-
    The generic outline of OPAQUE with a 3-message AKE protocol is as
    follows:
+
+
+
+
+Krawczyk, et al.           Expires 6 May 2021                  [Page 19]
+
+Internet-Draft                   OPAQUE                    November 2020
+
 
    *  C to S: credential_request, KE1
 
@@ -1117,9 +1114,12 @@ Internet-Draft                   OPAQUE                     October 2020
 
 
 
-Krawczyk, et al.           Expires 1 May 2021                  [Page 20]
+
+
+
+Krawczyk, et al.           Expires 6 May 2021                  [Page 20]
 
-Internet-Draft                   OPAQUE                     October 2020
+Internet-Draft                   OPAQUE                    November 2020
 
 
    struct {
@@ -1173,9 +1173,9 @@ Internet-Draft                   OPAQUE                     October 2020
 
 
 
-Krawczyk, et al.           Expires 1 May 2021                  [Page 21]
+Krawczyk, et al.           Expires 6 May 2021                  [Page 21]
 
-Internet-Draft                   OPAQUE                     October 2020
+Internet-Draft                   OPAQUE                    November 2020
 
 
    *  The private and public keys of the parties in these examples are
@@ -1229,9 +1229,9 @@ Internet-Draft                   OPAQUE                     October 2020
 
 
 
-Krawczyk, et al.           Expires 1 May 2021                  [Page 22]
+Krawczyk, et al.           Expires 6 May 2021                  [Page 22]
 
-Internet-Draft                   OPAQUE                     October 2020
+Internet-Draft                   OPAQUE                    November 2020
 
 
    *  The inclusion of the values credential_request and
@@ -1285,9 +1285,9 @@ Ke3 = HKDF-Expand-Label(handshake_secret, "server enc", "", key_length)
 
 
 
-Krawczyk, et al.           Expires 1 May 2021                  [Page 23]
+Krawczyk, et al.           Expires 6 May 2021                  [Page 23]
 
-Internet-Draft                   OPAQUE                     October 2020
+Internet-Draft                   OPAQUE                    November 2020
 
 
    The input parameter "IKM" is "Khmqv", where "Khmqv" is computed by
@@ -1341,9 +1341,9 @@ Internet-Draft                   OPAQUE                     October 2020
 
 
 
-Krawczyk, et al.           Expires 1 May 2021                  [Page 24]
+Krawczyk, et al.           Expires 6 May 2021                  [Page 24]
 
-Internet-Draft                   OPAQUE                     October 2020
+Internet-Draft                   OPAQUE                    November 2020
 
 
 4.3.  Instantiation with SIGMA-I
@@ -1397,9 +1397,9 @@ Internet-Draft                   OPAQUE                     October 2020
 
 
 
-Krawczyk, et al.           Expires 1 May 2021                  [Page 25]
+Krawczyk, et al.           Expires 6 May 2021                  [Page 25]
 
-Internet-Draft                   OPAQUE                     October 2020
+Internet-Draft                   OPAQUE                    November 2020
 
 
    *  OPRF(curve25519, SHA-512)
@@ -1453,9 +1453,9 @@ Internet-Draft                   OPAQUE                     October 2020
 
 
 
-Krawczyk, et al.           Expires 1 May 2021                  [Page 26]
+Krawczyk, et al.           Expires 6 May 2021                  [Page 26]
 
-Internet-Draft                   OPAQUE                     October 2020
+Internet-Draft                   OPAQUE                    November 2020
 
 
    account information sent by the user to the server prior to
@@ -1509,9 +1509,9 @@ Internet-Draft                   OPAQUE                     October 2020
 
 
 
-Krawczyk, et al.           Expires 1 May 2021                  [Page 27]
+Krawczyk, et al.           Expires 6 May 2021                  [Page 27]
 
-Internet-Draft                   OPAQUE                     October 2020
+Internet-Draft                   OPAQUE                    November 2020
 
 
 6.1.  Configuration Choice
@@ -1565,9 +1565,9 @@ Internet-Draft                   OPAQUE                     October 2020
 
 
 
-Krawczyk, et al.           Expires 1 May 2021                  [Page 28]
+Krawczyk, et al.           Expires 6 May 2021                  [Page 28]
 
-Internet-Draft                   OPAQUE                     October 2020
+Internet-Draft                   OPAQUE                    November 2020
 
 
    underlying group, validation is as specified in Section 5.6.2.3.4 of
@@ -1621,9 +1621,9 @@ Internet-Draft                   OPAQUE                     October 2020
 
 
 
-Krawczyk, et al.           Expires 1 May 2021                  [Page 29]
+Krawczyk, et al.           Expires 6 May 2021                  [Page 29]
 
-Internet-Draft                   OPAQUE                     October 2020
+Internet-Draft                   OPAQUE                    November 2020
 
 
    plaintext).  Care needs to be taken to avoid side channel leakage
@@ -1677,9 +1677,9 @@ Internet-Draft                   OPAQUE                     October 2020
 
 
 
-Krawczyk, et al.           Expires 1 May 2021                  [Page 30]
+Krawczyk, et al.           Expires 6 May 2021                  [Page 30]
 
-Internet-Draft                   OPAQUE                     October 2020
+Internet-Draft                   OPAQUE                    November 2020
 
 
    Some applications may require learning the user's password for
@@ -1689,32 +1689,13 @@ Internet-Draft                   OPAQUE                     October 2020
    the server are possible to implement, e.g., detecting repeated
    passwords.
 
-7.  Performance Considerations
-
-   The computational cost of OPAQUE is determined by the cost of the
-   OPRF, the cost of a regular Diffie-Hellman exchange, and the cost of
-   authenticating such exchange.  In an elliptic-curve implementation of
-   the OPRF, the cost for the client is two exponentiations (one or two
-   of which can be fixed base) and one hashing-into-curve operation
-   [I-D.irtf-cfrg-hash-to-curve]; for the server, it is just one
-   exponentiation.  The cost of a Diffie-Hellman exchange is as usual
-   two exponentiations per party (one of which is fixed-base).  Finally,
-   the cost of authentication per party depends on the specific AKE
-   protocol: it is just 1/6 of an exponentiation with HMQV, two
-   exponentiations for 3DH, and it is one signature generation and
-   verification in the case of SIGMA and TLS 1.3.  These instantiations
-   preserve the number of messages in the underlying AKE protocol except
-   in implementations such as [I-D.sullivan-tls-opaque] where an
-   additional round trip is required to provide privacy to account
-   information.
-
-8.  IANA Considerations
+7.  IANA Considerations
 
    This document makes no IANA requests.
 
-9.  References
+8.  References
 
-9.1.  Normative References
+8.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1730,15 +1711,7 @@ Internet-Draft                   OPAQUE                     October 2020
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
-
-
-
-Krawczyk, et al.           Expires 1 May 2021                  [Page 31]
-
-Internet-Draft                   OPAQUE                     October 2020
-
-
-9.2.  Informative References
+8.2.  Informative References
 
    [AuCPace]  Haase, B. and B. Labrique, "AuCPace: Efficient verifier-
               based PAKE protocol tailored for the IIoT",
@@ -1755,6 +1728,15 @@ Internet-Draft                   OPAQUE                     October 2020
               Canetti, R., "Universally composable security: A new
               paradigm for cryptographic protocols", IEEE Symposium on
               Foundations of Computer Science (FOCS) , 2001.
+
+
+
+
+
+Krawczyk, et al.           Expires 6 May 2021                  [Page 31]
+
+Internet-Draft                   OPAQUE                    November 2020
+
 
    [Cheon06]  Cheon, J.H., "Security analysis of the strong Diffie-
               Hellman problem", Euroctypt 2006 , 2006.
@@ -1784,16 +1766,6 @@ Internet-Draft                   OPAQUE                     October 2020
               October 2020, <http://www.ietf.org/internet-drafts/draft-
               irtf-cfrg-hash-to-curve-10.txt>.
 
-
-
-
-
-
-Krawczyk, et al.           Expires 1 May 2021                  [Page 32]
-
-Internet-Draft                   OPAQUE                     October 2020
-
-
    [I-D.irtf-cfrg-voprf]
               Davidson, A., Sullivan, N., and C. Wood, "Oblivious
               Pseudorandom Functions (OPRFs) using Prime-Order Groups",
@@ -1812,6 +1784,15 @@ Internet-Draft                   OPAQUE                     October 2020
               "Highly-efficient and composable password-protected secret
               sharing (or: how to protect your bitcoin wallet online)",
               IEEE European Symposium on Security and Privacy , 2016.
+
+
+
+
+
+Krawczyk, et al.           Expires 6 May 2021                  [Page 32]
+
+Internet-Draft                   OPAQUE                    November 2020
+
 
    [keyagreement]
               Barker, E., Chen, L., Roginsky, A., Vassilev, A., and R.
@@ -1839,17 +1820,6 @@ Internet-Draft                   OPAQUE                     October 2020
               DOI 10.17487/RFC5869, May 2010,
               <https://www.rfc-editor.org/info/rfc5869>.
 
-
-
-
-
-
-
-Krawczyk, et al.           Expires 1 May 2021                  [Page 33]
-
-Internet-Draft                   OPAQUE                     October 2020
-
-
    [RFC7250]  Wouters, P., Ed., Tschofenig, H., Ed., Gilmore, J.,
               Weiler, S., and T. Kivinen, "Using Raw Public Keys in
               Transport Layer Security (TLS) and Datagram Transport
@@ -1873,6 +1843,13 @@ Internet-Draft                   OPAQUE                     October 2020
               Agreement (PAKE) Schemes", RFC 8125, DOI 10.17487/RFC8125,
               April 2017, <https://www.rfc-editor.org/info/rfc8125>.
 
+
+
+Krawczyk, et al.           Expires 6 May 2021                  [Page 33]
+
+Internet-Draft                   OPAQUE                    November 2020
+
+
    [RFC8446]  Rescorla, E., "The Transport Layer Security (TLS) Protocol
               Version 1.3", RFC 8446, DOI 10.17487/RFC8446, August 2018,
               <https://www.rfc-editor.org/info/rfc8446>.
@@ -1889,22 +1866,6 @@ Internet-Draft                   OPAQUE                     October 2020
    [SPAKE2plus]
               Shoup, V., "Security Analysis of SPAKE2+",
               http://eprint.iacr.org/2020/313 , 2020.
-
-
-
-
-
-
-
-
-
-
-
-
-Krawczyk, et al.           Expires 1 May 2021                  [Page 34]
-
-Internet-Draft                   OPAQUE                     October 2020
-
 
 Appendix A.  Acknowledgments
 
@@ -1925,7 +1886,7 @@ Authors' Addresses
 
 
    Kevin Lewi
-   Facebook
+   Novi
 
    Email: lewi.kevin.k@gmail.com
 
@@ -1940,21 +1901,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Krawczyk, et al.           Expires 1 May 2021                  [Page 35]
+Krawczyk, et al.           Expires 6 May 2021                  [Page 34]
