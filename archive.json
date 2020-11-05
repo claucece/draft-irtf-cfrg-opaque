@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-11-03T00:35:46.314873+00:00",
+  "timestamp": "2020-11-05T00:37:13.104524+00:00",
   "repo": "cfrg/draft-irtf-cfrg-opaque",
   "labels": [
     {
@@ -1249,7 +1249,7 @@
       "labels": [],
       "body": "In this [section on AKE](https://github.com/cfrg/draft-irtf-cfrg-opaque/blame/master/draft-irtf-cfrg-opaque.md#L1008-L1014), we should clear up exactly which parameters are required and which are optional. Then we can also work towards defining a wire format for these AKEs if necessary.\r\n\r\nA couple of concrete questions:\r\n1) Can we simply set idU = static pkU and idS = static pkS?\r\n2) Can we remove mention of all of the following: info1*, info2*, Einfo2*, info3*, Einfo3*?\r\n",
       "createdAt": "2020-10-27T03:42:24Z",
-      "updatedAt": "2020-11-02T23:53:49Z",
+      "updatedAt": "2020-11-04T21:12:56Z",
       "closedAt": null,
       "comments": [
         {
@@ -1405,6 +1405,34 @@
           "body": "Yeah, on reflection, I think keeping the parameters is probably the best path forward. @kevinlewi, how do you want to deal with point (1)?",
           "createdAt": "2020-11-02T23:53:49Z",
           "updatedAt": "2020-11-02T23:53:49Z"
+        },
+        {
+          "author": "kevinlewi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "For #1, recapping the summary from @hugokraw :\r\n\r\n> Ok. So we can eliminate them from the AKE messages but have an explicit specification that the values idU and idS in the KDF are those specified in the envelope or, if omitted there, then pkU and pkS (with a note that pkU will need to be computed by the client if not transmitted in the envelope).\r\n\r\nSo, let's remove their presence from the AKE messages, and I would vote for setting idU = pkU and idS = pkS when computing the AKE components (instead of reusing idU and idS that were optionally specified in the envelope).",
+          "createdAt": "2020-11-03T00:42:23Z",
+          "updatedAt": "2020-11-03T00:42:23Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "That seems reasonable to me. Can you please draft a PR?",
+          "createdAt": "2020-11-03T03:01:58Z",
+          "updatedAt": "2020-11-03T03:01:58Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> So, let's remove their presence from the AKE messages, and I would vote for setting idU = pkU and idS = pkS when computing the AKE components (instead of reusing idU and idS that were optionally specified in the envelope).\r\n\r\nDo you mean removing idU and idS from the envelope, even as optional, and always using pkU and pkS as the identities in the AKE? I am responding to that interpretation. If that's not what you were saying, ignore this.\r\n\r\n Identities are central to authorization, access control, etc. and password protocols are central to these services so I think we need to leave flexibility there. Having the optional idU, idS in the envelope and pkU, pkS as default seems like a good balance between flexibility and ease of implementation.",
+          "createdAt": "2020-11-03T06:14:31Z",
+          "updatedAt": "2020-11-03T06:14:31Z"
+        },
+        {
+          "author": "kevinlewi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@hugokraw That is not quite what I mean; I am all for keeping idU and idS as optional parameters in the envelope. However, the **AKE portion** also refers to idU and idS: in particular, the values referenced [here](https://github.com/cfrg/draft-irtf-cfrg-opaque/blame/master/draft-irtf-cfrg-opaque.md#L1138-L1139). The question is -- should these simply be set to idU = pkU and idS = pkS, or should they be the same idU and idS that were optionally specified in the envelope?\r\n\r\nI am advocating for idU = pkU and idS = pkS just for the **AKE portion**, the values [here](https://github.com/cfrg/draft-irtf-cfrg-opaque/blame/master/draft-irtf-cfrg-opaque.md#L1138-L1139). It would be great to get your thoughts on this!",
+          "createdAt": "2020-11-04T21:12:56Z",
+          "updatedAt": "2020-11-04T21:12:56Z"
         }
       ]
     },
