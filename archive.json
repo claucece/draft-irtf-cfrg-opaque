@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-11-05T00:37:13.104524+00:00",
+  "timestamp": "2020-11-08T00:40:37.918831+00:00",
   "repo": "cfrg/draft-irtf-cfrg-opaque",
   "labels": [
     {
@@ -1249,7 +1249,7 @@
       "labels": [],
       "body": "In this [section on AKE](https://github.com/cfrg/draft-irtf-cfrg-opaque/blame/master/draft-irtf-cfrg-opaque.md#L1008-L1014), we should clear up exactly which parameters are required and which are optional. Then we can also work towards defining a wire format for these AKEs if necessary.\r\n\r\nA couple of concrete questions:\r\n1) Can we simply set idU = static pkU and idS = static pkS?\r\n2) Can we remove mention of all of the following: info1*, info2*, Einfo2*, info3*, Einfo3*?\r\n",
       "createdAt": "2020-10-27T03:42:24Z",
-      "updatedAt": "2020-11-04T21:12:56Z",
+      "updatedAt": "2020-11-07T05:12:23Z",
       "closedAt": null,
       "comments": [
         {
@@ -1433,6 +1433,34 @@
           "body": "@hugokraw That is not quite what I mean; I am all for keeping idU and idS as optional parameters in the envelope. However, the **AKE portion** also refers to idU and idS: in particular, the values referenced [here](https://github.com/cfrg/draft-irtf-cfrg-opaque/blame/master/draft-irtf-cfrg-opaque.md#L1138-L1139). The question is -- should these simply be set to idU = pkU and idS = pkS, or should they be the same idU and idS that were optionally specified in the envelope?\r\n\r\nI am advocating for idU = pkU and idS = pkS just for the **AKE portion**, the values [here](https://github.com/cfrg/draft-irtf-cfrg-opaque/blame/master/draft-irtf-cfrg-opaque.md#L1138-L1139). It would be great to get your thoughts on this!",
           "createdAt": "2020-11-04T21:12:56Z",
           "updatedAt": "2020-11-04T21:12:56Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "There is no use for idU and idS transported in the envelope other than to serve as identities in the AKE in lieu of any other identity that the parties may use to initially identify each other (for the client to know which server to contact and for the client to let the server know what user record to fetch). For example, I use hugokraw as my moniker in github but github may actually use my email address as my official identity (I don't know if this is the case, it is an imaginary example as far as I can tell).  I find it too limiting to dictate applications what's the identity they want to bind the AKE to.",
+          "createdAt": "2020-11-05T06:23:34Z",
+          "updatedAt": "2020-11-05T06:23:34Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Summary of discussion from the call: If there is no identity in the envelope, the AKE ID matches the public key. Conversely, if there is an identity in the envelope, that is the used in AKE.\r\n\r\n@hugokraw, @kevinlewi: does this match your understanding? \r\n\r\nIf so, we should elaborate on [this section](https://cfrg.github.io/draft-irtf-cfrg-opaque/draft-irtf-cfrg-opaque.html#name-ake-execution-and-party-ide) to explain the differences between these identities and their respective use cases. In the process, we should recommend one implementation strategy for applications, e.g., by recommending that the AKE ID be the public key, and if a separate identity is desired, it's put in the envelope. In doing so, we should add text to deal with the case where application identities are long -- perhaps too long to store in the envelope. In such cases, a hash of the identity might be stored in the envelope and threaded into the AKE, and the server needs to check the hash against the long-form identity. ",
+          "createdAt": "2020-11-06T22:58:29Z",
+          "updatedAt": "2020-11-06T23:04:51Z"
+        },
+        {
+          "author": "kevinlewi",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Excellent -- yes, thank you, this matches my understanding!\r\n\r\nJust to double-check, the same logic applies for idS, of course, right? (Default to pkS, unless idS is specified in the envelope, in which case use that)",
+          "createdAt": "2020-11-06T23:10:41Z",
+          "updatedAt": "2020-11-06T23:10:41Z"
+        },
+        {
+          "author": "hugokraw",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Good (and yes, same logic for idS).\r\n\r\nNote: Currently, [here](https://github.com/cfrg/draft-irtf-cfrg-opaque/blob/master/draft-irtf-cfrg-opaque.md#finalizerequest) we say \"Applications may optionally include pkU, idU, or idS....\" in the envelope. We may want to clarify that if pkU is to be used as idU, this value needs to be sent in the envelope or the client would need to compute pkU from skU.\r\n",
+          "createdAt": "2020-11-07T05:12:23Z",
+          "updatedAt": "2020-11-07T05:12:23Z"
         }
       ]
     },
@@ -1544,6 +1572,30 @@
           "body": "You can produce test vectors that omit all optional fields. Or you can omit these optional fields from the specification as I just wrote in another thread and say in English that such elements may need to be transmitted by applications but we do not specify them as they will be application specific (we do say that they need to be included in the transcript).",
           "createdAt": "2020-10-28T23:10:12Z",
           "updatedAt": "2020-10-28T23:10:12Z"
+        }
+      ]
+    },
+    {
+      "number": 79,
+      "id": "MDU6SXNzdWU3Mzc0NDI1MjI=",
+      "title": "Use of VOPRF should mention which mode is used",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-opaque/issues/79",
+      "state": "OPEN",
+      "author": "kevinlewi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Presumably we want to use the VOPRF with modeBase set (as opposed to modeVerifiable). But I could not find this mentioned anywhere in the spec in its current state",
+      "createdAt": "2020-11-06T04:12:30Z",
+      "updatedAt": "2020-11-06T20:31:46Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Yeah, it's the base mode. Do you want to take this and send a PR?",
+          "createdAt": "2020-11-06T20:31:46Z",
+          "updatedAt": "2020-11-06T20:31:46Z"
         }
       ]
     }
